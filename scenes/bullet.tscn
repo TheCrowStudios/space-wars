@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw2ciax8xl82v"]
+
+[ext_resource type="Script" uid="uid://mpxl8grgeppu" path="res://scripts/bullet.gd" id="1_t4vbm"]
+[ext_resource type="Shader" uid="uid://crpbtsurxwks7" path="res://bullet_medium.gdshader" id="2_2b2rl"]
+[ext_resource type="Texture2D" uid="uid://dbfrlsbyx7h3v" path="res://sprites/bullet_medium.png" id="3_b7duk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t2bd8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(2.1780202, 0.66304076, 0.66304076, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0pa3"]
+shader = ExtResource("2_2b2rl")
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_power = 7.0000001043084
+shader_parameter/glow_shift = 2.0000000298024
+shader_parameter/glow_radius = 12.0
+
+[sub_resource type="Gradient" id="Gradient_6ol1o"]
+offsets = PackedFloat32Array(0, 0.74568963)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gofb6"]
+gradient = SubResource("Gradient_6ol1o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bibm"]
+size = Vector2(6, 2)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_t4vbm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_t2bd8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(2.3464565, 2.3464565, 2.3464565, 1)
+material = SubResource("ShaderMaterial_h0pa3")
+texture = ExtResource("3_b7duk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.5997925, 0.3828125, 1)
+energy = 1.5
+range_layer_min = -1024
+range_layer_max = 1024
+texture = SubResource("GradientTexture2D_gofb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4bibm")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://detliqstbba3l"]
+
+[ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://node_2d.gd" id="1_iweij"]
+[ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_60lig"]
+[ext_resource type="PackedScene" uid="uid://cxjg1m7xkalvm" path="res://scenes/spaceship.tscn" id="3_74qev"]
+[ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="4_60lig"]
+
+[sub_resource type="Environment" id="Environment_ol07r"]
+glow_enabled = true
+glow_blend_mode = 0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_iweij")
+min_zoom = Vector2(0.1, 0.1)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_60lig")]
+
+[node name="Spaceship" parent="." instance=ExtResource("3_74qev")]
+position = Vector2(0, -1)
+is_player = true
+
+[node name="Camera2D2" type="Camera2D" parent="Spaceship"]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Spaceship/Camera2D2"]
+current = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(458, 176)
+color = Color(0.7109375, 0.7109375, 0.7109375, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ol07r")
+
+[node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
+position = Vector2(1017, -6)
+
+[node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("4_60lig")
+
+[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship2"]
+modulate = Color(1, 1, 1, 0.75686276)
+self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("4_60lig")

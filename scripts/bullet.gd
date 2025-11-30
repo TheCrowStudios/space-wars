@@ -1,0 +1,95 @@
+extends CharacterBody2D
+
+var speed: int = 1600
+var lifetime: int = 5000
+var max_bounces: int = 3
+var bounces_left: int = max_bounces
+var push_force: float = 200.0
+var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM
+
+var insantiation_time: int
+
+var pre_collision_velocity: Vector2 = Vector2.ZERO
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	insantiation_time = Time.get_ticks_msec()
+	$Sprite2D.look_at(global_position + velocity)
+	# velocity = transform.x * speed
+	# print(transform.x)
+	# print(speed)
+	# print(velocity)
+
+func _process(delta: float) -> void:
+	$Sprite2D.look_at(global_position + velocity)
+
+func _physics_process(delta: float) -> void:
+	pre_collision_velocity = velocity
+	var collision = move_and_slide()
+
+	if get_slide_collision_count() > 0:
+		handle_collision()
+
+	# position += transform.x * speed * delta
+	if (Time.get_ticks_msec() - insantiation_time >= lifetime):
+		$PointLight2D.energy = lerp($PointLight2D.energy, 0.0, 0.05)
+		# $Sprite2D.modulate.a = lerp($PointLight2D.modulate.a, 0.0, 0.1)
+		if ($PointLight2D.energy <= 0.1): queue_free() # TODO - fade
+
+func handle_collision():
+	var collision_info = get_last_slide_collision()
+
+	if not collision_info: return
+
+	var impact_normal: Vector2 = collision_info.get_normal()
+	var incoming_velocity: Vector2 = pre_collision_velocity
+
+	# var perpendicular_speed: float = abs(incoming_velocity.dot(impact_normal))
+	var angle_cos: float = abs(impact_normal.dot(-incoming_velocity.normalized()))
+	# print(perpendicular_speed)
+	# print(pre_collision_velocity)
+	print(0.2 * incoming_velocity.length())
+
+
+
+	var max_angle_rad: float = deg_to_rad(90.0 - 45.0)
+	var max_cos: float = cos(max_angle_rad)
+
+	# print(angle_cos)
+	# print(max_cos)
+
+
+	if angle_cos < max_cos:
+	# if perpendicular_speed < 0.8 * incoming_velocity.length():
+		if bounces_left > 0:
+			velocity = incoming_velocity.bounce(impact_normal)
+
+			velocity *= 0.85
+			bounces_left -= 1
+
+			# var remainder = collision_info.get_remainder()
+			# global_position += remainder
+
+			# print("BOUNCE")
+			var collider = collision_info.get_collider()
+
+			if collider.has_method("take_ricochet"):
+				collider.take_ricochet()
+			# if collider is RigidBody2D:
+			# 	var body: RigidBody2D = collider
+
+			# 	var point_of_impact: Vector2 = collision_info.get_position()
+			# 	var offset: Vector2 = point_of_impact - body.global_position
+
+				# body.apply_impulse(-impact_normal * push_force, offset)
+			# else:
+			# 	queue_free()
+		else:
+			queue_free()
+	else:
+		var collider = collision_info.get_collider()
+
+		if collider.has_method("take_hit"):
+			collider.take_hit(bullet_type, collision_info.get_position())
+		
+		queue_free() # TODO - penetrate

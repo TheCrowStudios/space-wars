@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://duti4teficyot"]
+
+[ext_resource type="Script" uid="uid://cge2fjm0v7fev" path="res://scripts/booster.gd" id="1_1jv0s"]
+[ext_resource type="Texture2D" uid="uid://uyrtg88oyk2m" path="res://sprites/booster_flames.png" id="2_825m2"]
+[ext_resource type="Texture2D" uid="uid://d1g3gp7rblfhw" path="res://sprites/booster.png" id="3_yvux7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7d6m"]
+atlas = ExtResource("2_825m2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn5qa"]
+atlas = ExtResource("2_825m2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u588j"]
+atlas = ExtResource("2_825m2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrcs5"]
+atlas = ExtResource("2_825m2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpaj8"]
+atlas = ExtResource("2_825m2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap7g6"]
+atlas = ExtResource("2_825m2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwbbn"]
+atlas = ExtResource("2_825m2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq222"]
+atlas = ExtResource("2_825m2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mvlu"]
+atlas = ExtResource("2_825m2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow2pk"]
+atlas = ExtResource("2_825m2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcqhp"]
+atlas = ExtResource("2_825m2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xm2j"]
+atlas = ExtResource("2_825m2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8tli"]
+atlas = ExtResource("2_825m2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdob6"]
+atlas = ExtResource("2_825m2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ap7g6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7d6m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn5qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u588j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrcs5")
+}],
+"loop": true,
+"name": &"running",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpaj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap7g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwbbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq222")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mvlu")
+}],
+"loop": false,
+"name": &"startup",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow2pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcqhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xm2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8tli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdob6")
+}],
+"loop": false,
+"name": &"stopping",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnoiu"]
+size = Vector2(9, 6)
+
+[node name="Booster" type="Node2D"]
+script = ExtResource("1_1jv0s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(4.7827163, 4.7827163, 4.7827163, 1)
+sprite_frames = SubResource("SpriteFrames_ap7g6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jnoiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_yvux7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

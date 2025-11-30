@@ -1,0 +1,14 @@
+CollisionShape2D
+GPUParticles2D
+Sprite2D
+CollisionPolygon2D
+AudioStreamPlayer2D      - Matches the "sound" keyword.
+Marker2D
+CharacterBody2D
+AudioListener2D
+WorldEnvironment
+CanvasModulate
+CanvasLayer
+PointLight2D
+CPUParticles2D
+Node2D

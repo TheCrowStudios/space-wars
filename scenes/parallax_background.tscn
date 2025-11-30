@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://desboj5mikl31"]
+
+[ext_resource type="Script" uid="uid://bvmsevttvjhgc" path="res://scripts/parallax_background.gd" id="1_2pwms"]
+[ext_resource type="Texture2D" uid="uid://ccm4ho271880v" path="res://sprites/stars-1024.png" id="3_2pwms"]
+[ext_resource type="Texture2D" uid="uid://cuf032jjif886" path="res://sprites/space2.png" id="3_xoild"]
+
+[sub_resource type="Gradient" id="Gradient_6h8ff"]
+offsets = PackedFloat32Array(0.41810346, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.31640625, 0.31640625, 0.31640625, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pwms"]
+gradient = SubResource("Gradient_6h8ff")
+width = 256
+height = 256
+fill_from = Vector2(0, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_2pwms")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(256, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = SubResource("GradientTexture2D_2pwms")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 256, 2560, 2560)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+self_modulate = Color(1.5790963, 1.5790963, 1.5790963, 1)
+texture_repeat = 2
+texture = ExtResource("3_2pwms")
+centered = false
+region_enabled = true
+region_rect = Rect2(1024, 1024, 1024, 1024)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(256, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+modulate = Color(1, 1, 1, 0.06666667)
+self_modulate = Color(1.1374342, 1.1374342, 1.1374342, 1)
+texture_repeat = 2
+texture = ExtResource("3_xoild")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 256, 2560, 2560)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.33984375, 0.33984375, 0.33984375, 1)
