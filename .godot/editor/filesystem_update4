@@ -15,3 +15,6 @@ res://scenes/oxygen_tank.tscn
 res://scripts/destructible_object.gd
 res://scripts/gun_medium.gd
 res://bullet.gd
+res://scenes/explosion_oxygen.tscn
+res://scenes/fire_particles.tscn
+res://scenes/smoke_particles.tscn

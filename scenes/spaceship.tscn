@@ -26,7 +26,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0x72"]
-size = Vector2(201, 179)
+size = Vector2(222, 180)
 
 [node name="Spaceship" type="RigidBody2D"]
 collision_layer = 2
@@ -67,7 +67,8 @@ texture = SubResource("GradientTexture2D_51qc7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(60, 0)
-polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -8, -18, 0, -8)
+polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483, -19.992365, -8, -18, 0, -8)
+disabled = true
 
 [node name="FuelTank" parent="." instance=ExtResource("8_r0fvi")]
 position = Vector2(-48, -3)
@@ -83,7 +84,10 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_l0x72")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

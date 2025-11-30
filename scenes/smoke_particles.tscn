@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxlif2g4r6nfo"]
+
+[sub_resource type="Curve" id="Curve_7vcy5"]
+_data = [Vector2(0, 0.9325843), 0.0, 0.0, 0, 0, Vector2(0.26168224, 0.9325843), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e4mxh"]
+curve = SubResource("Curve_7vcy5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_28vnp"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 17.6
+gravity = Vector3(0, -20, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 9.999997
+scale_min = 4.0
+scale_max = 7.0
+alpha_curve = SubResource("CurveTexture_e4mxh")
+
+[node name="SmokeParticles" type="GPUParticles2D"]
+amount = 800
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_28vnp")

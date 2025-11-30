@@ -1,0 +1,13 @@
+res://scenes/booster.tscn::865767a4760b77d15d22459461e0dc72::1764376830::res://.godot/exported/133200997/export-f662f32cb3faf8a2fe0939daf5d22f71-booster.scn
+res://scenes/bullet.tscn::f160b035e003b3947c4e4931ff77b60c::1764443124::res://.godot/exported/133200997/export-6d8e6ff1e6f20a36e0402d27c623c86c-bullet.scn
+res://scenes/bullet_medium.tscn::98af213345a4d31456bb9a313ded22df::1764514820::res://.godot/exported/133200997/export-ab04d0c6aee61169b66ec2c77e44a1ab-bullet_medium.scn
+res://scenes/gun_medium.tscn::e93ac24ffb2b8b49be9edae57c7909e9::1764525844::res://.godot/exported/133200997/export-4dd1074ddb386a40ee941e44bfaf72d4-gun_medium.scn
+res://scenes/Node2D.tscn::e0137e8223633e6c386b1e2e4141c0d9::1764525808::res://.godot/exported/133200997/export-a4482a95cb19b25d56cfcee65b1d23a5-Node2D.scn
+res://scenes/parallax_background.tscn::34dfa60786dadf726b180659a0fc4d55::1764467985::res://.godot/exported/133200997/export-28a5d3ea6b3c3faa0faa2e2aea9d06f9-parallax_background.scn
+res://scenes/debris.tscn::039f56efb4a2d0d6b7db210634ad6305::1764515327::res://.godot/exported/133200997/export-b9d5b135b088aedac79e49da08248fc4-debris.scn
+res://scenes/fuel_tank.tscn::72891cbfce100987ef9013011b2b2323::1764531108::res://.godot/exported/133200997/export-91ae2de4c2c9686013c07635a839fecb-fuel_tank.scn
+res://scenes/fuel_armor.tscn::4b273a294f04468d2f8d8dbb33fa46ca::1764531108::res://.godot/exported/133200997/export-746a9f4ac68756b4c4da47dcefd1c03b-fuel_armor.scn
+res://scenes/oxygen_tank.tscn::fc67aa492fc83576bc630be98fa46ef7::1764531108::res://.godot/exported/133200997/export-7b69d4ec442f57d43dfc30e074c46cd3-oxygen_tank.scn
+res://scenes/spaceship.tscn::2e0e266724bd770f31ba0e9ed5718631::1764535217::res://.godot/exported/133200997/export-a9ac78548057e3656f68a2e19e806dfc-spaceship.scn
+res://scenes/world_environment.tscn::90825c7ab77efb28765ab7f8e5070c0b::1764431587::res://.godot/exported/133200997/export-2faa98a79d5ca49640aaca6515f47d14-world_environment.scn
+res://bullet_shader.tres::0d230a8aab55f2ce3c4ff6fb6443689e::1764379775::res://.godot/exported/133200997/export-02ff0333d0ec8062285bedc7cc1a6275-bullet_shader.res
