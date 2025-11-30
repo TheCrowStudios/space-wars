@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c67t0mehboovx"]
+
+[ext_resource type="Texture2D" uid="uid://ce6l05mhdmxbh" path="res://sprites/fuel_armor.png" id="1_c5rp5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itqn0"]
+size = Vector2(20, 38)
+
+[node name="FuelArmor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(49, 3)
+texture = ExtResource("1_c5rp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_itqn0")

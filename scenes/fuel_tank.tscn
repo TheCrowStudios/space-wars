@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://buyk2c060gonj"]
+
+[ext_resource type="Texture2D" uid="uid://cx18f0amt1bol" path="res://sprites/fuel_tank.png" id="1_gx4ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t77pr"]
+size = Vector2(14, 28)
+
+[node name="FuelTank" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(48, 3)
+texture = ExtResource("1_gx4ty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t77pr")

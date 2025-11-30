@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6v8muyp0qg5m"]
+
+[ext_resource type="Texture2D" uid="uid://bkumvp6n0fdxm" path="res://sprites/oxygen_tank.png" id="1_ycgen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t77pr"]
+size = Vector2(14, 7)
+
+[node name="OxygenTank" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, -20)
+texture = ExtResource("1_ycgen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_t77pr")

@@ -9,3 +9,6 @@ res://scenes/gun_medium.tscn
 res://scenes/debris.gd
 res://scenes/debris.tscn
 res://scenes/bullet_medium.tscn
+res://scenes/fuel_tank.tscn
+res://scenes/fuel_armor.tscn
+res://scenes/oxygen_tank.tscn
