@@ -73,7 +73,8 @@ func handle_collision():
 			# print("BOUNCE")
 			var collider = collision_info.get_collider()
 
-			if collider.has_method("take_ricochet"):
+			# if collider.has_method("take_ricochet"):
+			if collider is DestructibleObject:
 				collider.take_ricochet()
 			# if collider is RigidBody2D:
 			# 	var body: RigidBody2D = collider
@@ -89,7 +90,8 @@ func handle_collision():
 	else:
 		var collider = collision_info.get_collider()
 
-		if collider.has_method("take_hit"):
+		# if collider.has_method("take_hit"):
+		if collider is DestructibleObject:
 			collider.take_hit(bullet_type, collision_info.get_position())
 		
 		queue_free() # TODO - penetrate

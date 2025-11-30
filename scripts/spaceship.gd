@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends DestructibleObject
 
 @export var steering_angle = 20
 @export var engine_power = 2000
@@ -154,18 +154,18 @@ func fire_guns():
 	for gun in guns:
 		gun.fire()
 
-func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2):
-	if bullet_type == Globals.BulletType.MEDIUM:
-		hp -= 20
+# func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2):
+# 	if bullet_type == Globals.BulletType.MEDIUM:
+# 		hp -= 20
 	
-	impact.pitch_scale = randf_range(0.8, 1.0)
-	impact.play()
-	var wall_debris: GPUParticles2D = WALL_DEBRIS.instantiate()
-	# wall_debris.global_position = global_position
-	# wall_debris.position = position
-	add_child(wall_debris)
-	wall_debris.emitting = true
+# 	impact.pitch_scale = randf_range(0.8, 1.0)
+# 	impact.play()
+# 	var wall_debris: GPUParticles2D = WALL_DEBRIS.instantiate()
+# 	# wall_debris.global_position = global_position
+# 	# wall_debris.position = position
+# 	add_child(wall_debris)
+# 	wall_debris.emitting = true
 
-func take_ricochet():
-	ricochet.pitch_scale = randf_range(0.8, 1.0)
-	ricochet.play()
+# func take_ricochet():
+# 	ricochet.pitch_scale = randf_range(0.8, 1.0)
+# 	ricochet.play()

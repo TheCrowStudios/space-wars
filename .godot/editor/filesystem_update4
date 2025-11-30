@@ -12,3 +12,4 @@ res://scenes/bullet_medium.tscn
 res://scenes/fuel_tank.tscn
 res://scenes/fuel_armor.tscn
 res://scenes/oxygen_tank.tscn
+res://scripts/destructible_object.gd

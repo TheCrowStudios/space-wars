@@ -30,6 +30,9 @@ inertia = 0.5
 linear_damp = 0.2
 angular_damp = 0.05
 script = ExtResource("1_7g3nn")
+debris_scene = ExtResource("7_v6qj0")
+hit_audio_streams = Array[AudioStream]([ExtResource("6_343tk")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("5_me4wu")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pmkdn")
