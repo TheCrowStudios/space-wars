@@ -45,6 +45,6 @@ func _input(event: InputEvent) -> void:
 
 		# volume = min(volume, 0.0)
 		volume = clamp(volume, -24.0, 0.0)
-		print(volume)
+		# print(volume)
 
 		AudioServer.set_bus_volume_db(0, volume)

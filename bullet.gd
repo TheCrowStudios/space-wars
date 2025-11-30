@@ -16,5 +16,4 @@ func _process(delta: float) -> void:
 	if (Time.get_ticks_msec() - insantiation_time >= lifetime):
 		$PointLight2D.energy = lerp($PointLight2D.energy, 0.0, 0.05)
 		# $Sprite2D.modulate.a = lerp($PointLight2D.modulate.a, 0.0, 0.1)
-		print($PointLight2D.energy)
 		if ($PointLight2D.energy <= 0.1): queue_free() # TODO - fade

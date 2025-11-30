@@ -1,4 +1,5 @@
 CollisionShape2D
+Area2D
 Sprite2D
 StaticBody2D
 Node2D
@@ -11,4 +12,3 @@ AudioListener2D
 WorldEnvironment
 CanvasModulate
 CanvasLayer
-PointLight2D

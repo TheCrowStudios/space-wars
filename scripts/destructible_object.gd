@@ -31,7 +31,6 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2):
 		var audio_player = AudioStreamPlayer2D.new()
 		audio_player.stream = stream_to_play
 		audio_player.pitch_scale = randf_range(0.8, 1.0)
-		audio_player.global_position = global_position
 		add_child(audio_player)
 		audio_player.max_distance = 3000
 		audio_player.play()
@@ -49,7 +48,6 @@ func take_ricochet():
 		var audio_player = AudioStreamPlayer2D.new()
 		audio_player.stream = stream_to_play
 		audio_player.pitch_scale = randf_range(0.8, 1.0)
-		audio_player.global_position = global_position
 		add_child(audio_player)
 		audio_player.max_distance = 3000
 		audio_player.play()

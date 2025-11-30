@@ -43,6 +43,7 @@ func fire() -> void:
 		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))
 		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))
 		# bullet_instance.velocity = Vector2(bullet_instance.speed, bullet_instance.speed) * bullet_instance.transform.x + get_parent().linear_velocity
+		bullet_instance.created_by = get_parent().get_instance_id()
 		bullet_instance.velocity = Vector2(bullet_instance.speed, bullet_instance.speed) * global_transform.x + get_parent().linear_velocity
 		bullet_instance.global_position = muzzle.global_position
 		get_tree().root.add_child(bullet_instance)

@@ -4,12 +4,12 @@ extends DestructibleObject
 @export var engine_power = 2000
 @export var friction = -10
 @export var drag = -0.06
-@export var braking = -450
 @export var max_speed_reverse = 800
 @export var slip_speed = 400
 @export var traction_fast = 2.5 # Traction factor when the car is moving fast (affects control)
 @export var traction_slow = 10 # Traction factor when the car is moving slow (affects control)
 @export var is_player = false
+@export var flyby_audio_streams: Array[AudioStream]
 
 var boosters = []
 var guns = []
@@ -29,8 +29,7 @@ var target: Node2D = null
 var input_per_sec: int = 24
 var input_cooldown: float = 0
 
-@onready var ricochet: AudioStreamPlayer2D = $Ricochet
-@onready var impact: AudioStreamPlayer2D = $Impact
+# @onready var passBy: AudioStreamPlayer2D = $PassBy
 const WALL_DEBRIS = preload("res://scenes/debris.tscn")
 
 @export var is_active = true
@@ -169,3 +168,17 @@ func fire_guns():
 # func take_ricochet():
 # 	ricochet.pitch_scale = randf_range(0.8, 1.0)
 # 	ricochet.play()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Bullet && is_player && body.created_by != get_instance_id() && !flyby_audio_streams.is_empty():
+		print("PASS BY")
+		var audio_stream = flyby_audio_streams.pick_random()
+		var audio_player = AudioStreamPlayer2D.new()
+		audio_player.stream = audio_stream
+		add_child(audio_player)
+		audio_player.volume_linear = abs((body.velocity - linear_velocity).length()) / 1600.0
+		print(audio_player.volume_linear)
+		audio_player.play()
+		await audio_player.finished
+		audio_player.queue_free()

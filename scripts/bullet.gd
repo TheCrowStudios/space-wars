@@ -1,3 +1,4 @@
+class_name Bullet
 extends CharacterBody2D
 
 var speed: int = 1600
@@ -6,6 +7,7 @@ var max_bounces: int = 3
 var bounces_left: int = max_bounces
 var push_force: float = 200.0
 var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM
+var created_by: int = 0
 
 var insantiation_time: int
 
@@ -48,7 +50,7 @@ func handle_collision():
 	var angle_cos: float = abs(impact_normal.dot(-incoming_velocity.normalized()))
 	# print(perpendicular_speed)
 	# print(pre_collision_velocity)
-	print(0.2 * incoming_velocity.length())
+	# print(0.2 * incoming_velocity.length())
 
 
 
