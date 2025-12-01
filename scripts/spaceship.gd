@@ -104,6 +104,7 @@ func generate_input():
 		var error_position = target.global_position - global_position
 
 		# TODO - we don't yet account for the offset of the guns duhhh
+		# TODO - oh yeah, we need to account for distance travelled before hitting target as current velocity changes where the bullets will go as they travel
 		aim_at = target.global_position + target.linear_velocity # account for target speed
 		if (Globals.DEBUG):
 			var crosshair = $CrosshairVelocity
@@ -143,6 +144,9 @@ func generate_input():
 
 		acc = 1
 		input_cooldown = 1
+	else:
+		for booster in boosters:
+			booster.set_thrust(false)
 
 func interpret_input():
 	steer_direction = turn * deg_to_rad(steering_angle)

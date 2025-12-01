@@ -36,7 +36,6 @@ environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(1017, -6)
-enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
 visible = false
@@ -69,7 +68,6 @@ texture = ExtResource("4_60lig")
 
 [node name="Spaceship3" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(4272, -885)
-enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship3"]
 visible = false
@@ -83,7 +81,6 @@ texture = ExtResource("4_60lig")
 
 [node name="Spaceship4" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(2874, -2986)
-enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship4"]
 visible = false
