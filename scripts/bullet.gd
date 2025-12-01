@@ -82,7 +82,7 @@ func handle_collision():
 			# if collider.has_method("take_ricochet"):
 			# if collider.destructibleObject:
 			if collider is DestructibleObject:
-				collider.take_ricochet(self)
+				collider.take_ricochet(global_position, angle_cos, self)
 			# if collider is RigidBody2D:
 			# 	var body: RigidBody2D = collider
 

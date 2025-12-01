@@ -12,5 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_finished() -> void:
-	# queue_free()
-	pass
+	queue_free()

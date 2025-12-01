@@ -30,6 +30,12 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 	if bullet_just_fired_by_parent(bullet): return
 
 	print(health)
+
+
+	if hit_particles:
+		var particles = hit_particles.instantiate()
+		add_child(particles)
+		particles.emitting = true
 	
 	if !hit_audio_streams.is_empty():
 		var stream_to_play = hit_audio_streams.pick_random()
@@ -47,11 +53,6 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 	if bullet_type == Globals.BulletType.MEDIUM:
 		health -= 20
 
-	if debris_particles:
-		var debris = debris_particles.instantiate()
-		add_child(debris)
-		debris.emitting = true
-
 	if health <= 0:
 		print("DESTROYED")
 		emit_signal("destroyed", self)
@@ -59,6 +60,12 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 			var particles = destruction_particles.instantiate()
 			add_child(particles)
 			particles.emitting = true
+
+		if debris_particles:
+			var debris = debris_particles.instantiate()
+			add_child(debris)
+			debris.emitting = true
+
 
 		if !destruction_audio_streams.is_empty():
 			var stream_to_play = destruction_audio_streams.pick_random()
@@ -71,8 +78,15 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 			await audio_player.finished
 			audio_player.queue_free()
 
-func take_ricochet(bullet: Bullet):
+func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet):
 	if bullet_just_fired_by_parent(bullet): return
+
+	if hit_particles:
+		var particles: GPUParticles2D = hit_particles.instantiate()
+		particles.rotation = angle_to_normal
+		particles.position = hit_position - global_position
+		add_child(particles)
+		particles.emitting = true
 
 	if !ricochet_audio_streams.is_empty():
 		var stream_to_play = ricochet_audio_streams.pick_random()

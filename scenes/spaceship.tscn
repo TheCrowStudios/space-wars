@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=19 format=3 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/bullet-flyby-1.wav" id="2_iow36"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="11_iow36"]
 [ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="12_5eye7"]
 [ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="12_tst1b"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="13_d22a7"]
 [ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="13_tst1b"]
 
 [sub_resource type="Gradient" id="Gradient_343tk"]
@@ -84,7 +85,8 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("11_iow36")
 max_health = 2000
-debris_scene = ExtResource("12_tst1b")
+debris_particles = ExtResource("12_tst1b")
+hit_particles = ExtResource("13_d22a7")
 destruction_force = 0.0
 hit_audio_streams = Array[AudioStream]([ExtResource("12_5eye7")])
 ricochet_audio_streams = Array[AudioStream]([ExtResource("13_tst1b")])

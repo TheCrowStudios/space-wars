@@ -9,3 +9,7 @@ res://scenes/fuel_tank.tscn
 res://scenes/fuel_armor.tscn
 res://scenes/explosion_oxygen.tscn
 res://scripts/globals.gd
+res://scenes/debris.tscn
+res://scenes/debris.gd
+res://scenes/sparks.tscn
+res://scripts/sparks.gd
