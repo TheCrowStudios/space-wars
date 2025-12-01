@@ -1,4 +1,5 @@
-extends DestructibleObject
+extends RigidBody2D
+# @onready var destructibleObject = preload("res://scripts/destructible_object.gd").new()
 
 @export var steering_angle = 20
 @export var engine_power = 2000
@@ -9,6 +10,8 @@ extends DestructibleObject
 @export var traction_fast = 2.5 # Traction factor when the car is moving fast (affects control)
 @export var traction_slow = 10 # Traction factor when the car is moving slow (affects control)
 @export var is_player = false
+@export var enable_ai = true
+@export var is_alive = true
 @export var flyby_audio_streams: Array[AudioStream]
 
 var boosters = []
@@ -54,21 +57,29 @@ func _ready() -> void:
 		add_to_group("team1") # TODO - come up with teams names
 
 func _process(delta: float) -> void:
-	if (is_player):
-		if is_active:
-			# $Camera2D.enabled = true
-			get_input()
+	if is_alive:
+		if is_player:
+			if is_active:
+				# $Camera2D.enabled = true
+				get_input()
+				interpret_input()
+			else:
+				# $Camera2D.enabled = false
+				pass
+		elif enable_ai:
+			var players = get_tree().get_nodes_in_group("player")
+			players = players.filter(func(player): return player.is_alive)
+
+			if players.size() > 0:
+				target = players[0]
+			else: target = null
+
+			if input_cooldown <= 0: generate_input()
 			interpret_input()
-		else:
-			# $Camera2D.enabled = false
-			pass
+			input_cooldown -= delta * input_per_sec
 	else:
-		var players = get_tree().get_nodes_in_group("player")
-		if players.size() > 0:
-			target = players[0]
-		if input_cooldown <= 0: generate_input()
-		interpret_input()
-		input_cooldown -= delta * input_per_sec
+		for booster in boosters:
+			booster.set_thrust(false)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() > 0:
@@ -124,7 +135,7 @@ func generate_input():
 
 		var p_torque = error_angle * 1.0
 
-		var d_damp = -angular_velocity * 0.2
+		var d_damp = - angular_velocity * 0.2
 		var final_torque = p_torque + d_damp
 
 		turn = 1.0 * sign(final_torque)
@@ -172,13 +183,22 @@ func fire_guns():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Bullet && is_player && body.created_by != get_instance_id() && !flyby_audio_streams.is_empty():
-		print("PASS BY")
+		# print("PASS BY")
 		var audio_stream = flyby_audio_streams.pick_random()
 		var audio_player = AudioStreamPlayer2D.new()
 		audio_player.stream = audio_stream
 		add_child(audio_player)
 		audio_player.volume_linear = abs((body.velocity - linear_velocity).length()) / 1600.0
-		print(audio_player.volume_linear)
+		# print(audio_player.volume_linear)
 		audio_player.play()
 		await audio_player.finished
 		audio_player.queue_free()
+
+
+func _on_node_destroyed(node: DestructibleObject) -> void:
+	if (node.get_parent() != self): return
+	var random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	apply_impulse(random_dir * node.destruction_force)
+	angular_velocity = random_dir.length()
+	is_alive = false
+	# if (node.name == "OxygenTank")

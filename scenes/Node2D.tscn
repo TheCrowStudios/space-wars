@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://detliqstbba3l"]
+[gd_scene load_steps=9 format=3 uid="uid://detliqstbba3l"]
 
 [ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://node_2d.gd" id="1_iweij"]
 [ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_60lig"]
 [ext_resource type="PackedScene" uid="uid://cxjg1m7xkalvm" path="res://scenes/spaceship.tscn" id="3_74qev"]
 [ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="4_60lig"]
+[ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="5_a8rmw"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="6_bgl4h"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="7_gytnt"]
 
 [sub_resource type="Environment" id="Environment_ol07r"]
 glow_enabled = true
@@ -33,6 +36,7 @@ environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(1017, -6)
+enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
 visible = false
@@ -40,6 +44,53 @@ modulate = Color(1, 1, 1, 0.75686276)
 texture = ExtResource("4_60lig")
 
 [node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship2"]
+modulate = Color(1, 1, 1, 0.75686276)
+self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("4_60lig")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(534, 2)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("5_a8rmw")
+hit_audio_streams = Array[AudioStream]([ExtResource("6_bgl4h")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("7_gytnt")])
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
+disabled = true
+
+[node name="Crosshair" type="Sprite2D" parent="Walls"]
+modulate = Color(1, 1, 1, 0.75686276)
+position = Vector2(-61, 3)
+texture = ExtResource("4_60lig")
+
+[node name="Spaceship3" parent="." instance=ExtResource("3_74qev")]
+position = Vector2(4272, -885)
+enable_ai = false
+
+[node name="Crosshair" type="Sprite2D" parent="Spaceship3"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("4_60lig")
+
+[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship3"]
+modulate = Color(1, 1, 1, 0.75686276)
+self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("4_60lig")
+
+[node name="Spaceship4" parent="." instance=ExtResource("3_74qev")]
+position = Vector2(2874, -2986)
+enable_ai = false
+
+[node name="Crosshair" type="Sprite2D" parent="Spaceship4"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("4_60lig")
+
+[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship4"]
 modulate = Color(1, 1, 1, 0.75686276)
 self_modulate = Color(0.8984375, 1, 0, 1)
 texture = ExtResource("4_60lig")

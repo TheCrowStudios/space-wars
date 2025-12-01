@@ -1,12 +1,15 @@
 class_name Bullet
 extends CharacterBody2D
 
+const VELOCITY_THRESHOLD = 50
+
 var speed: int = 1600
 var lifetime: int = 5000
 var max_bounces: int = 3
 var bounces_left: int = max_bounces
 var push_force: float = 200.0
 var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM
+var penetrations_left = Globals.bulletMaxPenetrations[bullet_type]
 var created_by: int = 0
 
 var insantiation_time: int
@@ -39,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		if ($PointLight2D.energy <= 0.1): queue_free() # TODO - fade
 
 func handle_collision():
+	if (pre_collision_velocity.length() <= VELOCITY_THRESHOLD): queue_free()
 	var collision_info = get_last_slide_collision()
 
 	if not collision_info: return
@@ -76,8 +80,9 @@ func handle_collision():
 			var collider = collision_info.get_collider()
 
 			# if collider.has_method("take_ricochet"):
+			# if collider.destructibleObject:
 			if collider is DestructibleObject:
-				collider.take_ricochet()
+				collider.take_ricochet(self)
 			# if collider is RigidBody2D:
 			# 	var body: RigidBody2D = collider
 
@@ -92,8 +97,12 @@ func handle_collision():
 	else:
 		var collider = collision_info.get_collider()
 
+		# if collider.destructibleObject:
 		# if collider.has_method("take_hit"):
 		if collider is DestructibleObject:
-			collider.take_hit(bullet_type, collision_info.get_position())
-		
-		queue_free() # TODO - penetrate
+			collider.take_hit(bullet_type, collision_info.get_position(), self)
+			if (collider.penetration_resistance <= Globals.bulletPenetrations[bullet_type] && penetrations_left > 0):
+				global_position += pre_collision_velocity.normalized() * 5.0
+				velocity = pre_collision_velocity
+				penetrations_left -= 1
+			else: queue_free()

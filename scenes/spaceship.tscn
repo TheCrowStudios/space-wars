@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=18 format=3 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/bullet-flyby-1.wav" id="2_iow36"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://duti4teficyot" path="res://scenes/booster.tscn" id="3_pmkdn"]
 [ext_resource type="PackedScene" uid="uid://dbvme2ycrsabr" path="res://scenes/gun_medium.tscn" id="4_51qc7"]
 [ext_resource type="AudioStream" uid="uid://8iyq7bpi66x1" path="res://sounds/bullet-flyby-3.wav" id="4_tst1b"]
-[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="5_me4wu"]
-[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="6_343tk"]
-[ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="7_v6qj0"]
 [ext_resource type="PackedScene" uid="uid://buyk2c060gonj" path="res://scenes/fuel_tank.tscn" id="8_r0fvi"]
 [ext_resource type="PackedScene" uid="uid://c67t0mehboovx" path="res://scenes/fuel_armor.tscn" id="9_6wr2n"]
 [ext_resource type="PackedScene" uid="uid://b6v8muyp0qg5m" path="res://scenes/oxygen_tank.tscn" id="10_6wr2n"]
+[ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="11_iow36"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="12_5eye7"]
+[ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="12_tst1b"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="13_tst1b"]
 
 [sub_resource type="Gradient" id="Gradient_343tk"]
 offsets = PackedFloat32Array(0, 0.74568963)
@@ -29,17 +30,14 @@ fill_from = Vector2(0.5, 0.5)
 size = Vector2(222, 180)
 
 [node name="Spaceship" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 8
+collision_mask = 9
 gravity_scale = 0.0
 inertia = 0.5
 linear_damp = 0.2
 angular_damp = 0.05
 script = ExtResource("1_7g3nn")
 flyby_audio_streams = Array[AudioStream]([ExtResource("2_iow36"), ExtResource("3_5eye7"), ExtResource("4_tst1b")])
-debris_scene = ExtResource("7_v6qj0")
-hit_audio_streams = Array[AudioStream]([ExtResource("6_343tk")])
-ricochet_audio_streams = Array[AudioStream]([ExtResource("5_me4wu")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pmkdn")
@@ -65,11 +63,6 @@ range_layer_min = -1024
 range_layer_max = 1024
 texture = SubResource("GradientTexture2D_51qc7")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(60, 0)
-polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483, -19.992365, -8, -18, 0, -8)
-disabled = true
-
 [node name="FuelTank" parent="." instance=ExtResource("8_r0fvi")]
 position = Vector2(-48, -3)
 
@@ -86,8 +79,24 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l0x72")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("11_iow36")
+max_health = 2000
+debris_scene = ExtResource("12_tst1b")
+destruction_force = 0.0
+hit_audio_streams = Array[AudioStream]([ExtResource("12_5eye7")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("13_tst1b")])
+penetration_resistance = 8
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(60, 0)
 polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483, -19.992365, -8, -18, 0, -8)
+
+[connection signal="destroyed" from="OxygenTank" to="." method="_on_node_destroyed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

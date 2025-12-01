@@ -6,7 +6,7 @@
 size = Vector2(20, 38)
 
 [node name="FuelArmor" type="StaticBody2D"]
-collision_layer = 8
+collision_layer = 2
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

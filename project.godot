@@ -72,6 +72,7 @@ left_click={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Rigid_Targets"
 2d_physics/layer_3="Bullets"
+2d_physics/layer_4="Spaceships"
 
 [physics]
 
