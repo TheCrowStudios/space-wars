@@ -78,6 +78,8 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 			audio_player.play()
 			await audio_player.finished
 			audio_player.queue_free()
+	
+	print(health)
 
 func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet):
 	if bullet_just_fired_by_parent(bullet): return

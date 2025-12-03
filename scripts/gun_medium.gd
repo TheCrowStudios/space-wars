@@ -37,7 +37,7 @@ func fire() -> void:
 	# print(diff)
 	# if (diff < max_rotation_deg.x || diff > max_rotation_deg.y): return
 	if (cooldown <= 0 && rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1):
-		var bullet_instance: Node2D = BULLET.instantiate()
+		var bullet_instance: Bullet = BULLET.instantiate()
 		# bullet_instance.rotation = rotation
 		# bullet_instance.global_rotation = global_rotation
 		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))
@@ -46,6 +46,7 @@ func fire() -> void:
 		bullet_instance.created_by = get_parent().get_instance_id()
 		bullet_instance.velocity = Vector2(bullet_instance.speed, bullet_instance.speed) * global_transform.x + get_parent().linear_velocity
 		bullet_instance.global_position = muzzle.global_position
+		bullet_instance.bullet_type = Globals.BulletType.MEDIUM
 		get_tree().root.add_child(bullet_instance)
 		# bullet_instance.speed += get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y
 # 
