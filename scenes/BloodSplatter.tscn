@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf3w4gam5qhth"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqc5d"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+initial_velocity_min = -240.0
+initial_velocity_max = -140.0
+gravity = Vector3(0, 0, 0)
+damping_min = 400.00003
+damping_max = 1000.00006
+scale_max = 3.0
+color = Color(1, 0, 0, 1)
+
+[node name="BloodSplatter" type="GPUParticles2D"]
+amount = 80
+lifetime = 5.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dqc5d")
