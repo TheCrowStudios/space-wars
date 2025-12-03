@@ -9,7 +9,7 @@ var max_bounces: int = 3
 var bounces_left: int = max_bounces
 var push_force: float = 200.0
 var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM
-var penetrations_left = Globals.bulletMaxPenetrations[bullet_type]
+var penetration_left = Globals.bulletMaxPenetration[bullet_type]
 var created_by: int = 0
 
 var insantiation_time: int
@@ -57,7 +57,6 @@ func handle_collision():
 	# print(0.2 * incoming_velocity.length())
 
 
-
 	var max_angle_rad: float = deg_to_rad(90.0 - 45.0)
 	var max_cos: float = cos(max_angle_rad)
 
@@ -100,9 +99,14 @@ func handle_collision():
 		# if collider.destructibleObject:
 		# if collider.has_method("take_hit"):
 		if collider is DestructibleObject:
-			collider.take_hit(bullet_type, collision_info.get_position(), self)
-			if (collider.penetration_resistance <= Globals.bulletPenetrations[bullet_type] && penetrations_left > 0):
-				global_position += pre_collision_velocity.normalized() * 5.0
+			var damage: float = max(penetration_left / Globals.bulletMaxPenetration[bullet_type] * Globals.bulletDamages[bullet_type], Globals.bulletDamages[bullet_type] / 4)
+			collider.take_hit(bullet_type, collision_info.get_position(), self, damage)
+			# print(collision_info.get_position())
+			# print(pre_collision_velocity)
+			print(global_position)
+			if (collider.penetration_resistance <= Globals.bulletPenetrations[bullet_type] && penetration_left >= collider.penetration_cost):
+				# global_position += pre_collision_velocity * 2.0
+				add_collision_exception_with(collider)
 				velocity = pre_collision_velocity
-				penetrations_left -= 1
+				penetration_left -= collider.penetration_cost
 			else: queue_free()

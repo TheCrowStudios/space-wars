@@ -13,7 +13,7 @@ extends StaticBody2D
 @export var penetration_resistance: int = 10
 @export var penetration_cost: int = 10
 
-var health: int
+var health: float
 
 signal health_changed(new_health, max_health)
 signal destroyed(node: DestructibleObject)
@@ -26,10 +26,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bullet):
+func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bullet, damage: float):
 	if bullet_just_fired_by_parent(bullet): return
 
-	print(health)
+	# print(health)
 
 
 	if hit_particles:
@@ -50,12 +50,13 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 
 	if health <= 0: return
 
-	if bullet_type == Globals.BulletType.MEDIUM:
-		health -= 20
+	health -= damage
 
 	if health <= 0:
 		print("DESTROYED")
 		emit_signal("destroyed", self)
+		penetration_resistance /= 10
+		penetration_cost /= 10
 		if destruction_particles:
 			var particles = destruction_particles.instantiate()
 			add_child(particles)

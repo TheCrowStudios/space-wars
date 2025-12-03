@@ -75,6 +75,7 @@ position = Vector2(-49, -3)
 position = Vector2(-48, 22)
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 4
 
@@ -98,8 +99,10 @@ position = Vector2(60, 0)
 polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(60, 0)
 polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483, -19.992365, -8, -18, 0, -8)
 
+[connection signal="destroyed" from="FuelTank" to="." method="_on_node_destroyed"]
 [connection signal="destroyed" from="OxygenTank" to="." method="_on_node_destroyed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

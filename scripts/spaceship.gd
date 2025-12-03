@@ -145,6 +145,8 @@ func generate_input():
 		acc = 1
 		input_cooldown = 1
 	else:
+		acc = 0
+		turn = 0
 		for booster in boosters:
 			booster.set_thrust(false)
 
