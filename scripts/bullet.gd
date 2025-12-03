@@ -63,8 +63,12 @@ func handle_collision():
 	# print(angle_cos)
 	# print(max_cos)
 
+	var collider = collision_info.get_collider()
+	var is_destroyed = false
+	if collider is DestructibleObject:
+		is_destroyed = collider.is_destroyed
 
-	if angle_cos < max_cos:
+	if angle_cos < max_cos && !is_destroyed:
 	# if perpendicular_speed < 0.8 * incoming_velocity.length():
 		if bounces_left > 0:
 			velocity = incoming_velocity.bounce(impact_normal)
@@ -76,8 +80,6 @@ func handle_collision():
 			# global_position += remainder
 
 			# print("BOUNCE")
-			var collider = collision_info.get_collider()
-
 			# if collider.has_method("take_ricochet"):
 			# if collider.destructibleObject:
 			if collider is DestructibleObject:
@@ -94,7 +96,6 @@ func handle_collision():
 		else:
 			queue_free()
 	else:
-		var collider = collision_info.get_collider()
 
 		# if collider.destructibleObject:
 		# if collider.has_method("take_hit"):

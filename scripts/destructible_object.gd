@@ -14,6 +14,7 @@ extends StaticBody2D
 @export var penetration_cost: int = 10
 
 var health: float
+var is_destroyed: bool = false
 
 signal health_changed(new_health, max_health)
 signal destroyed(node: DestructibleObject)
@@ -55,6 +56,7 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 	if health <= 0:
 		print("DESTROYED")
 		emit_signal("destroyed", self)
+		is_destroyed = true
 		penetration_resistance /= 10
 		penetration_cost /= 10
 		if destruction_particles:
