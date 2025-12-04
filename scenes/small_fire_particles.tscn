@@ -26,6 +26,7 @@ scale_curve = SubResource("CurveTexture_n2u6b")
 color_ramp = SubResource("GradientTexture1D_h7ult")
 
 [node name="SmallFireParticles" type="GPUParticles2D"]
+modulate = Color(3.013768, 3.013768, 3.013768, 1)
 amount = 2000
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_1p0k1")
