@@ -1,4 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4brebs753wp4"]
+[gd_scene load_steps=8 format=3 uid="uid://b4brebs753wp4"]
+
+[sub_resource type="Gradient" id="Gradient_c1yj8"]
+offsets = PackedFloat32Array(0, 0.7112069)
+colors = PackedColorArray(2.8066084, 2.8066084, 2.8066084, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0i744"]
+gradient = SubResource("Gradient_c1yj8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_6fy8c"]
 _data = [Vector2(0.19158879, 0.8539326), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -21,10 +30,10 @@ angle_max = 180.00002
 spread = 180.0
 flatness = 1.0
 initial_velocity_min = 200.0
-initial_velocity_max = 600.0
+initial_velocity_max = 1200.0
 gravity = Vector3(0, 0, 0)
 scale_min = 4.0
-scale_max = 8.0
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_0i744")
 alpha_curve = SubResource("CurveTexture_famdb")
 turbulence_noise_scale = 8.845
@@ -32,7 +41,8 @@ turbulence_noise_scale = 8.845
 [node name="GPUParticles2D" type="GPUParticles2D"]
 modulate = Color(0.93333334, 0.52156866, 0.19215687, 0.4117647)
 emitting = false
-amount = 2000
+amount = 500
+texture = SubResource("GradientTexture2D_0i744")
 lifetime = 8.0
 one_shot = true
 explosiveness = 1.0
