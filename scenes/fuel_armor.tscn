@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="2_lj7d1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itqn0"]
-size = Vector2(20, 38)
+size = Vector2(14, 38)
 
 [node name="FuelArmor" type="StaticBody2D"]
 collision_layer = 2
@@ -21,4 +21,5 @@ position = Vector2(49, 3)
 texture = ExtResource("1_c5rp5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_itqn0")

@@ -9,3 +9,8 @@ res://scenes/oxygen_tank.tscn
 res://scenes/Node2D.tscn
 res://scripts/gun_medium.gd
 res://scenes/BloodSplatter.tscn
+res://scenes/ExplosionRadius.tscn
+res://scenes/explosion_radius.gd
+res://scenes/explosion_radius.tscn
+res://scripts/explosion_radius.gd
+res://scenes/fuel_tank.tscn

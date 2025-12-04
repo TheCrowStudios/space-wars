@@ -112,7 +112,8 @@ func generate_input():
 			if crosshair:
 				crosshair.global_position = aim_at
 				crosshair.global_rotation = 0
-		aim_at -= linear_velocity / 2 # account for velocity
+
+		aim_at -= linear_velocity / 2 # account for spaceship velocity
 
 		if (Globals.DEBUG):
 			var crosshair = $Crosshair
@@ -204,7 +205,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_node_destroyed(node: DestructibleObject) -> void:
 	if (node.get_parent() != self): return
 	var random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	apply_impulse(random_dir * node.destruction_force)
+	# apply_impulse(random_dir * node.destruction_force)
 	angular_velocity = random_dir.length()
 	is_alive = false
 	# if (node.name == "OxygenTank")

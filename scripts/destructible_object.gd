@@ -6,12 +6,16 @@ extends StaticBody2D
 @export var debris_particles: PackedScene
 @export var hit_particles: PackedScene
 @export var destruction_particles: PackedScene
-@export var destruction_force: float = 300.0
+@export var explosion_force: float = 800.0
+@export var explosion_radius: float = 800.0
 @export var hit_audio_streams: Array[AudioStream]
 @export var ricochet_audio_streams: Array[AudioStream]
 @export var destruction_audio_streams: Array[AudioStream]
 @export var penetration_resistance: int = 10
 @export var penetration_cost: int = 10
+@export var explodes: bool = false
+
+const EXPLOSION_RADIUS = preload("res://scenes/explosion_radius.tscn")
 
 var health: float
 var is_destroyed: bool = false
@@ -54,34 +58,44 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 	health -= damage
 
 	if health <= 0:
-		print("DESTROYED")
-		emit_signal("destroyed", self)
-		is_destroyed = true
-		penetration_resistance /= 10
-		penetration_cost /= 10
-		if destruction_particles:
-			var particles = destruction_particles.instantiate()
-			add_child(particles)
-			particles.emitting = true
-
-		if debris_particles:
-			var debris = debris_particles.instantiate()
-			add_child(debris)
-			debris.emitting = true
-
-
-		if !destruction_audio_streams.is_empty():
-			var stream_to_play = destruction_audio_streams.pick_random()
-			var audio_player = AudioStreamPlayer2D.new()
-			audio_player.stream = stream_to_play
-			audio_player.pitch_scale = randf_range(0.8, 1.0)
-			add_child(audio_player)
-			audio_player.max_distance = 5000
-			audio_player.play()
-			await audio_player.finished
-			audio_player.queue_free()
+		destroy()
 	
-	print(health)
+	# print(health)
+
+func destroy():
+	print("DESTROYED")
+	emit_signal("destroyed", self)
+	is_destroyed = true
+	penetration_resistance /= 10
+	penetration_cost /= 10
+
+	if explodes:
+		var explosion: ExplosionRadius = EXPLOSION_RADIUS.instantiate()
+		explosion.blast_force = explosion_force
+		explosion.radius = explosion_radius
+		add_child(explosion)
+
+	if destruction_particles:
+		var particles = destruction_particles.instantiate()
+		add_child(particles)
+		particles.emitting = true
+
+	if debris_particles:
+		var debris = debris_particles.instantiate()
+		add_child(debris)
+		debris.emitting = true
+
+
+	if !destruction_audio_streams.is_empty():
+		var stream_to_play = destruction_audio_streams.pick_random()
+		var audio_player = AudioStreamPlayer2D.new()
+		audio_player.stream = stream_to_play
+		audio_player.pitch_scale = randf_range(0.8, 1.0)
+		add_child(audio_player)
+		audio_player.max_distance = 5000
+		audio_player.play()
+		await audio_player.finished
+		audio_player.queue_free()
 
 func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet):
 	if bullet_just_fired_by_parent(bullet): return

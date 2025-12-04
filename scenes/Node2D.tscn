@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://detliqstbba3l"]
+[gd_scene load_steps=10 format=3 uid="uid://detliqstbba3l"]
 
 [ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://node_2d.gd" id="1_iweij"]
 [ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_60lig"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="5_a8rmw"]
 [ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="6_bgl4h"]
 [ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="7_gytnt"]
+[ext_resource type="PackedScene" uid="uid://c3doh7sen65p2" path="res://scenes/explosion_radius.tscn" id="8_bgl4h"]
 
 [sub_resource type="Environment" id="Environment_ol07r"]
 glow_enabled = true
@@ -35,7 +36,7 @@ color = Color(0.7109375, 0.7109375, 0.7109375, 1)
 environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(1017, -6)
+position = Vector2(1017, -7)
 enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
@@ -94,3 +95,6 @@ texture = ExtResource("4_60lig")
 modulate = Color(1, 1, 1, 0.75686276)
 self_modulate = Color(0.8984375, 1, 0, 1)
 texture = ExtResource("4_60lig")
+
+[node name="ExplosionRadius" parent="." instance=ExtResource("8_bgl4h")]
+position = Vector2(2024, -482)

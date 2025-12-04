@@ -15,8 +15,8 @@ script = ExtResource("1_y6vd2")
 max_health = 200
 hit_particles = ExtResource("2_vuml6")
 destruction_particles = ExtResource("3_cuhku")
-destruction_force = 800.0
 penetration_resistance = 50
+explodes = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(48, 3)

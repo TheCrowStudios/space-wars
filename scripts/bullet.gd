@@ -101,6 +101,7 @@ func handle_collision():
 		# if collider.has_method("take_hit"):
 		if collider is DestructibleObject:
 			var damage: float = max(penetration_left / Globals.bulletMaxPenetration[bullet_type] * Globals.bulletDamages[bullet_type], Globals.bulletDamages[bullet_type] / 4)
+			print(damage)
 
 			# if (collider.penetration_resistance > Globals.bulletPenetrations[bullet_type]):
 			# 	damage /= 4

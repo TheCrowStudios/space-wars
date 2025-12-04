@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3doh7sen65p2"]
+
+[ext_resource type="Script" uid="uid://b6ko6ecjavcvw" path="res://scripts/explosion_radius.gd" id="1_guqnr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clsl2"]
+radius = 800.0
+
+[node name="ExplosionRadius" type="Node2D"]
+script = ExtResource("1_guqnr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_clsl2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
