@@ -42,7 +42,7 @@ func _ready() -> void:
 	guns = get_node(".").find_children("Gun" + "*")
 	aim_at = get_global_mouse_position()
 
-	if (Globals.DEBUG):
+	if (Globals.DEBUG && Globals.DEBUG_AIM):
 		var crosshair = $Crosshair
 		var crosshair_velocity = $CrosshairVelocity
 
@@ -106,7 +106,7 @@ func generate_input():
 		# TODO - we don't yet account for the offset of the guns duhhh
 		# TODO - oh yeah, we need to account for distance travelled before hitting target as current velocity changes where the bullets will go as they travel
 		aim_at = target.global_position + target.linear_velocity # account for target speed
-		if (Globals.DEBUG):
+		if (Globals.DEBUG && Globals.DEBUG_AIM):
 			var crosshair = $CrosshairVelocity
 
 			if crosshair:
@@ -115,7 +115,7 @@ func generate_input():
 
 		aim_at -= linear_velocity / 2 # account for spaceship velocity
 
-		if (Globals.DEBUG):
+		if (Globals.DEBUG && Globals.DEBUG_AIM):
 			var crosshair = $Crosshair
 
 			if crosshair:
