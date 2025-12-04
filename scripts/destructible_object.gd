@@ -13,6 +13,7 @@ extends StaticBody2D
 @export var penetration_cost: int = 10
 @export var explodes: bool = false
 @export_range(0.01, 1.0) var blast_speed: float = 0.1
+@export var blast_damage: float = 100.0
 @export var explosion_force: float = 800.0
 @export var explosion_radius: float = 800.0
 
@@ -63,6 +64,14 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 	
 	# print(health)
 
+func take_damage(damage: float):
+	if health <= 0: return
+
+	health -= damage
+
+	if health <= 0:
+		destroy()
+
 func destroy():
 	print("DESTROYED")
 	emit_signal("destroyed", self)
@@ -75,6 +84,7 @@ func destroy():
 		explosion.blast_force = explosion_force
 		explosion.radius = explosion_radius
 		explosion.blast_speed = blast_speed
+		explosion.blast_damage = blast_damage
 		explosion.global_position = global_position
 		get_tree().root.add_child(explosion)
 
@@ -122,5 +132,5 @@ func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet
 		audio_player.queue_free()
 
 func bullet_just_fired_by_parent(bullet: Bullet) -> bool:
-	if bullet.created_by == get_parent().get_instance_id() && bullet.insantiation_time + 500 < Time.get_ticks_msec(): return true # avoid collision with bullets just fired by parent
+	if bullet.created_by == get_parent().get_instance_id() && bullet.insantiation_time + 500 > Time.get_ticks_msec(): return true # avoid collision with bullets just fired by parent
 	return false
