@@ -73,7 +73,8 @@ func destroy():
 		var explosion: ExplosionRadius = EXPLOSION_RADIUS.instantiate()
 		explosion.blast_force = explosion_force
 		explosion.radius = explosion_radius
-		add_child(explosion)
+		explosion.global_position = global_position
+		get_tree().root.add_child(explosion)
 
 	if destruction_particles:
 		var particles = destruction_particles.instantiate()
