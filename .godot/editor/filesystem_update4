@@ -2,3 +2,4 @@ res://scenes/Node2D.tscn
 res://bullet_medium.gdshader
 res://node_2d.gd
 res://scenes/explosion_oxygen.tscn
+res://scenes/spaceship.tscn

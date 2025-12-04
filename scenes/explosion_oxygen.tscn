@@ -2,7 +2,7 @@
 
 [sub_resource type="Gradient" id="Gradient_c1yj8"]
 offsets = PackedFloat32Array(0, 0.7112069)
-colors = PackedColorArray(2.8066084, 2.8066084, 2.8066084, 1, 0, 0, 0, 0)
+colors = PackedColorArray(2.6126626, 0.79802734, 0.24272913, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0i744"]
 gradient = SubResource("Gradient_c1yj8")
@@ -39,7 +39,7 @@ alpha_curve = SubResource("CurveTexture_famdb")
 turbulence_noise_scale = 8.845
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
-modulate = Color(0.93333334, 0.52156866, 0.19215687, 0.4117647)
+modulate = Color(4.9779453, 2.881093, 1.2036108, 1)
 emitting = false
 amount = 500
 texture = SubResource("GradientTexture2D_0i744")
