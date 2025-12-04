@@ -17,6 +17,7 @@ func _ready():
 func _process(delta: float) -> void:
 	camera.zoom.x = lerp(camera.zoom.x, target_zoom, 0.1)
 	camera.zoom.y = camera.zoom.x
+	camera.global_rotation_degrees = 0
 
 	if move_camera_to_mouse:
 		target_shift = get_global_mouse_position() - camera.global_position

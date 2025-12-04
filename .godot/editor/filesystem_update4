@@ -3,3 +3,5 @@ res://scripts/explosion_radius.gd
 res://scripts/globals.gd
 res://scenes/fuel_tank.tscn
 res://scenes/oxygen_tank.tscn
+res://scenes/Node2D.tscn
+res://node_2d.gd
