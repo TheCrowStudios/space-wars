@@ -1,6 +1,6 @@
-res://scripts/booster.gd
-res://scenes/booster.tscn
-res://bullet_medium.gdshader
-res://scenes/fire_particles.tscn
-res://scenes/small_fire_particles.tscn
-res://scenes/spaceship.tscn
+res://scripts/destructible_object.gd
+res://scripts/explosion_radius.gd
+res://scenes/Node2D.tscn
+res://scenes/oxygen_tank.tscn
+res://scripts/gun_medium.gd
+res://scenes/fuel_tank.tscn

@@ -6,6 +6,7 @@ extends StaticBody2D
 @export var debris_particles: PackedScene
 @export var hit_particles: PackedScene
 @export var destruction_particles: PackedScene
+@export var explosion_particles: PackedScene
 @export var hit_audio_streams: Array[AudioStream]
 @export var ricochet_audio_streams: Array[AudioStream]
 @export var destruction_audio_streams: Array[AudioStream]
@@ -87,6 +88,11 @@ func destroy():
 		explosion.blast_damage = blast_damage
 		explosion.global_position = global_position
 		get_tree().root.add_child(explosion)
+
+		if explosion_particles:
+			var particles = explosion_particles.instantiate()
+			add_child(particles)
+			particles.emitting = true
 
 	if destruction_particles:
 		var particles = destruction_particles.instantiate()

@@ -39,6 +39,7 @@ environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(1017, -7)
+enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
 visible = false
