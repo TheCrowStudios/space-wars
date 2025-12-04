@@ -27,7 +27,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.apply_central_impulse((blast_force * (distance_to_body.length() / radius)) * -distance_to_body.normalized())
 		# var area: Area2D = $Area2D
 	elif body is DestructibleObject:
-		print("BODY ENTERED BLAST AREA: " + body.name)
 		distance_to_body = global_position - body.global_position
-		print("DAMAGE CAUSED: " + str((blast_damage * (radius - distance_to_body.length())) / blast_damage))
-		body.take_damage((blast_damage * (distance_to_body.length() / radius)))
+		if (Globals.DEBUG && Globals.DEBUG_DESTRUCTION):
+			print("BODY ENTERED BLAST AREA: " + body.name)
+			print("DAMAGE CAUSED: " + str(blast_damage * (distance_to_body.length() / radius)))
+		body.take_damage(blast_damage * (distance_to_body.length() / radius))

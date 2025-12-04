@@ -74,7 +74,7 @@ func take_damage(damage: float):
 		destroy()
 
 func destroy():
-	print("DESTROYED")
+	if (Globals.DEBUG && Globals.DEBUG_DESTRUCTION): print("DESTROYED: " + name)
 	emit_signal("destroyed", self)
 	is_destroyed = true
 	penetration_resistance /= 10

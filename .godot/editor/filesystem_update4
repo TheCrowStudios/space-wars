@@ -1,7 +1,5 @@
 res://scripts/destructible_object.gd
 res://scripts/explosion_radius.gd
-res://scenes/Node2D.tscn
-res://scenes/oxygen_tank.tscn
-res://scripts/gun_medium.gd
+res://scripts/globals.gd
 res://scenes/fuel_tank.tscn
-res://node_2d.gd
+res://scenes/oxygen_tank.tscn

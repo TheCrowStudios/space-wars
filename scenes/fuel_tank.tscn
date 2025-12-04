@@ -10,6 +10,7 @@
 size = Vector2(14, 28)
 
 [node name="FuelTank" type="StaticBody2D"]
+position = Vector2(0, 8)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_y6vd2")
