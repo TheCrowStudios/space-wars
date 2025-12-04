@@ -3,3 +3,8 @@ res://bullet_medium.gdshader
 res://node_2d.gd
 res://scenes/explosion_oxygen.tscn
 res://scenes/spaceship.tscn
+res://scripts/bullet.gd
+res://scripts/globals.gd
+res://scripts/spaceship.gd
+res://scripts/destructible_object.gd
+res://scripts/explosion_radius.gd

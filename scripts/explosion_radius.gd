@@ -3,6 +3,7 @@ extends Node2D
 
 @export var radius: float = 800
 @export var blast_force: float = 800
+@export_range(0.01, 1.0) var blast_speed: float = 0.1
 
 
 # Called when the node enters the scene tree for the first time.

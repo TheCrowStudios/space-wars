@@ -6,14 +6,15 @@ extends StaticBody2D
 @export var debris_particles: PackedScene
 @export var hit_particles: PackedScene
 @export var destruction_particles: PackedScene
-@export var explosion_force: float = 800.0
-@export var explosion_radius: float = 800.0
 @export var hit_audio_streams: Array[AudioStream]
 @export var ricochet_audio_streams: Array[AudioStream]
 @export var destruction_audio_streams: Array[AudioStream]
 @export var penetration_resistance: int = 10
 @export var penetration_cost: int = 10
 @export var explodes: bool = false
+@export_range(0.01, 1.0) var blast_speed: float = 0.1
+@export var explosion_force: float = 800.0
+@export var explosion_radius: float = 800.0
 
 const EXPLOSION_RADIUS = preload("res://scenes/explosion_radius.tscn")
 
@@ -73,6 +74,7 @@ func destroy():
 		var explosion: ExplosionRadius = EXPLOSION_RADIUS.instantiate()
 		explosion.blast_force = explosion_force
 		explosion.radius = explosion_radius
+		explosion.blast_speed = blast_speed
 		explosion.global_position = global_position
 		get_tree().root.add_child(explosion)
 
