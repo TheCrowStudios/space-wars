@@ -3,8 +3,11 @@ extends Node2D
 
 @export var max_zoom: float = 2.0
 @export var min_zoom: float = 0.5
+@export var max_shift: int = 400
 
 var target_zoom: float = 1.0
+var target_shift: Vector2 = Vector2.ZERO
+var move_camera_to_mouse: bool = false
 var camera: Camera2D
 
 func _ready():
@@ -14,6 +17,14 @@ func _ready():
 func _process(delta: float) -> void:
 	camera.zoom.x = lerp(camera.zoom.x, target_zoom, 0.1)
 	camera.zoom.y = camera.zoom.x
+
+	if move_camera_to_mouse:
+		target_shift = get_global_mouse_position() - camera.global_position
+		target_shift = target_shift.clamp(Vector2(-max_shift, -max_shift), Vector2(max_shift, max_shift))
+	else:
+		target_shift = Vector2.ZERO
+
+	camera.position = lerp(camera.position, target_shift, 0.1)
 
 	var zoom_factor = camera.zoom
 	var inverse_zoom = Vector2(1.0 / zoom_factor.x, 1.0 / zoom_factor.y)
@@ -47,3 +58,9 @@ func _input(event: InputEvent) -> void:
 		zoom = true
 		if target_zoom > min_zoom:
 			target_zoom -= 0.1
+	
+	if event.is_action_pressed("shift"):
+		move_camera_to_mouse = true
+
+	if event.is_action_released("shift"):
+		move_camera_to_mouse = false

@@ -4,3 +4,4 @@ res://scenes/Node2D.tscn
 res://scenes/oxygen_tank.tscn
 res://scripts/gun_medium.gd
 res://scenes/fuel_tank.tscn
+res://node_2d.gd
