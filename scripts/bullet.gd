@@ -100,8 +100,14 @@ func handle_collision():
 		# if collider.destructibleObject:
 		# if collider.has_method("take_hit"):
 		if collider is DestructibleObject:
-			var damage: float = max(penetration_left / Globals.bulletMaxPenetration[bullet_type] * Globals.bulletDamages[bullet_type], Globals.bulletDamages[bullet_type] / 4)
-			print(damage)
+			var damage: float = max((penetration_left / Globals.bulletMaxPenetration[bullet_type]) * Globals.bulletDamages[bullet_type], Globals.bulletDamages[bullet_type] / 4)
+
+			if (Globals.DEBUG && Globals.BULLET_DEBUG):
+				print("MAX DAMAGE: " + str(Globals.bulletDamages[bullet_type]))
+				print("MAX PENETRATION: " + str(Globals.bulletMaxPenetration[bullet_type]))
+				print("PENETRATION LEFT: " + str(penetration_left))
+				print("PENETRATION CALCULATION: " + str((penetration_left / Globals.bulletMaxPenetration[bullet_type]) * Globals.bulletDamages[bullet_type]))
+				print("RESULTING DAMAGE: " + str(damage))
 
 			# if (collider.penetration_resistance > Globals.bulletPenetrations[bullet_type]):
 			# 	damage /= 4
@@ -109,7 +115,7 @@ func handle_collision():
 			collider.take_hit(bullet_type, collision_info.get_position(), self, damage)
 			# print(collision_info.get_position())
 			# print(pre_collision_velocity)
-			print(global_position)
+			# print(global_position)
 			if (collider.penetration_resistance <= Globals.bulletPenetrations[bullet_type] && penetration_left >= collider.penetration_cost):
 				# global_position += pre_collision_velocity * 2.0
 				add_collision_exception_with(collider)
