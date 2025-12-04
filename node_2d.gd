@@ -5,27 +5,30 @@ extends Node2D
 func _ready() -> void:
 	pass
 
-@export var max_zoom: Vector2 = Vector2(2.0, 2.0)
-@export var min_zoom: Vector2 = Vector2(0.5, 0.5)
+@export var max_zoom: float = 2.0
+@export var min_zoom: float = 0.5
+
+var target_zoom: float = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var camera: Camera2D = get_viewport().get_camera_2d()
+
+	camera.zoom.x = lerp(camera.zoom.x, target_zoom, 0.1)
+	camera.zoom.y = camera.zoom.x
 
 func _input(event: InputEvent) -> void:
 	var zoom = false
 
 	if event.is_action_pressed("mouse_wheel_up"):
 		zoom = true
-		var camera: Camera2D = get_viewport().get_camera_2d()
-		if camera.zoom < max_zoom:
-			camera.zoom += Vector2(0.1, 0.1)
+		if target_zoom < max_zoom:
+			target_zoom += 0.1
 	
 	if event.is_action_pressed("mouse_wheel_down"):
 		zoom = true
-		var camera: Camera2D = get_viewport().get_camera_2d()
-		if camera.zoom > min_zoom:
-			camera.zoom -= Vector2(0.1, 0.1)
+		if target_zoom > min_zoom:
+			target_zoom -= 0.1
 
 	if (zoom):
 		var camera: Camera2D = get_viewport().get_camera_2d()
