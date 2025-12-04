@@ -26,6 +26,7 @@ position = Vector2(0, -1)
 is_player = true
 
 [node name="Camera2D2" type="Camera2D" parent="Spaceship"]
+limit_enabled = false
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Spaceship/Camera2D2"]
 current = true
