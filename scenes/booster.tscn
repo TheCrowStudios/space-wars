@@ -1,8 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://duti4teficyot"]
+[gd_scene load_steps=26 format=3 uid="uid://duti4teficyot"]
 
 [ext_resource type="Script" uid="uid://cge2fjm0v7fev" path="res://scripts/booster.gd" id="1_1jv0s"]
 [ext_resource type="Texture2D" uid="uid://uyrtg88oyk2m" path="res://sprites/booster_flames.png" id="2_825m2"]
 [ext_resource type="Texture2D" uid="uid://d1g3gp7rblfhw" path="res://sprites/booster.png" id="3_yvux7"]
+[ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="4_ce8mq"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="5_mm36l"]
+[ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/small_fire_particles.tscn" id="6_mm36l"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="7_k832s"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="8_0aiwb"]
+[ext_resource type="AudioStream" uid="uid://b84ev38a28gf8" path="res://sounds/bullet-hit-metal-hard.wav" id="9_100ec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7d6m"]
 atlas = ExtResource("2_825m2")
@@ -135,13 +141,26 @@ script = ExtResource("1_1jv0s")
 modulate = Color(4.7827163, 4.7827163, 4.7827163, 1)
 sprite_frames = SubResource("SpriteFrames_ap7g6")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_jnoiu")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_yvux7")
 
+[node name="DestructibleBody" type="StaticBody2D" parent="."]
+script = ExtResource("4_ce8mq")
+max_health = 50
+hit_particles = ExtResource("5_mm36l")
+destruction_particles = ExtResource("6_mm36l")
+hit_audio_streams = Array[AudioStream]([ExtResource("7_k832s")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("8_0aiwb")])
+destruction_audio_streams = Array[AudioStream]([ExtResource("9_100ec")])
+penetration_cost = 100
+explodes = true
+blast_speed = 0.8170000000000001
+explosion_force = 40.0
+explosion_radius = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructibleBody"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jnoiu")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="destroyed" from="DestructibleBody" to="." method="_on_destructible_body_destroyed"]

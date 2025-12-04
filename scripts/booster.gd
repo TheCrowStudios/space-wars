@@ -1,7 +1,7 @@
 extends Node2D
 
 
-enum State {OFF, STARTING, RUNNING, STOPPING, OVERHEATING}
+enum State {OFF, STARTING, RUNNING, STOPPING, OVERHEATING, DESTROYED}
 var state = State.OFF
 var power = 300
 
@@ -35,6 +35,9 @@ func set_animation():
 		State.STOPPING:
 			if $AnimatedSprite2D.animation != 'stopping': $AnimatedSprite2D.play('stopping')
 
+		State.DESTROYED:
+			$AnimatedSprite2D.play('default')
+
 func set_thrust(active: bool):
 	match state:
 		State.OFF:
@@ -52,6 +55,9 @@ func set_thrust(active: bool):
 		State.STOPPING:
 			if active:
 				state = State.STARTING
+		
+		State.DESTROYED:
+			pass
 
 	set_animation()
 	
@@ -59,3 +65,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == 'startup':
 		state = State.RUNNING
 		set_animation()
+
+
+func _on_destructible_body_destroyed(node: DestructibleObject) -> void:
+	state = State.DESTROYED
+	set_thrust(0)
