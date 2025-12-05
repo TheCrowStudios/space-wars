@@ -10,7 +10,7 @@ README.md::TextFile::-1::1764102454::0::1::::<><><>0<>0<><>::
 ship.gd::GDScript::7617581137610204250::1764346524::0::1::::<>RigidBody2D<><>0<>0<><>::
 ::res://build/::1764286638
 ::res://build/reports/::1764205979
-::res://build/reports/problems/::1764869816
+::res://build/reports/problems/::1764935603
 ::res://build/tmp/::1764286638
 ::res://build/tmp/buildEnvironment/::1764286638
 ::res://build/tmp/components/::1764286638
@@ -29,13 +29,13 @@ ship.gd::GDScript::7617581137610204250::1764346524::0::1::::<>RigidBody2D<><>0<>
 ::res://build/tmp/tasks/::1764286638
 ::res://build/tmp/updateDaemonJvm/::1764286638
 ::res://build/tmp/wrapper/::1764286638
-::res://scenes/::1764934648
-BloodSplatter.tscn::PackedScene::5182976040280195593::1764803267::0::1::::<><><>0<>0<><>::
+::res://scenes/::1764936248
+BloodSplatter.tscn::PackedScene::5182976040280195593::1764936248::0::1::::<><><>0<>0<><>::
 booster.tscn::PackedScene::8602800629493305343::1764865390::0::1::::<><><>0<>0<><>::uid://cge2fjm0v7fev::::res://scripts/booster.gd<>uid://uyrtg88oyk2m::::res://sprites/booster_flames.png<>uid://d1g3gp7rblfhw::::res://sprites/booster.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cshungy5nkn1l::::res://scenes/sparks.tscn<>uid://cmh48hcsn7ww::::res://scenes/small_fire_particles.tscn<>uid://qylle52hwoov::::res://sounds/bullet-impact-metal.wav<>uid://u34gapwiknpb::::res://sounds/bullet_ricochet.wav<>uid://b84ev38a28gf8::::res://sounds/bullet-hit-metal-hard.wav
 bullet.tscn::PackedScene::6372869884180378327::1764443124::0::1::::<><><>0<>0<><>::uid://mpxl8grgeppu::::res://scripts/bullet.gd<>uid://crpbtsurxwks7::::res://bullet_medium.gdshader<>uid://dbfrlsbyx7h3v::::res://sprites/bullet_medium.png
 bullet_medium.tscn::PackedScene::389958441831425183::1764514820::0::1::::<><><>0<>0<><>::uid://bfr48bajvyrp6::::res://bullet.gd<>uid://crpbtsurxwks7::::res://bullet_medium.gdshader<>uid://dbfrlsbyx7h3v::::res://sprites/bullet_medium.png
-character.gd::GDScript::5668492295674268936::1764934531::0::1::::<>Node2D<><>0<>0<><>::
-CharacterStatic.tscn::PackedScene::5759862157851562083::1764934648::0::1::::<><><>0<>0<><>::uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cm04ifmkwoike::::res://scenes/character.gd<>uid://bs6ump1ooiwhx::::res://sprites/character-die.png<>uid://calvyvm20bxhq::::res://sprites/character-sit.png
+character.gd::GDScript::5668492295674268936::1764936145::0::1::::<>Node2D<><>0<>0<><>::
+CharacterStatic.tscn::PackedScene::5759862157851562083::1764936147::0::1::::<><><>0<>0<><>::uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cm04ifmkwoike::::res://scenes/character.gd<>uid://bs6ump1ooiwhx::::res://sprites/character-die.png<>uid://calvyvm20bxhq::::res://sprites/character-sit.png<>uid://cf3w4gam5qhth::::res://scenes/BloodSplatter.tscn
 debris.gd::GDScript::7974007344074495211::1764607083::0::1::::<>GPUParticles2D<><>0<>0<><>::
 debris.tscn::PackedScene::7703089425517365496::1764607102::0::1::::<><><>0<>0<><>::uid://b5wgccjn3h4jy::::res://sprites/spaceship_debris.png<>uid://dluw0a0m6kav8::::res://scenes/debris.gd
 explosion_oxygen.tscn::PackedScene::4425000940827729203::1764864160::0::1::::<><><>0<>0<><>::
@@ -50,21 +50,21 @@ oxygen_tank.tscn::PackedScene::4607652947853397776::1764890574::0::1::::<><><>0<
 parallax_background.tscn::PackedScene::7477262462922549966::1764467985::0::1::::<><><>0<>0<><>::uid://bvmsevttvjhgc::::res://scripts/parallax_background.gd<>uid://ccm4ho271880v::::res://sprites/stars-1024.png<>uid://cuf032jjif886::::res://sprites/space2.png
 small_fire_particles.tscn::PackedScene::165628771497048586::1764891988::0::1::::<><><>0<>0<><>::
 smoke_particles.tscn::PackedScene::6410389020008119700::1764542150::0::1::::<><><>0<>0<><>::
-spaceship.tscn::PackedScene::6406175584217945602::1764934428::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/bullet-flyby-3.wav<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn
+spaceship.tscn::PackedScene::6406175584217945602::1764935959::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/bullet-flyby-3.wav<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn
 sparks.tscn::PackedScene::6051929105921547283::1764608184::0::1::::<><><>0<>0<><>::uid://dlql5u6k4jb2m::::res://scripts/sparks.gd
 world_environment.tscn::PackedScene::646422117632279122::1764431587::0::1::::<><><>0<>0<><>::
 ::res://scripts/::1764809535
 booster.gd::GDScript::5203880720417871137::1764865985::0::1::::<>Node2D<><>0<>0<><>::
-bullet.gd::GDScript::874649667853844334::1764860939::0::1::::Bullet<>CharacterBody2D<><>0<>0<><>::
-destructible_object.gd::GDScript::821896049598779150::1764890210::0::1::::DestructibleObject<>StaticBody2D<><>0<>0<><>::
+bullet.gd::GDScript::874649667853844334::1764936480::0::1::::Bullet<>CharacterBody2D<><>0<>0<><>::
+destructible_object.gd::GDScript::821896049598779150::1764936446::0::1::::DestructibleObject<>StaticBody2D<><>0<>0<><>::
 explosion_radius.gd::GDScript::4583824225115241648::1764890475::0::1::::ExplosionRadius<>Node2D<><>0<>0<><>::
 globals.gd::GDScript::1489309685561811212::1764890270::0::1::::<>Node<><>0<>0<><>::
 gun_medium.gd::GDScript::7298508218758178617::1764869115::0::1::::<>Node2D<><>0<>0<><>::
 parallax_background.gd::GDScript::3886260115419249442::1764373778::0::1::::<>ParallaxBackground<><>0<>0<><>::
-spaceship.gd::GDScript::3634956045634505475::1764865945::0::1::::<>RigidBody2D<><>0<>0<><>::
+spaceship.gd::GDScript::3634956045634505475::1764935858::0::1::::<>RigidBody2D<><>0<>0<><>::
 spaceship_.gd::GDScript::7218332317181757478::1764287102::0::1::::<>CharacterBody2D<><>0<>0<><>::
 sparks.gd::GDScript::7965091934749597374::1764607190::0::1::::<>GPUParticles2D<><>0<>0<><>::
-::res://sounds/::1764866599
+::res://sounds/::1764936871
 01HXBW1VPRZ00VX62BDNKM7NZF.wav::AudioStreamWAV::1354245026416661432::1764532288::1764866599::1::::<><><>0<>0<>8669d839fd1b5bfafb7024bcc42882b6<>res://.godot/imported/01HXBW1VPRZ00VX62BDNKM7NZF.wav-033295ac8042990281090a253cb64061.sample::
 bullet-flyby-1.wav::AudioStreamWAV::5563530158903234251::1764532333::1764866599::1::::<><><>0<>0<>c5c5b0dea06c3736328596c4ec96686a<>res://.godot/imported/bullet-flyby-1.wav-0b17caf01a91d565263696ad2f15a9f2.sample::
 bullet-flyby-2.wav::AudioStreamWAV::8037216912186587772::1764532340::1764866599::1::::<><><>0<>0<>5a48a982ccec0f5705cbcae6492c0491<>res://.godot/imported/bullet-flyby-2.wav-2eb8473908cb7cd098be94f31b75999a.sample::
@@ -78,6 +78,7 @@ explosion-2.mp3::AudioStreamMP3::7644873671786507761::1764604792::1764866599::1:
 explosion-3.mp3::AudioStreamMP3::777407413944404225::1764604792::1764866599::1::::<><><>0<>0<>4662514e1e765f1be8e724007167ae12<>res://.godot/imported/explosion-3.mp3-2d5173f9376de2fc8cd28f0ef81fcd4b.mp3str::
 gun_medium.wav::AudioStreamWAV::6385052652827394553::1764345002::1764866599::1::::<><><>0<>0<>d659c52907df0a72ebc5b1cdccb749ef<>res://.godot/imported/gun_medium.wav-6ff7e60a326fc7e63f4a348c24cc1bb7.sample::
 gun_medium_shortened.wav::AudioStreamWAV::5777924914002529353::1764345341::1764866599::1::::<><><>0<>0<>d7f6077c07e14561ea6151b40994bf91<>res://.godot/imported/gun_medium_shortened.wav-08475c1510b1015359fcf61db46c9042.sample::
+impact-flesh.wav::AudioStreamWAV::3689431363015106832::1764936871::1764936880::1::::<><><>0<>0<>960d0a8636d95f9492ed915675e5d78a<>res://.godot/imported/impact-flesh.wav-9ed377e556f5836abe32b41468d2efde.sample::
 large-underwater-explosion.mp3::AudioStreamMP3::7204007895660466651::1764604792::1764866599::1::::<><><>0<>0<>ebba866009269a644adc890512c1c56a<>res://.godot/imported/large-underwater-explosion.mp3-0fb56f8876ae8ec46fd4020655100a77.mp3str::
 laserShoot (1).wav::AudioStreamWAV::6887199362059350815::1764344643::1764866599::1::::<><><>0<>0<>c595168c43085827a5ed6b08062420aa<>res://.godot/imported/laserShoot (1).wav-255f92c5b787430d3c07220fd94cb791.sample::
 laserShoot (2).wav::AudioStreamWAV::6278862405019453546::1764344643::1764866599::1::::<><><>0<>0<>e74adc7a9fe15fdb5eb90e81b53524e9<>res://.godot/imported/laserShoot (2).wav-9e046558a94c13bb320456c4728e9534.sample::
