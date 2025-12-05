@@ -5,3 +5,5 @@ res://scenes/BloodSplatter.tscn
 res://scenes/spaceship.tscn
 res://scripts/destructible_object.gd
 res://scripts/bullet.gd
+res://scenes/Node2D.tscn
+res://node_2d.gd
