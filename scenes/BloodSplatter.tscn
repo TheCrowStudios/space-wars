@@ -13,7 +13,9 @@ scale_max = 3.0
 color = Color(1, 0, 0, 1)
 
 [node name="BloodSplatter" type="GPUParticles2D"]
+emitting = false
 amount = 80
-lifetime = 5.0
+lifetime = 20.0
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_dqc5d")

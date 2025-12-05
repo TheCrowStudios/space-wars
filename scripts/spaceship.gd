@@ -207,5 +207,9 @@ func _on_node_destroyed(node: DestructibleObject) -> void:
 	var random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	# apply_impulse(random_dir * node.destruction_force)
 	angular_velocity = random_dir.length()
-	is_alive = false
+	# is_alive = false
 	# if (node.name == "OxygenTank")
+
+
+func _on_character_static_character_died() -> void:
+	is_alive = false
