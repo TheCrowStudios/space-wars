@@ -34,7 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bullet, damage: float):
+func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_normal: float, bullet: Bullet, damage: float):
 	if bullet_just_fired_by_parent(bullet): return
 
 	# print(health)
@@ -42,6 +42,8 @@ func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2, bullet: Bulle
 
 	if hit_particles:
 		var particles = hit_particles.instantiate()
+		particles.rotation = angle_to_normal
+		particles.position = hit_position - global_position
 		add_child(particles)
 		particles.emitting = true
 	

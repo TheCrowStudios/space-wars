@@ -112,7 +112,7 @@ func handle_collision():
 			# if (collider.penetration_resistance > Globals.bulletPenetrations[bullet_type]):
 			# 	damage /= 4
 
-			collider.take_hit(bullet_type, collision_info.get_position(), self, damage)
+			collider.take_hit(bullet_type, collision_info.get_position(), angle_cos, self, damage)
 			# print(collision_info.get_position())
 			# print(pre_collision_velocity)
 			# print(global_position)
