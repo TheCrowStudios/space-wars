@@ -13,6 +13,7 @@ extends RigidBody2D
 @export var enable_ai = true
 @export var is_alive = true
 @export var flyby_audio_streams: Array[AudioStream]
+@export var aim_error = 10.0
 
 var boosters = []
 var guns = []
@@ -103,24 +104,7 @@ func generate_input():
 	if target != null:
 		var error_position = target.global_position - global_position
 
-		# TODO - we don't yet account for the offset of the guns duhhh
-		# TODO - oh yeah, we need to account for distance travelled before hitting target as current velocity changes where the bullets will go as they travel
-		aim_at = target.global_position + target.linear_velocity # account for target speed
-		if (Globals.DEBUG && Globals.DEBUG_AIM):
-			var crosshair = $CrosshairVelocity
-
-			if crosshair:
-				crosshair.global_position = aim_at
-				crosshair.global_rotation = 0
-
-		aim_at -= linear_velocity / 2 # account for spaceship velocity
-
-		if (Globals.DEBUG && Globals.DEBUG_AIM):
-			var crosshair = $Crosshair
-
-			if crosshair:
-				crosshair.global_position = aim_at
-				crosshair.global_rotation = 0
+		aim()
 
 		var distance_to_target_vec: Vector2 = target.global_position - global_position
 		var distance_to_target = distance_to_target_vec.length()
@@ -150,6 +134,29 @@ func generate_input():
 		turn = 0
 		for booster in boosters:
 			booster.set_thrust(false)
+
+func aim():
+	# TODO - we don't yet account for the offset of the guns duhhh
+	# TODO - oh yeah, we need to account for distance travelled before hitting target as current velocity changes where the bullets will go as they travel
+	aim_at = target.global_position + target.linear_velocity # account for target speed
+	if (Globals.DEBUG && Globals.DEBUG_AIM):
+		var crosshair = $CrosshairVelocity
+
+		if crosshair:
+			crosshair.global_position = aim_at
+			crosshair.global_rotation = 0
+
+	aim_at -= linear_velocity / 2 # account for spaceship velocity
+
+	aim_at.x += randf_range(-aim_error, aim_error)
+	aim_at.y += randf_range(-aim_error, aim_error)
+
+	if (Globals.DEBUG && Globals.DEBUG_AIM):
+		var crosshair = $Crosshair
+
+		if crosshair:
+			crosshair.global_position = aim_at
+			crosshair.global_rotation = 0
 
 func interpret_input():
 	steer_direction = turn * deg_to_rad(steering_angle)
