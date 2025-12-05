@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 	# 		child.get_child(0).scale = inverse_zoom
 	# 		print(child.scale)
 
-	$ParallaxBackground.scale = inverse_zoom
+	# $ParallaxBackground.scale = inverse_zoom
 
 	var volume = linear_to_db(camera.zoom.x) * 1.5
 

@@ -36,7 +36,7 @@ texture_repeat = 2
 texture = ExtResource("3_2pwms")
 centered = false
 region_enabled = true
-region_rect = Rect2(1024, 1024, 1024, 1024)
+region_rect = Rect2(1024, 1024, 2560, 2560)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
