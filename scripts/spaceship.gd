@@ -15,6 +15,8 @@ extends RigidBody2D
 @export var flyby_audio_streams: Array[AudioStream]
 @export var aim_error = 10.0
 
+signal character_died()
+
 var boosters = []
 var guns = []
 var hp = 1000
@@ -220,3 +222,4 @@ func _on_node_destroyed(node: DestructibleObject) -> void:
 
 func _on_character_static_character_died() -> void:
 	is_alive = false
+	emit_signal("character_died")

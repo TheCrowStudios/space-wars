@@ -15,9 +15,10 @@ tonemap_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
+visibility_layer = 3
 script = ExtResource("1_iweij")
-min_zoom = 0.2
+min_zoom = 0.1
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_60lig")]
 
@@ -40,6 +41,7 @@ environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(1017, -7)
+enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
 visible = false
@@ -72,6 +74,7 @@ texture = ExtResource("4_60lig")
 
 [node name="Spaceship3" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(4272, -885)
+enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship3"]
 visible = false
@@ -85,6 +88,7 @@ texture = ExtResource("4_60lig")
 
 [node name="Spaceship4" parent="." instance=ExtResource("3_74qev")]
 position = Vector2(2874, -2986)
+enable_ai = false
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship4"]
 visible = false
@@ -98,3 +102,10 @@ texture = ExtResource("4_60lig")
 
 [node name="ExplosionRadius" parent="." instance=ExtResource("8_bgl4h")]
 position = Vector2(2024, -482)
+
+[node name="MapCanvas" type="CanvasLayer" parent="."]
+
+[node name="MapIcons" type="Node2D" parent="MapCanvas"]
+visibility_layer = 2
+
+[connection signal="character_died" from="Spaceship" to="." method="_on_spaceship_character_died"]

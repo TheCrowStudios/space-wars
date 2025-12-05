@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=21 format=3 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/bullet-flyby-1.wav" id="2_iow36"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="13_d22a7"]
 [ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="13_tst1b"]
 [ext_resource type="PackedScene" uid="uid://cocec88e1iixv" path="res://scenes/CharacterStatic.tscn" id="16_d22a7"]
+[ext_resource type="PackedScene" uid="uid://baklevgqxpqt1" path="res://scenes/map_icon.tscn" id="18_nosia"]
 
 [sub_resource type="Gradient" id="Gradient_343tk"]
 offsets = PackedFloat32Array(0, 0.74568963)
@@ -31,7 +32,8 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0x72"]
 size = Vector2(222, 180)
 
-[node name="Spaceship" type="RigidBody2D"]
+[node name="Spaceship" type="RigidBody2D" groups=["OnMap"]]
+visibility_layer = 3
 collision_layer = 8
 collision_mask = 9
 gravity_scale = 0.0
@@ -105,6 +107,9 @@ polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483
 
 [node name="CharacterStatic" parent="." instance=ExtResource("16_d22a7")]
 position = Vector2(38, 4)
+
+[node name="MapIcon" parent="." instance=ExtResource("18_nosia")]
+modulate = Color(3.8665109, 3.8665109, 3.8665109, 1)
 
 [connection signal="destroyed" from="FuelTank" to="." method="_on_node_destroyed"]
 [connection signal="destroyed" from="OxygenTank" to="." method="_on_node_destroyed"]
