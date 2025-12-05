@@ -55,11 +55,13 @@ func _input(event: InputEvent) -> void:
 		zoom = true
 		if target_zoom < max_zoom:
 			target_zoom += 0.1
+			target_zoom = min(target_zoom, max_zoom)
 	
 	if event.is_action_pressed("mouse_wheel_down"):
 		zoom = true
 		if target_zoom > min_zoom:
 			target_zoom -= 0.1
+			target_zoom = max(target_zoom, min_zoom)
 	
 	if event.is_action_pressed("shift"):
 		move_camera_to_mouse = true
