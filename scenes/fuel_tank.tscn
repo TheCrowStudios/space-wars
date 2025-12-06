@@ -20,7 +20,7 @@ explosion_particles = ExtResource("3_cuhku")
 penetration_resistance = 50
 explodes = true
 explosion_force = 1600.0
-explosion_radius = 3000.0
+explosion_radius = 1600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(48, 3)
