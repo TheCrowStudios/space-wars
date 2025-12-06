@@ -1,3 +1,4 @@
+class_name Spaceship
 extends RigidBody2D
 # @onready var destructibleObject = preload("res://scripts/destructible_object.gd").new()
 
@@ -31,9 +32,16 @@ var turn = 0
 var acc = 0
 var aim_at
 
-var target: Node2D = null
+var target: Spaceship = null
+var target_position: Vector2 = Vector2.ZERO
+var target_in_inner_radius: bool = false
+var target_in_outer_radius: bool = false
+var patrol_range: int = 1500
 var input_per_sec: int = 24
 var input_cooldown: float = 0
+
+enum State {IDLE, PATROL, CHASE, ATTACK, RETREAT}
+var state: State = State.IDLE # unused if it's a player spaceship
 
 # @onready var passBy: AudioStreamPlayer2D = $PassBy
 const WALL_DEBRIS = preload("res://scenes/debris.tscn")
@@ -70,24 +78,31 @@ func _process(delta: float) -> void:
 				# $Camera2D.enabled = false
 				pass
 		elif enable_ai:
-			var players = get_tree().get_nodes_in_group("player")
-			players = players.filter(func(player): return player.is_alive)
+			# var players = get_tree().get_nodes_in_group("player")
+			# players = players.filter(func(player): return player.is_alive)
 
-			if players.size() > 0:
-				target = players[0]
-			else: target = null
+			# if players.size() > 0:
+			# 	target = players[0]
+			# else: target = null
 
-			if input_cooldown <= 0: generate_input()
+			if input_cooldown <= 0:
+				state_machine()
+			
 			interpret_input()
 			input_cooldown -= delta * input_per_sec
 	else:
 		for booster in boosters:
 			booster.set_thrust(false)
 
+func _physics_process(delta: float) -> void:
+	# linear_velocity = clamp(linear_velocity, Vector2(-2000, -2000), Vector2(2000, 2000))
+	pass
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() > 0:
 		linear_damp = COLLISION_DAMP
 		angular_damp = COLLISION_DAMP
+		print("COLLISION")
 	else:
 		linear_damp = REGULAR_LINEAR_DAMP
 		angular_damp = REGULAR_ANGULAR_DAMP
@@ -101,41 +116,106 @@ func get_input():
 	if (Input.is_action_pressed("left_click")):
 		fire_guns()
 		
+func generate_input(move: bool, fire: bool):
+	# var error_position = target.global_position - global_position
+	var distance_to_target_vec: Vector2 = target_position - global_position
+	var distance_to_target = distance_to_target_vec.length()
+	# print(distance_to_target)
+	# print(distance_to_target.normalized())
 
-func generate_input():
-	if target != null:
-		var error_position = target.global_position - global_position
+	if (distance_to_target < 3000 && target != null && target.is_alive && fire): fire_guns()
 
-		aim()
+	var target_dir = distance_to_target_vec.normalized()
+	var target_rotation = target_dir.angle()
+	# print(rad_to_deg(target_rotation))
 
-		var distance_to_target_vec: Vector2 = target.global_position - global_position
-		var distance_to_target = distance_to_target_vec.length()
-		# print(distance_to_target)
-		# print(distance_to_target.normalized())
+	var error_angle = wrapf(target_rotation - rotation, -PI, PI)
 
-		if (distance_to_target < 3000): fire_guns()
+	var p_torque = error_angle * 1.0
 
-		var target_dir = distance_to_target_vec.normalized()
-		var target_rotation = target_dir.angle()
-		# print(rad_to_deg(target_rotation))
+	var d_damp = - angular_velocity * 0.1
+	var final_torque = p_torque + d_damp
 
-		var error_angle = wrapf(target_rotation - rotation, -PI, PI)
+	# print(turn)
 
-		var p_torque = error_angle * 1.0
-
-		var d_damp = - angular_velocity * 0.2
-		var final_torque = p_torque + d_damp
-
+	if move:
 		turn = 1.0 * sign(final_torque)
-		# print(turn)
-
 		acc = 1
-		input_cooldown = 1
 	else:
-		acc = 0
 		turn = 0
-		for booster in boosters:
-			booster.set_thrust(false)
+		acc = 0
+
+	input_cooldown = 1
+
+	if (Globals.DEBUG && Globals.DEBUG_AI):
+		var crosshair = $CrosshairVelocity
+
+		if crosshair:
+			crosshair.global_position = target_position
+			crosshair.global_rotation = 0
+
+func state_machine():
+	# if Globals.DEBUG && Globals.DEBUG_AI_STATE:
+	# 	print(state)
+
+	match state:
+		State.IDLE:
+			idle()
+		State.PATROL:
+			patrol()
+		State.CHASE:
+			chase()
+		State.ATTACK:
+			attack()
+		State.RETREAT:
+			retreat()
+
+func idle():
+	acc = 0
+	turn = 0
+
+	if randf() < 0.1 / float(input_per_sec):
+		target_position.x = global_position.x + randi_range(-patrol_range, patrol_range)
+		target_position.y = global_position.y + randi_range(-patrol_range, patrol_range)
+		state = State.PATROL
+
+func patrol():
+	if (global_position - target_position).length() < 200:
+		state = State.IDLE
+	else:
+		generate_input(true, false)
+
+func chase():
+	if Globals.DEBUG && Globals.DEBUG_AI_STATE:
+		print("CHASING TARGET")
+
+	if target != null && target.is_alive: # TODO - use main boosters
+		target_position = target.global_position
+		aim()
+		generate_input(true, false)
+		if target_in_inner_radius: state = State.ATTACK
+	else:
+		state = State.IDLE
+
+# TODO - avoid shooting allies
+# TODO - avoid collisions
+# TODO - add personalities
+func attack():
+	if Globals.DEBUG && Globals.DEBUG_AI_STATE:
+		print("ATTACKING TARGET")
+
+	if target != null && target.is_alive:
+		target_position = target.global_position
+		aim()
+		# TODO - some enemies stand still while firing unless shot at
+		generate_input(true, true)
+		if !target_in_inner_radius && target_in_outer_radius: state = State.CHASE
+	else:
+		state = State.IDLE
+
+func retreat():
+	# TODO - retreat if damaged
+	pass
 
 func aim():
 	# TODO - we don't yet account for the offset of the guns duhhh
@@ -180,23 +260,6 @@ func fire_guns():
 	for gun in guns:
 		gun.fire()
 
-# func take_hit(bullet_type: Globals.BulletType, hit_point: Vector2):
-# 	if bullet_type == Globals.BulletType.MEDIUM:
-# 		hp -= 20
-	
-# 	impact.pitch_scale = randf_range(0.8, 1.0)
-# 	impact.play()
-# 	var wall_debris: GPUParticles2D = WALL_DEBRIS.instantiate()
-# 	# wall_debris.global_position = global_position
-# 	# wall_debris.position = position
-# 	add_child(wall_debris)
-# 	wall_debris.emitting = true
-
-# func take_ricochet():
-# 	ricochet.pitch_scale = randf_range(0.8, 1.0)
-# 	ricochet.play()
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Bullet && is_player && body.created_by != get_instance_id() && !flyby_audio_streams.is_empty():
 		# print("PASS BY")
@@ -214,12 +277,41 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_node_destroyed(node: DestructibleObject) -> void:
 	if (node.get_parent() != self): return
 	var random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	# apply_impulse(random_dir * node.destruction_force)
 	angular_velocity = random_dir.length()
-	# is_alive = false
-	# if (node.name == "OxygenTank")
 
 
 func _on_character_static_character_died() -> void:
 	is_alive = false
 	emit_signal("character_died")
+
+
+func _on_target_area_body_entered(body: Node2D) -> void:
+	if body is Spaceship:
+		if body.is_player && body.is_alive:
+			if Globals.DEBUG && Globals.DEBUG_AI:
+				print("PLAYER DETECTED. ATTACKING")
+			if state == State.IDLE || state == State.PATROL || state == State.CHASE:
+				target = body
+				state = State.ATTACK
+				target_in_inner_radius = true
+				target_in_outer_radius = true
+	elif body is Bullet && state != State.ATTACK:
+		state = State.CHASE
+
+func _on_target_detection_area_body_exited(body: Node2D) -> void:
+	if target == body:
+		state = State.CHASE
+		target_in_inner_radius = false
+
+func _on_wide_target_detection_area_body_entered(body: Node2D) -> void:
+	if body is Spaceship:
+		if body.is_player && body.is_alive:
+			target = body
+			target_in_outer_radius = true
+
+func _on_wide_target_detection_area_body_exited(body: Node2D) -> void:
+	if target == body:
+		target = null
+		target_in_inner_radius = false
+		target_in_outer_radius = false
+		state = State.IDLE

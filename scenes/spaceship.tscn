@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=23 format=3 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/bullet-flyby-1.wav" id="2_iow36"]
@@ -31,6 +31,12 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0x72"]
 size = Vector2(222, 180)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xuuw"]
+radius = 1635.159
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nosia"]
+radius = 4255.05
 
 [node name="Spaceship" type="RigidBody2D" groups=["OnMap"]]
 visibility_layer = 3
@@ -111,7 +117,27 @@ position = Vector2(38, 4)
 [node name="MapIcon" parent="." instance=ExtResource("18_nosia")]
 modulate = Color(3.8665109, 3.8665109, 3.8665109, 1)
 
+[node name="TargetDetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetectionArea"]
+shape = SubResource("CircleShape2D_0xuuw")
+
+[node name="WideTargetDetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WideTargetDetectionArea"]
+shape = SubResource("CircleShape2D_nosia")
+
 [connection signal="destroyed" from="FuelTank" to="." method="_on_node_destroyed"]
 [connection signal="destroyed" from="OxygenTank" to="." method="_on_node_destroyed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="character_died" from="CharacterStatic" to="." method="_on_character_static_character_died"]
+[connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_target_detection_area_body_exited"]
+[connection signal="body_entered" from="WideTargetDetectionArea" to="." method="_on_wide_target_detection_area_body_entered"]
+[connection signal="body_exited" from="WideTargetDetectionArea" to="." method="_on_wide_target_detection_area_body_exited"]

@@ -16,4 +16,6 @@ const bulletMaxPenetration = {BulletType.LIGHT: 60.0, BulletType.MEDIUM: 100.0, 
 const DEBUG: bool = true
 const DEBUG_AIM: bool = false
 const DEBUG_BULLETS: bool = false
-const DEBUG_DESTRUCTION: bool = true
+const DEBUG_DESTRUCTION: bool = false
+const DEBUG_AI: bool = true
+const DEBUG_AI_STATE: bool = true

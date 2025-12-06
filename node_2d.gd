@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		for node: Node2D in on_map:
 			if is_instance_valid(node):
 				# var map_icon = node.map_icon_instance
-				print("SHOW ICON")
+				# print("SHOW ICON")
 				node.show()
 
 				# var viewport_size = get_viewport_rect().size
@@ -55,8 +55,8 @@ func _process(delta: float) -> void:
 				# var normalized_y = (world_pos.y - (world_origin.y - world_height / 2.0)) / world_height
 
 				# node.position = Vector2(normalized_x * viewport_size.x, normalized_y * viewport_size.y)
-				print(node.global_position)
-				print(node.position)
+				# print(node.global_position)
+				# print(node.position)
 	else:
 		# map_canvas.hide()
 		get_viewport().set_canvas_cull_mask_bit(0, true)

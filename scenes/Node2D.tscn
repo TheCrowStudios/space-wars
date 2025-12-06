@@ -41,7 +41,7 @@ color = Color(0.7109375, 0.7109375, 0.7109375, 1)
 environment = SubResource("Environment_ol07r")
 
 [node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(1017, -7)
+position = Vector2(2041, -7)
 
 [node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
 visible = false
@@ -51,6 +51,11 @@ texture = ExtResource("4_60lig")
 [node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship2"]
 modulate = Color(1, 1, 1, 0.75686276)
 self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("4_60lig")
+
+[node name="CrosshairTargetPosition" type="Sprite2D" parent="Spaceship2"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
 texture = ExtResource("4_60lig")
 
 [node name="Walls" type="StaticBody2D" parent="."]
@@ -99,7 +104,7 @@ self_modulate = Color(0.8984375, 1, 0, 1)
 texture = ExtResource("4_60lig")
 
 [node name="ExplosionRadius" parent="." instance=ExtResource("8_bgl4h")]
-position = Vector2(2024, -482)
+position = Vector2(4715, 1163)
 
 [node name="MapCanvas" type="CanvasLayer" parent="."]
 

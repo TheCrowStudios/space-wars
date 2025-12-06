@@ -1,8 +1,2 @@
-res://node_2d.gd
 res://scripts/spaceship.gd
-res://scenes/Node2D.tscn
 res://scenes/spaceship.tscn
-res://scenes/map_icon.tscn
-res://scenes/map_icon.gd
-res://scenes/parallax_background.tscn
-res://scenes/explosion_oxygen.tscn

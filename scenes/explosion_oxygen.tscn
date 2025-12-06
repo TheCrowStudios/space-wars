@@ -31,8 +31,8 @@ angle_min = 180.00002
 angle_max = 180.00002
 spread = 180.0
 flatness = 1.0
-initial_velocity_min = 20.0
-initial_velocity_max = 80.0
+initial_velocity_min = 40.0
+initial_velocity_max = 160.0
 gravity = Vector3(0, 0, 0)
 damping_min = 30.000002
 damping_max = 30.000002
@@ -43,7 +43,6 @@ turbulence_noise_scale = 8.845
 
 [node name="ExplosionOxygen" type="GPUParticles2D"]
 modulate = Color(4.9779453, 2.881093, 1.2036108, 1)
-emitting = false
 amount = 500
 texture = SubResource("GradientTexture2D_0i744")
 lifetime = 16.0
