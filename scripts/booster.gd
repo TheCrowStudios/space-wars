@@ -14,7 +14,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# print(global_transform.x)
 	if state == State.STARTING || state == State.RUNNING:
-		var factor = 1 if state == State.RUNNING else 0.25
+		var factor = 1.0 if state == State.RUNNING else 0.25 # force multiplicator
 		# var forward_vector = Vector2.UP.rotated(global_rotation)
 		var ship: RigidBody2D = get_parent()
 		ship.apply_central_force(global_transform.x * power * factor)
