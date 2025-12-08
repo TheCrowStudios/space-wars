@@ -164,3 +164,4 @@ shape = SubResource("RectangleShape2D_jnoiu")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="destroyed" from="DestructibleBody" to="." method="_on_destructible_body_destroyed"]
+[connection signal="repaired" from="DestructibleBody" to="." method="_on_destructible_body_repaired"]

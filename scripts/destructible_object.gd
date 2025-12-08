@@ -17,22 +17,23 @@ extends StaticBody2D
 @export var blast_damage: float = 100.0
 @export var explosion_force: float = 800.0
 @export var explosion_radius: float = 800.0
+@export var repair_time: float = 5.0
 
 const EXPLOSION_RADIUS = preload("res://scenes/explosion_radius.tscn")
 
 var health: float
 var is_destroyed: bool = false
 
-signal health_changed(new_health, max_health)
+var destruction_particles_instance: GPUParticles2D = null
+
+signal health_changed(new_health, max_health, node: DestructibleObject)
+signal damage_taken(node: DestructibleObject)
 signal destroyed(node: DestructibleObject)
+signal repaired(node: DestructibleObject)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = max_health
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_normal: float, bullet: Bullet, damage: float):
 	if bullet_just_fired_by_parent(bullet): return
@@ -58,19 +59,15 @@ func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_n
 		await audio_player.finished
 		audio_player.queue_free()
 
-	if health <= 0: return
-
-	health -= damage
-
-	if health <= 0:
-		destroy()
-	
-	# print(health)
+	take_damage(damage)
 
 func take_damage(damage: float):
 	if health <= 0: return
 
 	health -= damage
+
+	emit_signal("health_changed", health, max_health, self)
+	emit_signal("damage_taken", self)
 
 	if health <= 0:
 		destroy()
@@ -97,9 +94,9 @@ func destroy():
 			particles.emitting = true
 
 	if destruction_particles:
-		var particles = destruction_particles.instantiate()
-		add_child(particles)
-		particles.emitting = true
+		destruction_particles_instance = destruction_particles.instantiate()
+		add_child(destruction_particles_instance)
+		destruction_particles_instance.emitting = true
 
 	if debris_particles:
 		var debris = debris_particles.instantiate()
@@ -142,3 +139,9 @@ func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet
 func bullet_just_fired_by_parent(bullet: Bullet) -> bool:
 	if bullet.created_by == get_parent().get_instance_id() && bullet.insantiation_time + 500 > Time.get_ticks_msec(): return true # avoid collision with bullets just fired by parent
 	return false
+
+func repair():
+	health = max_health
+	is_destroyed = false
+	destruction_particles_instance.queue_free()
+	emit_signal("repaired", self)

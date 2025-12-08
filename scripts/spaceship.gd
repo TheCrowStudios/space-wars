@@ -21,6 +21,8 @@ signal character_died()
 var boosters = []
 var guns = []
 var hp = 1000
+
+const MAX_REPAIR_DELAY: float = 1.0
 const REGULAR_LINEAR_DAMP = 0.2
 const REGULAR_ANGULAR_DAMP = 0.05
 const COLLISION_DAMP = 100.0
@@ -32,16 +34,28 @@ var turn = 0
 var acc = 0
 var aim_at
 
+# repairs
+var repair_delay: float = MAX_REPAIR_DELAY
+var time_to_repair_nodes: float = 0
+var remaining_time_to_repair_nodes: float = 0
+var destroyed_nodes_repairable: Array[DestructibleObject] = []
+var nodes_to_repair: Array[DestructibleObject] = []
+var all_boosters_destroyed: bool = false
+var has_destroyed_gun: bool = false
+
 var target: Spaceship = null
 var target_position: Vector2 = Vector2.ZERO
 var target_in_inner_radius: bool = false
 var target_in_outer_radius: bool = false
+var max_shot_at_cooldown: float = 5.0
+var shot_at_cooldown: float = 0.0
+var targetting_radius: int = 3000
 var patrol_range: int = 1500
 var input_per_sec: int = 24
 var input_cooldown: float = 0
 
-enum State {IDLE, PATROL, CHASE, ATTACK, RETREAT}
-var state: State = State.IDLE # unused if it's a player spaceship
+enum State {IDLE, PATROL, CHASE, ATTACK, RETREAT, REPAIRING}
+var state: State = State.IDLE
 
 # @onready var passBy: AudioStreamPlayer2D = $PassBy
 const WALL_DEBRIS = preload("res://scenes/debris.tscn")
@@ -72,8 +86,13 @@ func _process(delta: float) -> void:
 		if is_player:
 			if is_active:
 				# $Camera2D.enabled = true
-				get_input()
-				interpret_input()
+				if state == State.REPAIRING:
+					acc = 0
+					turn = 0
+					repair(delta)
+				else:
+					get_input(delta)
+					interpret_input()
 			else:
 				# $Camera2D.enabled = false
 				pass
@@ -87,9 +106,15 @@ func _process(delta: float) -> void:
 
 			if input_cooldown <= 0:
 				state_machine()
+
+			if state == State.REPAIRING:
+				if Globals.DEBUG && Globals.DEBUG_AI_STATE:
+					print("REPAIRING")
+				repair(delta)
 			
 			interpret_input()
-			input_cooldown -= delta * input_per_sec
+			if (input_cooldown > 0): input_cooldown -= delta * input_per_sec
+			if (shot_at_cooldown > 0): shot_at_cooldown -= delta
 	else:
 		for booster in boosters:
 			booster.set_thrust(false)
@@ -107,14 +132,56 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		linear_damp = REGULAR_LINEAR_DAMP
 		angular_damp = REGULAR_ANGULAR_DAMP
 
-func get_input():
+func get_input(delta: float):
 	turn = Input.get_axis("move_left", "move_right")
 	acc = Input.get_axis("move_down", "move_up")
 
 	aim_at = get_global_mouse_position()
+
+	if (Input.is_action_pressed("repair")):
+		if Globals.DEBUG && Globals.DEBUG_INPUTS:
+			print("REPAIR BUTTON HELD")
+
+		if destroyed_nodes_repairable.size() == 0: return
+		repair_delay -= delta
+		if repair_delay <= 0:
+			start_repair()
+	
+	if (Input.is_action_just_released("repair")):
+		repair_delay = MAX_REPAIR_DELAY
 	
 	if (Input.is_action_pressed("left_click")):
 		fire_guns()
+	
+func start_repair():
+	if (is_player): Popups.hide_message_popup()
+	state = State.REPAIRING
+	nodes_to_repair = destroyed_nodes_repairable
+
+	time_to_repair_nodes = 0
+	for node: DestructibleObject in nodes_to_repair:
+		time_to_repair_nodes += node.repair_time
+	
+	remaining_time_to_repair_nodes = time_to_repair_nodes
+
+func repair(delta: float):
+	if (is_player):
+		Popups.show_repair_progress()
+		Popups.set_repair_progress(100.0 - (remaining_time_to_repair_nodes / time_to_repair_nodes * 100))
+		Popups.set_repair_progress_seconds(remaining_time_to_repair_nodes)
+	
+	remaining_time_to_repair_nodes -= delta
+
+	if (remaining_time_to_repair_nodes <= 0):
+		for node: DestructibleObject in nodes_to_repair:
+			node.repair()
+		
+		nodes_to_repair.clear()
+
+		destroyed_nodes_repairable = destroyed_nodes_repairable.filter(func (node: DestructibleObject): return node.destroyed)
+		state = State.IDLE
+
+		Popups.hide_repair_progress()
 		
 func generate_input(move: bool, fire: bool):
 	# var error_position = target.global_position - global_position
@@ -123,7 +190,7 @@ func generate_input(move: bool, fire: bool):
 	# print(distance_to_target)
 	# print(distance_to_target.normalized())
 
-	if (distance_to_target < 3000 && target != null && target.is_alive && fire): fire_guns()
+	if (distance_to_target < targetting_radius && target != null && target.is_alive && fire): fire_guns()
 
 	var target_dir = distance_to_target_vec.normalized()
 	var target_rotation = target_dir.angle()
@@ -169,12 +236,20 @@ func state_machine():
 			attack()
 		State.RETREAT:
 			retreat()
+		State.REPAIRING:
+			pass
 
 func idle():
 	acc = 0
 	turn = 0
 
-	if randf() < 0.1 / float(input_per_sec):
+	if destroyed_nodes_repairable.size() > 0:
+		if !target_in_inner_radius:# check if its safe
+			start_repair()
+			state = State.REPAIRING
+			return
+
+	if randf() < 0.1 / float(input_per_sec) && !all_boosters_destroyed:
 		target_position.x = global_position.x + randi_range(-patrol_range, patrol_range)
 		target_position.y = global_position.y + randi_range(-patrol_range, patrol_range)
 		state = State.PATROL
@@ -273,7 +348,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		await audio_player.finished
 		audio_player.queue_free()
 
-
 func _on_node_destroyed(node: DestructibleObject) -> void:
 	if (node.get_parent() != self): return
 	var random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -295,12 +369,14 @@ func _on_target_area_body_entered(body: Node2D) -> void:
 				state = State.ATTACK
 				target_in_inner_radius = true
 				target_in_outer_radius = true
-	elif body is Bullet && state != State.ATTACK:
-		state = State.CHASE
+	elif body is Bullet:
+		shot_at_cooldown = max_shot_at_cooldown
+		if state != State.ATTACK && state != State.REPAIRING:
+			state = State.CHASE
 
 func _on_target_detection_area_body_exited(body: Node2D) -> void:
 	if target == body:
-		state = State.CHASE
+		state = State.CHASE # chase target if its in outer circle
 		target_in_inner_radius = false
 
 func _on_wide_target_detection_area_body_entered(body: Node2D) -> void:
@@ -314,4 +390,10 @@ func _on_wide_target_detection_area_body_exited(body: Node2D) -> void:
 		target = null
 		target_in_inner_radius = false
 		target_in_outer_radius = false
-		state = State.IDLE
+		if state != State.REPAIRING: state = State.IDLE
+
+func _on_booster_destroyed(node: DestructibleObject) -> void:
+	destroyed_nodes_repairable.push_back(node)
+	if is_player: Popups.message_popup()
+	var destroyed_boosters_count: int = 0
+	var destroyed_boosters = boosters.filter(func(booster): return booster.destroyed)

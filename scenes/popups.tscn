@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://c266ud761mvmw"]
+
+[ext_resource type="Script" uid="uid://dcgcgvet2m1kg" path="res://scripts/popups.gd" id="1_fk52g"]
+[ext_resource type="Texture2D" uid="uid://cl8y7wmsibw5f" path="res://sprites/repair-icon.png" id="2_jha0h"]
+[ext_resource type="Texture2D" uid="uid://dy57y2l8rojwh" path="res://sprites/repair-icon-outside.png" id="3_2ysno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk52g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_201id"]
+
+[sub_resource type="Theme" id="Theme_jha0h"]
+/fonts/font = SubResource("FontVariation_201id")
+
+[node name="Popups" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_fk52g")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DefaultPopup" type="Panel" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -9.5
+offset_right = 94.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fk52g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultPopup"]
+layout_mode = 0
+offset_right = 189.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme = SubResource("Theme_jha0h")
+
+[node name="Label" type="Label" parent="UI/DefaultPopup/VBoxContainer"]
+layout_mode = 2
+text = "Hold R to repair ship"
+
+[node name="RepairProgress" type="TextureProgressBar" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 23.0
+offset_right = 64.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("2_jha0h")
+texture_progress = ExtResource("3_2ysno")
+
+[node name="RepairSeconds" type="Label" parent="UI/RepairProgress"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 42.0
+offset_top = 92.0
+offset_right = 87.0
+offset_bottom = 108.0
+text = "20.0s"

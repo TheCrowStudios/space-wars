@@ -17,5 +17,6 @@ const DEBUG: bool = true
 const DEBUG_AIM: bool = false
 const DEBUG_BULLETS: bool = false
 const DEBUG_DESTRUCTION: bool = false
-const DEBUG_AI: bool = true
+const DEBUG_AI: bool = false
 const DEBUG_AI_STATE: bool = true
+const DEBUG_INPUTS: bool = false

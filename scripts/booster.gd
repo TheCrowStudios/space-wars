@@ -5,10 +5,16 @@ enum State {OFF, STARTING, RUNNING, STOPPING, OVERHEATING, DESTROYED}
 var state = State.OFF
 var power = 300
 
+signal destroyed(node: DestructibleObject)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play('default')
 
+func _process(delta: float) -> void:
+	if Globals.DEBUG:
+		if Input.is_action_just_pressed("ui_end"):
+			$DestructibleBody.take_damage(1000)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -70,3 +76,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _on_destructible_body_destroyed(node: DestructibleObject) -> void:
 	state = State.DESTROYED
 	set_thrust(0)
+	emit_signal("destroyed", node)
+
+
+func _on_destructible_body_repaired(node: DestructibleObject) -> void:
+	state = State.OFF
