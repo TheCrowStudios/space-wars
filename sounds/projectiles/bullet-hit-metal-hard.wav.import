@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b84ev38a28gf8"
-path="res://.godot/imported/bullet-hit-metal-hard.wav-9ff7fc069765b687743bf34d4509f7dd.sample"
+path="res://.godot/imported/bullet-hit-metal-hard.wav-1918fbc98296f246d33b33ead33716e5.sample"
 
 [deps]
 
-source_file="res://sounds/bullet-hit-metal-hard.wav"
-dest_files=["res://.godot/imported/bullet-hit-metal-hard.wav-9ff7fc069765b687743bf34d4509f7dd.sample"]
+source_file="res://sounds/projectiles/bullet-hit-metal-hard.wav"
+dest_files=["res://.godot/imported/bullet-hit-metal-hard.wav-1918fbc98296f246d33b33ead33716e5.sample"]
 
 [params]
 

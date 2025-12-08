@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://uyrtg88oyk2m" path="res://sprites/booster_flames.png" id="2_825m2"]
 [ext_resource type="Texture2D" uid="uid://d1g3gp7rblfhw" path="res://sprites/booster.png" id="3_yvux7"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="4_ce8mq"]
-[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="5_mm36l"]
-[ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/small_fire_particles.tscn" id="6_mm36l"]
-[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="7_k832s"]
-[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="8_0aiwb"]
-[ext_resource type="AudioStream" uid="uid://b84ev38a28gf8" path="res://sounds/bullet-hit-metal-hard.wav" id="9_100ec"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="5_mm36l"]
+[ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="6_mm36l"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="7_k832s"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="8_0aiwb"]
+[ext_resource type="AudioStream" uid="uid://b84ev38a28gf8" path="res://sounds/projectiles/bullet-hit-metal-hard.wav" id="9_100ec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7d6m"]
 atlas = ExtResource("2_825m2")

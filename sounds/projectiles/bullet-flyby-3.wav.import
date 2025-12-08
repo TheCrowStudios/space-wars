@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://8iyq7bpi66x1"
-path="res://.godot/imported/bullet-flyby-3.wav-99388bd6ec5b7e9c66723640fa86716b.sample"
+path="res://.godot/imported/bullet-flyby-3.wav-b51f53e64d744fbf1c37f5a7391215b2.sample"
 
 [deps]
 
-source_file="res://sounds/bullet-flyby-3.wav"
-dest_files=["res://.godot/imported/bullet-flyby-3.wav-99388bd6ec5b7e9c66723640fa86716b.sample"]
+source_file="res://sounds/projectiles/bullet-flyby-3.wav"
+dest_files=["res://.godot/imported/bullet-flyby-3.wav-b51f53e64d744fbf1c37f5a7391215b2.sample"]
 
 [params]
 

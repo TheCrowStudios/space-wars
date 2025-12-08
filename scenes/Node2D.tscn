@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://detliqstbba3l"]
 
-[ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://node_2d.gd" id="1_iweij"]
+[ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://scripts/node_2d.gd" id="1_iweij"]
 [ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_60lig"]
 [ext_resource type="PackedScene" uid="uid://cxjg1m7xkalvm" path="res://scenes/spaceship.tscn" id="3_74qev"]
 [ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="4_60lig"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="5_a8rmw"]
-[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/bullet-impact-metal.wav" id="6_bgl4h"]
-[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/bullet_ricochet.wav" id="7_gytnt"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="6_bgl4h"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="7_gytnt"]
 [ext_resource type="PackedScene" uid="uid://c3doh7sen65p2" path="res://scenes/explosion_radius.tscn" id="8_bgl4h"]
 
 [sub_resource type="Environment" id="Environment_ol07r"]

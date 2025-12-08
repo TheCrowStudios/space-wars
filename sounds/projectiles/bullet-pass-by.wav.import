@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b8fup5xqfot3d"
-path="res://.godot/imported/bullet-pass-by.wav-323a3f8c3b3bbc03bea22aa54aea67a5.sample"
+path="res://.godot/imported/bullet-pass-by.wav-056b32b4a1e0476bd283cb2985271c17.sample"
 
 [deps]
 
-source_file="res://sounds/bullet-pass-by.wav"
-dest_files=["res://.godot/imported/bullet-pass-by.wav-323a3f8c3b3bbc03bea22aa54aea67a5.sample"]
+source_file="res://sounds/projectiles/bullet-pass-by.wav"
+dest_files=["res://.godot/imported/bullet-pass-by.wav-056b32b4a1e0476bd283cb2985271c17.sample"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dh0o00s7wk0kq"]
 
 [ext_resource type="Texture2D" uid="uid://b5wgccjn3h4jy" path="res://sprites/spaceship_debris.png" id="1_wkiee"]
-[ext_resource type="Script" uid="uid://dluw0a0m6kav8" path="res://scenes/debris.gd" id="2_s4vdx"]
+[ext_resource type="Script" uid="uid://dluw0a0m6kav8" path="res://scripts/debris.gd" id="2_s4vdx"]
 
 [sub_resource type="Curve" id="Curve_1ysct"]
 _data = [Vector2(0.53738314, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

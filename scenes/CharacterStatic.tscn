@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://cocec88e1iixv"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_b1cdu"]
-[ext_resource type="Script" uid="uid://cm04ifmkwoike" path="res://scenes/character.gd" id="1_lvb3f"]
+[ext_resource type="Script" uid="uid://cm04ifmkwoike" path="res://scripts/character.gd" id="1_lvb3f"]
 [ext_resource type="Texture2D" uid="uid://bs6ump1ooiwhx" path="res://sprites/character-die.png" id="2_lvb3f"]
 [ext_resource type="Texture2D" uid="uid://calvyvm20bxhq" path="res://sprites/character-sit.png" id="3_njslm"]
-[ext_resource type="PackedScene" uid="uid://cf3w4gam5qhth" path="res://scenes/BloodSplatter.tscn" id="5_njslm"]
+[ext_resource type="PackedScene" uid="uid://cf3w4gam5qhth" path="res://scenes/particles/BloodSplatter.tscn" id="5_njslm"]
 [ext_resource type="AudioStream" uid="uid://bstgnphmr27se" path="res://sounds/impact-flesh.wav" id="6_lrnyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8nee"]

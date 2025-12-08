@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_7lofx"]
 [ext_resource type="Texture2D" uid="uid://ce6l05mhdmxbh" path="res://sprites/fuel_armor.png" id="1_c5rp5"]
-[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/sparks.tscn" id="2_lj7d1"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_lj7d1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itqn0"]
 size = Vector2(14, 38)

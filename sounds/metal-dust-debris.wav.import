@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://txe2i2maypf8"
-path="res://.godot/imported/metas-dust-debris.wav-ee06b868a54de4964892a9fde26477bc.sample"
+path="res://.godot/imported/metal-dust-debris.wav-4a387924e3c65c7f32913b34a10aa8f0.sample"
 
 [deps]
 
-source_file="res://sounds/metas-dust-debris.wav"
-dest_files=["res://.godot/imported/metas-dust-debris.wav-ee06b868a54de4964892a9fde26477bc.sample"]
+source_file="res://sounds/metal-dust-debris.wav"
+dest_files=["res://.godot/imported/metal-dust-debris.wav-4a387924e3c65c7f32913b34a10aa8f0.sample"]
 
 [params]
 
