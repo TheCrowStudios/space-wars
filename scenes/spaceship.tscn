@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=24 format=3 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/projectiles/bullet-flyby-1.wav" id="2_iow36"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="13_d22a7"]
 [ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="13_tst1b"]
 [ext_resource type="PackedScene" uid="uid://cocec88e1iixv" path="res://scenes/CharacterStatic.tscn" id="16_d22a7"]
+[ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="18_kcotq"]
 [ext_resource type="PackedScene" uid="uid://baklevgqxpqt1" path="res://scenes/map_icon.tscn" id="18_nosia"]
 
 [sub_resource type="Gradient" id="Gradient_343tk"]
@@ -132,6 +133,21 @@ collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WideTargetDetectionArea"]
 shape = SubResource("CircleShape2D_nosia")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("18_kcotq")
+
+[node name="CrosshairVelocity" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.75686276)
+self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("18_kcotq")
+
+[node name="CrosshairTargetPosition" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("18_kcotq")
 
 [connection signal="destroyed" from="Booster" to="." method="_on_booster_destroyed"]
 [connection signal="destroyed" from="Booster2" to="." method="_on_booster_destroyed"]

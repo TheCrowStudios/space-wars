@@ -8,12 +8,17 @@ extends Node2D
 @onready var map_canvas: CanvasLayer = get_node("MapCanvas")
 @onready var map_icons: Node2D = map_canvas.get_node("MapIcons")
 
+const SPACESHIP: PackedScene = preload("res://scenes/spaceship.tscn")
+const MAP_ENEMY_DOT: PackedScene = preload("res://scenes/map_enemy_dot.tscn")
+
 var target_zoom: float = 1.0
 var target_shift: Vector2 = Vector2.ZERO
 var move_camera_to_mouse: bool = false
 var camera: Camera2D
 var on_map: Array
 var map_update = false
+
+var spaceships_minimap: Dictionary = {}
 
 func _ready():
 	camera = get_viewport().get_camera_2d()
@@ -25,6 +30,7 @@ func _ready():
 	# for child in get_children():
 	# 	if child.is_in_group("OnMap"):
 	# 		on_map.append(child)
+	generate_minimap()
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -96,6 +102,8 @@ func _process(delta: float) -> void:
 
 	AudioServer.set_bus_volume_db(0, volume)
 
+	update_minimap()
+
 func register_map_icon(node):
 	on_map.append(node)
 
@@ -121,6 +129,46 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("shift"):
 		move_camera_to_mouse = false
 
-func _on_spaceship_character_died() -> void:
+	if event.is_action_pressed("ui_home"):
+		spawn_enemy()
+	
+func spawn_enemy():
+	var pos: Vector2
+
+	pos.x = %PlayerShip.global_position.x + randi_range(200, 3000)
+	pos.y = %PlayerShip.global_position.y + randi_range(200, 3000)
+
+	var spaceship: Spaceship = SPACESHIP.instantiate()
+	spaceship.global_position = pos
+	spaceship.character_died.connect(_on_ai_spaceship_character_died)
+	%SpaceshipContainer.add_child(spaceship)
+
+	var map_dot = MAP_ENEMY_DOT.instantiate()
+	map_dot.global_position = pos
+	%Minimap.add_child(map_dot)
+	spaceships_minimap[spaceship] = map_dot
+	print(map_dot.global_position)
+
+func generate_minimap():
+	# var map: Image = Image.create(10000, 10000, false, Image.FORMAT_RGB8)
+	# map.fill(Color.WHITE)
+	# %Minimap.texture = ImageTexture.create_from_image(map)
+	pass
+
+func update_minimap():
+	%MapPlayer.global_position = %PlayerShip.global_position
+	%MinimapCamera.global_position = %PlayerShip.global_position
+	%MinimapCamera.zoom = Vector2(0.01, 0.01)
+	%Minimap.global_position = %PlayerShip.global_position
+
+	for ship in spaceships_minimap.keys():
+		spaceships_minimap[ship].global_position = ship.global_position
+		# print("UPDATING SPACESHIP")
+
+func _on_player_ship_character_died(node: Spaceship) -> void:
 	target_zoom = 2.0
 	target_shift = Vector2.ZERO
+
+func _on_ai_spaceship_character_died(node: Spaceship) -> void:
+	spaceships_minimap[node].queue_free()
+	spaceships_minimap.erase(node)

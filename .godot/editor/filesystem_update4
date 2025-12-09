@@ -1,7 +1,3 @@
-res://scripts/spaceship.gd
-res://scripts/globals.gd
+res://scripts/node_2d.gd
 res://scenes/Node2D.tscn
-res://scenes/spaceship.tscn
-res://scenes/booster.tscn
-res://scenes/CharacterStatic.tscn
-res://scenes/map_icon.tscn
+res://scenes/map_enemy_dot.tscn

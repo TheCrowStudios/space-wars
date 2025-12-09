@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://7v015tgt4cod"]
+
+[ext_resource type="Texture2D" uid="uid://1tldy3ptj7u5" path="res://sprites/map-dot-red.png" id="1_l2wjn"]
+
+[node name="MapEnemyDot" type="TextureRect"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("1_l2wjn")

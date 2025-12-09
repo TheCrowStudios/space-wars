@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://detliqstbba3l"]
+[gd_scene load_steps=13 format=3 uid="uid://detliqstbba3l"]
 
 [ext_resource type="Script" uid="uid://dfbxq8sgm184p" path="res://scripts/node_2d.gd" id="1_iweij"]
 [ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_60lig"]
@@ -8,12 +8,16 @@
 [ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="6_bgl4h"]
 [ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="7_gytnt"]
 [ext_resource type="PackedScene" uid="uid://c3doh7sen65p2" path="res://scenes/explosion_radius.tscn" id="8_bgl4h"]
+[ext_resource type="Texture2D" uid="uid://cafftws4lp3jo" path="res://sprites/map-dot-green.png" id="9_cl4x1"]
+[ext_resource type="Script" uid="uid://2m2ebkih1klh" path="res://scripts/sub_viewport_container.gd" id="9_gytnt"]
 
 [sub_resource type="Environment" id="Environment_ol07r"]
 background_mode = 3
 tonemap_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
+
+[sub_resource type="Theme" id="Theme_cl4x1"]
 
 [node name="Game" type="Node2D"]
 visibility_layer = 3
@@ -23,40 +27,12 @@ min_zoom = 0.1
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_60lig")]
 scroll_ignore_camera_zoom = true
 
-[node name="Spaceship" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(0, -1)
-is_player = true
-
-[node name="Camera2D2" type="Camera2D" parent="Spaceship"]
-limit_enabled = false
-
-[node name="AudioListener2D" type="AudioListener2D" parent="Spaceship/Camera2D2"]
-current = true
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(458, 176)
 color = Color(0.7109375, 0.7109375, 0.7109375, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ol07r")
-
-[node name="Spaceship2" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(2041, -7)
-
-[node name="Crosshair" type="Sprite2D" parent="Spaceship2"]
-visible = false
-modulate = Color(1, 1, 1, 0.75686276)
-texture = ExtResource("4_60lig")
-
-[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship2"]
-modulate = Color(1, 1, 1, 0.75686276)
-self_modulate = Color(0.8984375, 1, 0, 1)
-texture = ExtResource("4_60lig")
-
-[node name="CrosshairTargetPosition" type="Sprite2D" parent="Spaceship2"]
-visible = false
-modulate = Color(1, 1, 1, 0.75686276)
-texture = ExtResource("4_60lig")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 visible = false
@@ -77,32 +53,6 @@ modulate = Color(1, 1, 1, 0.75686276)
 position = Vector2(-61, 3)
 texture = ExtResource("4_60lig")
 
-[node name="Spaceship3" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(4272, -885)
-
-[node name="Crosshair" type="Sprite2D" parent="Spaceship3"]
-visible = false
-modulate = Color(1, 1, 1, 0.75686276)
-texture = ExtResource("4_60lig")
-
-[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship3"]
-modulate = Color(1, 1, 1, 0.75686276)
-self_modulate = Color(0.8984375, 1, 0, 1)
-texture = ExtResource("4_60lig")
-
-[node name="Spaceship4" parent="." instance=ExtResource("3_74qev")]
-position = Vector2(2874, -2986)
-
-[node name="Crosshair" type="Sprite2D" parent="Spaceship4"]
-visible = false
-modulate = Color(1, 1, 1, 0.75686276)
-texture = ExtResource("4_60lig")
-
-[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship4"]
-modulate = Color(1, 1, 1, 0.75686276)
-self_modulate = Color(0.8984375, 1, 0, 1)
-texture = ExtResource("4_60lig")
-
 [node name="ExplosionRadius" parent="." instance=ExtResource("8_bgl4h")]
 position = Vector2(4715, 1163)
 
@@ -111,4 +61,64 @@ position = Vector2(4715, 1163)
 [node name="MapIcons" type="Node2D" parent="MapCanvas"]
 visibility_layer = 2
 
-[connection signal="character_died" from="Spaceship" to="." method="_on_spaceship_character_died"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+offset_right = 240.0
+grow_vertical = 0
+theme = SubResource("Theme_cl4x1")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("9_gytnt")
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+size_2d_override = Vector2i(100, 100)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Minimap" type="TextureRect" parent="CanvasLayer/MarginContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinimapCamera" type="Camera2D" parent="CanvasLayer/MarginContainer/SubViewportContainer/SubViewport/Minimap"]
+unique_name_in_owner = true
+zoom = Vector2(0.001, 0.001)
+
+[node name="MapPlayer" type="TextureRect" parent="CanvasLayer/MarginContainer/SubViewportContainer/SubViewport/Minimap"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+texture = ExtResource("9_cl4x1")
+
+[node name="SpaceshipContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+visibility_layer = 3
+
+[node name="PlayerShip" parent="SpaceshipContainer" instance=ExtResource("3_74qev")]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+is_player = true
+
+[node name="Camera2D2" type="Camera2D" parent="SpaceshipContainer/PlayerShip"]
+limit_enabled = false
+
+[node name="AudioListener2D" type="AudioListener2D" parent="SpaceshipContainer/PlayerShip/Camera2D2"]
+current = true
+
+[connection signal="character_died" from="SpaceshipContainer/PlayerShip" to="." method="_on_player_ship_character_died"]
