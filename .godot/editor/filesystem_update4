@@ -1,3 +1,5 @@
 res://scenes/wormhole_entrance.tscn
 res://wormhole.gdshader
 res://scripts/wormhole_entrance.gd
+res://scenes/character.gd
+res://scenes/galaxy_selection_screen.tscn

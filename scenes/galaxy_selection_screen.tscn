@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgst8c6pvq8eq"]
+
+[ext_resource type="Texture2D" uid="uid://bb3yjglr5iu35" path="res://sprites/galaxy-select-1.png" id="1_b6vgq"]
+[ext_resource type="Texture2D" uid="uid://bgv7soc752tut" path="res://sprites/galaxy-select-bg.png" id="2_7hh0q"]
+[ext_resource type="Texture2D" uid="uid://dvkeq8t3q7un3" path="res://sprites/galaxy-select-2.png" id="3_phbyb"]
+
+[node name="GalaxySelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(2.0599923, 1.6467396)
+texture = ExtResource("2_7hh0q")
+
+[node name="Galaxy" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1153.0
+offset_top = 94.0
+offset_right = 1409.0
+offset_bottom = 350.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_b6vgq")
+
+[node name="Galaxy2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 426.0
+offset_right = 462.0
+offset_bottom = 682.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_phbyb")
+
+[node name="MissionNodes" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="MissionNodes"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 64
+text = "Galaxy Name"
+
+[node name="Label2" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 309.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 50
+text = "Description"
+
+[node name="Button" type="Button" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 222.0
+offset_right = 292.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 50
+text = "SELECT"

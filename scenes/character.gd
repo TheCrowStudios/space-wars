@@ -1,3 +1,4 @@
+class_name Character
 extends RigidBody2D
 
 @export var movement_speed: int = 100
