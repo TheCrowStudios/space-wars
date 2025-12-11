@@ -1,1 +1,3 @@
-res://scenes/space_station.tscn
+res://scenes/wormhole_entrance.tscn
+res://wormhole.gdshader
+res://scripts/wormhole_entrance.gd

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5ciycv04wx5c"]
+
+[ext_resource type="Shader" uid="uid://cdq0g3tejjihi" path="res://wormhole.gdshader" id="1_ki4nb"]
+[ext_resource type="Script" uid="uid://iu5o7tr36nbr" path="res://scripts/wormhole_entrance.gd" id="1_s4k78"]
+[ext_resource type="PackedScene" uid="uid://desboj5mikl31" path="res://scenes/parallax_background.tscn" id="2_s4k78"]
+[ext_resource type="Texture2D" uid="uid://dsbjpvqyv7ehi" path="res://sprites/spaceship.png" id="3_jfoeb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s4k78"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pfxh6"]
+shader = ExtResource("1_ki4nb")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.3
+shader_parameter/strength = 0.15
+shader_parameter/swirl = 0.6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jfoeb"]
+viewport_path = NodePath("SubViewport")
+
+[node name="WormholeEntrance" type="Node2D"]
+script = ExtResource("1_s4k78")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_s4k78")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ParallaxBackground" parent="SubViewport" instance=ExtResource("2_s4k78")]
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+unique_name_in_owner = true
+position = Vector2(440, 141)
+texture = ExtResource("3_jfoeb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_pfxh6")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_jfoeb")
