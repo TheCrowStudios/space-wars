@@ -1,3 +1,1 @@
-res://scripts/node_2d.gd
-res://scenes/Node2D.tscn
-res://scenes/map_enemy_dot.tscn
+res://scenes/space_station.tscn

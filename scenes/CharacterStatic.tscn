@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cocec88e1iixv"]
+[gd_scene load_steps=20 format=3 uid="uid://cocec88e1iixv"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_b1cdu"]
 [ext_resource type="Script" uid="uid://cm04ifmkwoike" path="res://scripts/character.gd" id="1_lvb3f"]
 [ext_resource type="Texture2D" uid="uid://bs6ump1ooiwhx" path="res://sprites/character-die.png" id="2_lvb3f"]
+[ext_resource type="Texture2D" uid="uid://dlqnkcv10jd03" path="res://sprites/character-idle.png" id="3_i8nee"]
 [ext_resource type="Texture2D" uid="uid://calvyvm20bxhq" path="res://sprites/character-sit.png" id="3_njslm"]
 [ext_resource type="PackedScene" uid="uid://cf3w4gam5qhth" path="res://scenes/particles/BloodSplatter.tscn" id="5_njslm"]
 [ext_resource type="AudioStream" uid="uid://bstgnphmr27se" path="res://sounds/impact-flesh.wav" id="6_lrnyl"]
@@ -34,6 +35,14 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7jsx"]
 atlas = ExtResource("2_lvb3f")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt67v"]
+atlas = ExtResource("3_i8nee")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xxff"]
+atlas = ExtResource("3_i8nee")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwct8"]
 atlas = ExtResource("3_njslm")
@@ -69,6 +78,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mt67v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xxff")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uwct8")
 }],
 "loop": false,
@@ -84,7 +104,9 @@ script = ExtResource("1_lvb3f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mt67v")
-animation = &"sit"
+animation = &"idle"
+frame = 1
+frame_progress = 0.42926058
 
 [node name="DestructibleObject" type="StaticBody2D" parent="."]
 collision_layer = 2
