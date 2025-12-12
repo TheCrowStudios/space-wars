@@ -6,6 +6,8 @@ extends StaticBody2D
 @export var debris_particles: PackedScene
 @export var hit_particles: PackedScene
 @export var destruction_particles: PackedScene
+@export var sprite: Sprite2D
+@export var sprite_destroyed: Sprite2D
 @export var explosion_particles: PackedScene
 @export var hit_audio_streams: Array[AudioStream]
 @export var ricochet_audio_streams: Array[AudioStream]
@@ -79,6 +81,8 @@ func destroy():
 	penetration_resistance /= 10
 	penetration_cost /= 10
 
+	toggle_destroyed_sprite()
+
 	if explodes:
 		var explosion: ExplosionRadius = EXPLOSION_RADIUS.instantiate()
 		explosion.blast_force = explosion_force
@@ -144,4 +148,10 @@ func repair():
 	health = max_health
 	is_destroyed = false
 	destruction_particles_instance.queue_free()
+	toggle_destroyed_sprite()
 	emit_signal("repaired", self)
+
+func toggle_destroyed_sprite():
+	if sprite && sprite_destroyed:
+		sprite.visible = false
+		sprite_destroyed.visible = true

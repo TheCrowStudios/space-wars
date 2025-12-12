@@ -1,30 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://buyk2c060gonj"]
+[gd_scene load_steps=8 format=3 uid="uid://buyk2c060gonj"]
 
-[ext_resource type="Texture2D" uid="uid://cx18f0amt1bol" path="res://sprites/fuel_tank.png" id="1_gx4ty"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_y6vd2"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_vuml6"]
 [ext_resource type="PackedScene" uid="uid://b4brebs753wp4" path="res://scenes/explosion_oxygen.tscn" id="3_cuhku"]
 [ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="3_vuml6"]
+[ext_resource type="Texture2D" uid="uid://d1lbqkfu0ahlp" path="res://sprites/fuel-tank.png" id="5_cuhku"]
+[ext_resource type="Texture2D" uid="uid://dsk0g5ltlrw5x" path="res://sprites/fuel-tank-destroyed.png" id="6_t51y8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t77pr"]
 size = Vector2(14, 28)
 
-[node name="FuelTank" type="StaticBody2D"]
+[node name="FuelTank" type="StaticBody2D" node_paths=PackedStringArray("sprite", "sprite_destroyed")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_y6vd2")
 max_health = 200
 hit_particles = ExtResource("2_vuml6")
 destruction_particles = ExtResource("3_vuml6")
+sprite = NodePath("Sprite")
+sprite_destroyed = NodePath("SpriteDestroyed")
 explosion_particles = ExtResource("3_cuhku")
 penetration_resistance = 50
 explodes = true
 explosion_force = 1600.0
 explosion_radius = 1600.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(48, 3)
-texture = ExtResource("1_gx4ty")
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+texture = ExtResource("5_cuhku")
+
+[node name="SpriteDestroyed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 0)
+texture = ExtResource("6_t51y8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t77pr")

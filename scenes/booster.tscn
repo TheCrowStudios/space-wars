@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://duti4teficyot"]
+[gd_scene load_steps=27 format=3 uid="uid://duti4teficyot"]
 
 [ext_resource type="Script" uid="uid://cge2fjm0v7fev" path="res://scripts/booster.gd" id="1_1jv0s"]
 [ext_resource type="Texture2D" uid="uid://uyrtg88oyk2m" path="res://sprites/booster_flames.png" id="2_825m2"]
 [ext_resource type="Texture2D" uid="uid://d1g3gp7rblfhw" path="res://sprites/booster.png" id="3_yvux7"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="4_ce8mq"]
+[ext_resource type="Texture2D" uid="uid://cjspkvcarli03" path="res://sprites/booster_destroyed.png" id="4_mtqbq"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="5_mm36l"]
 [ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="6_mm36l"]
 [ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="7_k832s"]
@@ -141,14 +142,20 @@ script = ExtResource("1_1jv0s")
 modulate = Color(4.7827163, 4.7827163, 4.7827163, 1)
 sprite_frames = SubResource("SpriteFrames_ap7g6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_yvux7")
 
-[node name="DestructibleBody" type="StaticBody2D" parent="."]
+[node name="SpriteDestroyed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_mtqbq")
+
+[node name="DestructibleBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("sprite", "sprite_destroyed")]
 script = ExtResource("4_ce8mq")
 max_health = 50
 hit_particles = ExtResource("5_mm36l")
 destruction_particles = ExtResource("6_mm36l")
+sprite = NodePath("../Sprite")
+sprite_destroyed = NodePath("../SpriteDestroyed")
 hit_audio_streams = Array[AudioStream]([ExtResource("7_k832s")])
 ricochet_audio_streams = Array[AudioStream]([ExtResource("8_0aiwb")])
 destruction_audio_streams = Array[AudioStream]([ExtResource("9_100ec")])

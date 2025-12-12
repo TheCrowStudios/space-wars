@@ -1,32 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6v8muyp0qg5m"]
+[gd_scene load_steps=10 format=3 uid="uid://b6v8muyp0qg5m"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_r6crd"]
-[ext_resource type="Texture2D" uid="uid://bkumvp6n0fdxm" path="res://sprites/oxygen_tank.png" id="1_ycgen"]
 [ext_resource type="PackedScene" uid="uid://b4brebs753wp4" path="res://scenes/explosion_oxygen.tscn" id="2_1akfq"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_f7uuq"]
 [ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="3_j266c"]
 [ext_resource type="AudioStream" uid="uid://lct10hwmvlk0" path="res://sounds/explosions/explosion-3.mp3" id="3_ofvmm"]
 [ext_resource type="AudioStream" uid="uid://davw7s5qgrbdj" path="res://sounds/large-underwater-explosion.mp3" id="4_2s25v"]
+[ext_resource type="Texture2D" uid="uid://b51agtehmh677" path="res://sprites/oxygen-tank.png" id="7_j266c"]
+[ext_resource type="Texture2D" uid="uid://bd3i707m8pjbw" path="res://sprites/oxygen-tank-destroyed.png" id="8_0b5gf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t77pr"]
 size = Vector2(14, 7)
 
-[node name="OxygenTank" type="StaticBody2D"]
+[node name="OxygenTank" type="StaticBody2D" node_paths=PackedStringArray("sprite", "sprite_destroyed")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_r6crd")
 max_health = 40
 hit_particles = ExtResource("2_f7uuq")
 destruction_particles = ExtResource("3_j266c")
+sprite = NodePath("Sprite")
+sprite_destroyed = NodePath("SpriteDestroyed")
 explosion_particles = ExtResource("2_1akfq")
 destruction_audio_streams = Array[AudioStream]([ExtResource("3_ofvmm"), ExtResource("4_2s25v")])
 penetration_cost = 50
 explodes = true
 blast_damage = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(19, -20)
-texture = ExtResource("1_ycgen")
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("7_j266c")
+
+[node name="SpriteDestroyed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_0b5gf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
