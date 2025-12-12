@@ -46,11 +46,6 @@ func _ready() -> void:
 	health = max_health
 
 func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_normal: float, bullet: Bullet, damage: float):
-	if bullet_just_fired_by_parent(bullet): return
-
-	# print(health)
-
-
 	if hit_particles:
 		var particles = hit_particles.instantiate()
 		particles.rotation = angle_to_normal
@@ -128,8 +123,6 @@ func destroy():
 		audio_player.queue_free()
 
 func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet):
-	if bullet_just_fired_by_parent(bullet): return
-
 	if hit_particles:
 		var particles: GPUParticles2D = hit_particles.instantiate()
 		particles.rotation = angle_to_normal
@@ -148,9 +141,9 @@ func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet
 		await audio_player.finished
 		audio_player.queue_free()
 
-func bullet_just_fired_by_parent(bullet: Bullet) -> bool:
-	if bullet.created_by == get_parent().get_instance_id() && bullet.insantiation_time + 500 > Time.get_ticks_msec(): return true # avoid collision with bullets just fired by parent
-	return false
+# func bullet_just_fired_by_parent(bullet: Bullet) -> bool:
+# 	if bullet.created_by == get_parent().get_instance_id() && bullet.insantiation_time + 500 > Time.get_ticks_msec(): return true # avoid collision with bullets just fired by parent
+# 	return false
 
 func repair():
 	health = max_health
