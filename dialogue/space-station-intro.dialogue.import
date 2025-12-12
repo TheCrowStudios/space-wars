@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dsqxaif7b4hj5"
+path="res://.godot/imported/space-station-intro.dialogue-4dc6c15e6a4522643a7e668f3dd4cb24.tres"
+
+[deps]
+
+source_file="res://dialogue/space-station-intro.dialogue"
+dest_files=["res://.godot/imported/space-station-intro.dialogue-4dc6c15e6a4522643a7e668f3dd4cb24.tres"]
+
+[params]
+
+defaults=true

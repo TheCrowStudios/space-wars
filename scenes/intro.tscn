@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://l0o4lhvipyr6"]
+
+[ext_resource type="Texture2D" uid="uid://c8mgej1ae7wbb" path="res://sprites/space-station.png" id="1_ioskq"]
+
+[node name="Intro" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(879, 581)
+texture = ExtResource("1_ioskq")
