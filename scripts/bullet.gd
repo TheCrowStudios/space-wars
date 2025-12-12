@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const VELOCITY_THRESHOLD = 50
 
-var speed: int = 1600
+@export var speed: int = 1600
 var lifetime: int = 5000
 var max_bounces: int = 3
 var bounces_left: int = max_bounces

@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ditexeonnfybi"]
+[gd_scene load_steps=6 format=3 uid="uid://ditexeonnfybi"]
 
 [ext_resource type="Script" uid="uid://db8pmm3eqq7m8" path="res://scripts/gun_medium.gd" id="1_h6e05"]
+[ext_resource type="PackedScene" uid="uid://cdr4k4srb4oq8" path="res://scenes/rocket.tscn" id="2_bdhdi"]
 [ext_resource type="PackedScene" uid="uid://k8do6n8nkvjm" path="res://scenes/projectile_collission_checker.tscn" id="2_ctswv"]
 [ext_resource type="Texture2D" uid="uid://d4gs3xojiug18" path="res://sprites/gun-missile.png" id="2_h6e05"]
-[ext_resource type="AudioStream" uid="uid://dy6mwryqtu3j" path="res://sounds/projectiles/shooting.wav" id="3_bdhdi"]
+[ext_resource type="AudioStream" uid="uid://bf3cqn3tkdj0t" path="res://sounds/rocket-fire.wav" id="5_ctswv"]
 
 [node name="GunMissile" type="Node2D"]
 script = ExtResource("1_h6e05")
 max_rotation_deg = Vector2(-15, 160)
+rpm = 10
+bullet = ExtResource("2_bdhdi")
 
 [node name="ProjectileCollissionChecker" parent="." instance=ExtResource("2_ctswv")]
 unique_name_in_owner = true
@@ -19,7 +22,7 @@ texture = ExtResource("2_h6e05")
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, 0)
-stream = ExtResource("3_bdhdi")
+stream = ExtResource("5_ctswv")
 pitch_scale = 0.71
 max_distance = 3000.0
 

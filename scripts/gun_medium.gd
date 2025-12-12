@@ -2,9 +2,10 @@ extends Node2D
 
 @export var max_rotation_deg := Vector2(-160, 15)
 @export var rpm = 600
+@export var bullet: PackedScene
+
 var cooldown: float = 0.0
 
-const BULLET = preload("res://scenes/bullet.tscn")
 
 @onready var sound_node: AudioStreamPlayer2D = $Shoot
 @onready var muzzle: Marker2D = $Marker2D
@@ -47,7 +48,7 @@ func fire() -> void:
 	# print(diff)
 	# if (diff < max_rotation_deg.x || diff > max_rotation_deg.y): return
 	if (cooldown <= 0 && rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1):
-		var bullet_instance: Bullet = BULLET.instantiate()
+		var bullet_instance: Bullet = bullet.instantiate()
 		bullet_instance.set_parent_ref(parent_ref)
 		# bullet_instance.rotation = rotation
 		# bullet_instance.global_rotation = global_rotation
