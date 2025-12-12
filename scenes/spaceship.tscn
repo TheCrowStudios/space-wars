@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=27 format=4 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/projectiles/bullet-flyby-1.wav" id="2_iow36"]
@@ -7,12 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://duti4teficyot" path="res://scenes/booster.tscn" id="3_pmkdn"]
 [ext_resource type="PackedScene" uid="uid://dbvme2ycrsabr" path="res://scenes/gun_medium.tscn" id="4_51qc7"]
 [ext_resource type="AudioStream" uid="uid://8iyq7bpi66x1" path="res://sounds/projectiles/bullet-flyby-3.wav" id="4_tst1b"]
-[ext_resource type="Script" uid="uid://db8pmm3eqq7m8" path="res://scripts/gun_medium.gd" id="8_i1do7"]
+[ext_resource type="Script" uid="uid://bp5bchp5n7cm8" path="res://scenes/spaceship_body.gd" id="6_vue1i"]
 [ext_resource type="PackedScene" uid="uid://buyk2c060gonj" path="res://scenes/fuel_tank.tscn" id="8_r0fvi"]
+[ext_resource type="PackedScene" uid="uid://ditexeonnfybi" path="res://scenes/gun_missile.tscn" id="9_5pdae"]
 [ext_resource type="PackedScene" uid="uid://c67t0mehboovx" path="res://scenes/fuel_armor.tscn" id="9_6wr2n"]
-[ext_resource type="Texture2D" uid="uid://bng5vopwpbq56" path="res://sprites/gun_medium.png" id="9_vue1i"]
 [ext_resource type="PackedScene" uid="uid://b6v8muyp0qg5m" path="res://scenes/oxygen_tank.tscn" id="10_6wr2n"]
-[ext_resource type="AudioStream" uid="uid://dy6mwryqtu3j" path="res://sounds/projectiles/shooting.wav" id="10_k3lwc"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="11_iow36"]
 [ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="12_5eye7"]
 [ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="12_tst1b"]
@@ -21,6 +20,20 @@
 [ext_resource type="PackedScene" uid="uid://cocec88e1iixv" path="res://scenes/CharacterStatic.tscn" id="16_d22a7"]
 [ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="18_kcotq"]
 [ext_resource type="PackedScene" uid="uid://baklevgqxpqt1" path="res://scenes/map_icon.tscn" id="18_nosia"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k3lwc"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-64, -28, 0, 125, 57, 0),
+"attribute_data": PackedByteArray("AAD4PgAAgD0AAPg+zcz8PQAASD4AAKA9AACAPAAAoD0AAIA8AAAgPgAAAAAAACA+AAAAAAAA8D4AAIA8AADwPgAAgDwAAAw/AAAAAAAADD8AAAAAAABcPwAAgDwAAFw/AACAPAAAcD8AAEg+AABwP2Zm5D4AAGQ/AAD4PgAAZD8AAPg+AAB0PwAABj8AAHQ/AAAGP5qZYz8zM1Q/AABYPwAAaT8AAFg/AAB6P5qZLT8AAHo/zcysPgAAaj+amUk+AABqP5qZMT4AABQ/AAAAPgAABj8AAAA+AAAGPwAAgD0="),
+"format": 34393296913,
+"index_count": 78,
+"index_data": PackedByteArray("AAAbABoAGgAZABgAFwAWABUAFQAUABMAEgARABAADgANAAwACwAKAAkABwAGAAUABAADAAIAAQAAABoAGgAYABcAFwAVABMAEgAQAA8ADgAMAAsACwAJAAgABwAFAAQABAACAAEAAQAaABcAFwATABIAEgAPAA4ADgALAAgABwAEAAEAAQAXABIAEgAOAAgACAAHAAEAAQASAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("AAAAwAAA4MEAAADAzczAwQAAHMIAANjBAAB4wgAA2MEAAHjCAACwwQAAgMIAALDBAACAwgAAAMAAAHjCAAAAwAAAeMIAAEBAAACAwgAAQEAAAIDCAAC4QQAAeMIAALhBAAB4wgAA4EEAABzCAADgQdDM3MAAAMhBAAAAwAAAyEEAAADAAADoQQAAQEAAAOhBAABAQDQzx0FmZihCAACwQQAAUkIAALBBAAB0QmhmNkEAAHRCZmYmwQAAVEIzM5vBAABUQjMzp8EAACBBAADAwQAAQEAAAMDBAABAQAAA4ME=")
+}]
 
 [sub_resource type="Gradient" id="Gradient_343tk"]
 offsets = PackedFloat32Array(0, 0.74568963)
@@ -54,7 +67,13 @@ angular_damp = 0.05
 script = ExtResource("1_7g3nn")
 flyby_audio_streams = Array[AudioStream]([ExtResource("2_iow36"), ExtResource("3_5eye7"), ExtResource("4_tst1b")])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpaceshipBody" type="MeshInstance2D" parent="."]
+mesh = SubResource("ArrayMesh_k3lwc")
+texture = ExtResource("2_pmkdn")
+script = ExtResource("6_vue1i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_pmkdn")
 
 [node name="Booster" parent="." instance=ExtResource("3_pmkdn")]
@@ -66,27 +85,16 @@ position = Vector2(0, 28)
 [node name="GunMedium" parent="." instance=ExtResource("4_51qc7")]
 position = Vector2(42, -25)
 
-[node name="GunMissile" type="Node2D" parent="."]
-position = Vector2(-53, -30)
-script = ExtResource("8_i1do7")
-
-[node name="Sprite2D" type="Sprite2D" parent="GunMissile"]
-position = Vector2(7, -1)
-texture = ExtResource("9_vue1i")
-
-[node name="Shoot" type="AudioStreamPlayer2D" parent="GunMissile"]
-position = Vector2(-1, 0)
-stream = ExtResource("10_k3lwc")
-pitch_scale = 0.71
-max_distance = 3000.0
-
-[node name="Marker2D" type="Marker2D" parent="GunMissile"]
-position = Vector2(35, -3)
+[node name="GunMedium4" parent="." instance=ExtResource("4_51qc7")]
+position = Vector2(-50, -30)
 
 [node name="GunMedium2" parent="." instance=ExtResource("4_51qc7")]
 position = Vector2(41, 26)
 scale = Vector2(1, -1)
 max_rotation_deg = Vector2(-15, 160)
+
+[node name="GunMissile" parent="." instance=ExtResource("9_5pdae")]
+position = Vector2(-53, 30)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.3227234, 0.77462196, 0.87890625, 1)

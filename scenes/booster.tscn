@@ -150,6 +150,8 @@ visible = false
 texture = ExtResource("4_mtqbq")
 
 [node name="DestructibleBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("sprite", "sprite_destroyed")]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_ce8mq")
 max_health = 50
 hit_particles = ExtResource("5_mm36l")

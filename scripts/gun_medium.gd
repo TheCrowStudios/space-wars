@@ -32,6 +32,8 @@ func look(pos: Vector2):
 
 
 func fire() -> void:
+	if %ProjectileCollissionChecker.is_blocked(): return
+
 	# var angle_to_mouse = rad_to_deg(global_position.angle_to(get_global_mouse_position()))
 	# var diff = wrapf(angle_to_mouse - rotation_degrees, -180.0, 180.0)
 	# print(diff)

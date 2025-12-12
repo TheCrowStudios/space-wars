@@ -28,6 +28,14 @@ var is_destroyed: bool = false
 
 var destruction_particles_instance: GPUParticles2D = null
 
+var parent_ref: Node
+
+func set_parent_ref(parent: Node):
+	parent_ref = parent
+
+func get_parent_ref():
+	return parent_ref
+
 signal health_changed(new_health, max_health, node: DestructibleObject)
 signal damage_taken(node: DestructibleObject)
 signal destroyed(node: DestructibleObject)

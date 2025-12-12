@@ -47,6 +47,8 @@ var repairing: bool = false
 @export var is_active = true
 
 func _ready() -> void:
+	assign_parent_ref_recursive(self)
+
 	if is_player:
 		var player_brains = PLAYER_BRAINS.instantiate()
 		add_child(player_brains)
@@ -76,6 +78,14 @@ func _ready() -> void:
 	if (is_player):
 		add_to_group("player")
 		add_to_group("team1") # TODO - come up with teams names
+	
+func assign_parent_ref_recursive(node: Node):
+	for child in node.get_children():
+		if child.has_method("set_parent_ref"):
+			child.set_parent_ref(self)
+			print(child.name)
+		
+		assign_parent_ref_recursive(child)
 
 func _process(delta: float) -> void:
 	if is_alive:
@@ -85,8 +95,7 @@ func _process(delta: float) -> void:
 			else:
 				repair(delta)
 	else:
-		for booster in boosters:
-			booster.set_thrust(false)
+		set_booster_thrust(false)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() > 0:
@@ -131,16 +140,14 @@ func repair(delta: float):
 		
 func interpret_input():
 	steer_direction = turn * deg_to_rad(steering_angle)
-	for booster: Node2D in boosters:
-		booster.rotation = steer_direction
+	set_booster_direction(steer_direction)
 
 	if acc != 0:
 		for booster in boosters:
 			booster.set_thrust(true);
 			if (acc == -1): booster.rotation += deg_to_rad(180);
 	else:
-		for booster in boosters:
-			booster.set_thrust(false);
+		set_booster_thrust(false)
 
 	for gun in guns:
 		gun.look(aim_at)
@@ -178,3 +185,11 @@ func _on_booster_destroyed(node: DestructibleObject) -> void:
 	if is_player: Popups.message_popup()
 	var destroyed_boosters_count: int = 0
 	var destroyed_boosters = boosters.filter(func(booster): return booster.destroyed)
+
+func set_booster_thrust(on: bool):
+	for booster in boosters:
+		booster.set_thrust(on)
+
+func set_booster_direction(direction_rad):
+	for booster: Node2D in boosters:
+		booster.rotation = direction_rad
