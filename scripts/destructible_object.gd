@@ -161,5 +161,5 @@ func repair():
 
 func toggle_destroyed_sprite():
 	if sprite && sprite_destroyed:
-		sprite.visible = false
-		sprite_destroyed.visible = true
+		sprite.visible = !sprite.visible
+		sprite_destroyed.visible = !sprite_destroyed.visible
