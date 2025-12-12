@@ -19,8 +19,8 @@ pitch_scale = 0.71
 max_distance = 3000.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(35, -3)
+position = Vector2(35, 0)
 
 [node name="ProjectileCollissionChecker" parent="." instance=ExtResource("4_ih0qq")]
 unique_name_in_owner = true
-position = Vector2(121, -3)
+position = Vector2(121, 0)

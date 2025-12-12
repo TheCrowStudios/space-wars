@@ -9,6 +9,14 @@ const BULLET = preload("res://scenes/bullet.tscn")
 @onready var sound_node: AudioStreamPlayer2D = $Shoot
 @onready var muzzle: Marker2D = $Marker2D
 
+var parent_ref: Node
+
+func set_parent_ref(parent: Node):
+	parent_ref = parent
+
+func get_parent_ref():
+	return parent_ref
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -40,6 +48,7 @@ func fire() -> void:
 	# if (diff < max_rotation_deg.x || diff > max_rotation_deg.y): return
 	if (cooldown <= 0 && rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1):
 		var bullet_instance: Bullet = BULLET.instantiate()
+		bullet_instance.set_parent_ref(parent_ref)
 		# bullet_instance.rotation = rotation
 		# bullet_instance.global_rotation = global_rotation
 		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))

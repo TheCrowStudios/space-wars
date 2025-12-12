@@ -16,6 +16,14 @@ var insantiation_time: int
 
 var pre_collision_velocity: Vector2 = Vector2.ZERO
 
+var parent_ref: Node
+
+func set_parent_ref(parent: Node):
+	parent_ref = parent
+
+func get_parent_ref():
+	return parent_ref
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	insantiation_time = Time.get_ticks_msec()
@@ -67,6 +75,10 @@ func handle_collision():
 	var is_destroyed = false
 	if collider is DestructibleObject:
 		is_destroyed = collider.is_destroyed
+	
+	# ignore parent collisions
+	if parent_ref.get_instance_id() == collider.get_parent_ref().get_instance_id():
+		return
 
 	if angle_cos < max_cos && !is_destroyed:
 	# if perpendicular_speed < 0.8 * incoming_velocity.length():

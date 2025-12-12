@@ -24,4 +24,4 @@ pitch_scale = 0.71
 max_distance = 3000.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(35, -1)
+position = Vector2(36, -1)
