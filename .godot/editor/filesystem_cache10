@@ -1,5 +1,5 @@
 f098f8d3115d962055284dee314b4f89
-::res://::1765504433
+::res://::1765505797
 bullet.gd::GDScript::2774279100652663697::1764534724::0::1::::<>Node2D<><>0<>0<><>::
 bullet_medium.gdshader::Shader::5997112999741014508::1764864770::0::1::::<><><>0<>0<><>::
 bullet_shader.tres::VisualShader::1600846921148625764::1764379775::0::1::::<><><>0<>0<><>::
@@ -7,7 +7,7 @@ export_presets.cfg::TextFile::-1::1764535706::0::1::::<><><>0<>0<><>::
 icon.png::CompressedTexture2D::6204303637886799517::1764102090::1764866599::1::::<><><>0<>0<>71cb51318a2d496942b0df6f8673d0d9<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 README.md::TextFile::-1::1764102454::0::1::::<><><>0<>0<><>::
 ship.gd::GDScript::7617581137610204250::1764346524::0::1::::<>RigidBody2D<><>0<>0<><>::
-wormhole.gdshader::Shader::5017968082147066542::1765498835::0::1::::<><><>0<>0<><>::
+wormhole.gdshader::Shader::5017968082147066542::1765505797::0::1::::<><><>0<>0<><>::
 ::res://addons/::1765498314
 ::res://addons/dialogue_manager/::1765498316
 constants.gd::GDScript::4240262336831424009::1765498315::0::1::::DMConstants<>RefCounted<><>0<>0<><>::
@@ -94,7 +94,7 @@ galaxy.png::CompressedTexture2D::1003652318207724351::1765231094::1765231095::1:
 Perfect DOS VGA 437.ttf::FontFile::2551579174352800777::1765111540::1765111540::1::::<><><>0<>0<>37d75a642354f676d6b04f48565f4716<>res://.godot/imported/Perfect DOS VGA 437.ttf-c27cf5bbb3789a27267f2296d219bee9.fontdata::
 ::res://build/::1764286638
 ::res://build/reports/::1764205979
-::res://build/reports/problems/::1765498107
+::res://build/reports/problems/::1765504944
 ::res://build/tmp/::1764286638
 ::res://build/tmp/buildEnvironment/::1764286638
 ::res://build/tmp/components/::1764286638
@@ -113,11 +113,11 @@ Perfect DOS VGA 437.ttf::FontFile::2551579174352800777::1765111540::1765111540::
 ::res://build/tmp/tasks/::1764286638
 ::res://build/tmp/updateDaemonJvm/::1764286638
 ::res://build/tmp/wrapper/::1764286638
-::res://dialogue/::1765504433
+::res://dialogue/::1765504450
 balloon.gd::GDScript::3511604345254103066::1765504433::0::1::::<>CanvasLayer<><>0<>0<><>::
 balloon.tscn::PackedScene::5032333583232034928::1765504433::0::1::::<><><>0<>0<><>::uid://u4kpcluwgldn::::res://dialogue/balloon.gd<>uid://ckvgyvclnwggo::::res://addons/dialogue_manager/dialogue_label.tscn<>uid://bb52rsfwhkxbn::::res://addons/dialogue_manager/dialogue_responses_menu.gd
 space-station-intro.dialogue::Resource::8457088200829712548::1765500186::1765504450::1::::<><><>0<>0<>b381847a33d549bd10d6fbba8a44797b<>res://.godot/imported/space-station-intro.dialogue-4dc6c15e6a4522643a7e668f3dd4cb24.tres::uid://dbs4435dsf3ry::::res://addons/dialogue_manager/dialogue_resource.gd
-::res://scenes/::1765499645
+::res://scenes/::1765505903
 booster.tscn::PackedScene::8602800629493305343::1765204672::0::1::::<><><>0<>0<><>::uid://cge2fjm0v7fev::::res://scripts/booster.gd<>uid://uyrtg88oyk2m::::res://sprites/booster_flames.png<>uid://d1g3gp7rblfhw::::res://sprites/booster.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://cmh48hcsn7ww::::res://scenes/particles/small_fire_particles.tscn<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://b84ev38a28gf8::::res://sounds/projectiles/bullet-hit-metal-hard.wav
 bullet.tscn::PackedScene::6372869884180378327::1764443124::0::1::::<><><>0<>0<><>::uid://mpxl8grgeppu::::res://scripts/bullet.gd<>uid://crpbtsurxwks7::::res://bullet_medium.gdshader<>uid://dbfrlsbyx7h3v::::res://sprites/bullet_medium.png
 bullet_medium.tscn::PackedScene::389958441831425183::1764514820::0::1::::<><><>0<>0<><>::uid://bfr48bajvyrp6::::res://bullet.gd<>uid://crpbtsurxwks7::::res://bullet_medium.gdshader<>uid://dbfrlsbyx7h3v::::res://sprites/bullet_medium.png
@@ -138,7 +138,7 @@ oxygen_tank.gd::GDScript::4529866165074168570::1764546737::0::1::::<>StaticBody2
 oxygen_tank.tscn::PackedScene::4607652947853397776::1765204672::0::1::::<><><>0<>0<><>::uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://bkumvp6n0fdxm::::res://sprites/oxygen_tank.png<>uid://b4brebs753wp4::::res://scenes/explosion_oxygen.tscn<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://cmh48hcsn7ww::::res://scenes/particles/small_fire_particles.tscn<>uid://lct10hwmvlk0::::res://sounds/explosions/explosion-3.mp3<>uid://davw7s5qgrbdj::::res://sounds/large-underwater-explosion.mp3
 parallax_background.tscn::PackedScene::7477262462922549966::1765232894::0::1::::<><><>0<>0<><>::uid://bvmsevttvjhgc::::res://scripts/parallax_background.gd<>uid://b3ptrx48spox0::::res://assets/galaxy-pixelized-no-bg.png<>uid://ccm4ho271880v::::res://sprites/stars-1024.png<>uid://cuf032jjif886::::res://sprites/space2.png
 popups.tscn::PackedScene::6733854007090318818::1765161872::0::1::::<><><>0<>0<><>::uid://dcgcgvet2m1kg::::res://scripts/popups.gd<>uid://cl8y7wmsibw5f::::res://sprites/repair-icon.png<>uid://dy57y2l8rojwh::::res://sprites/repair-icon-outside.png
-spaceship.tscn::PackedScene::6406175584217945602::1765286870::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/projectiles/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/projectiles/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/projectiles/bullet-flyby-3.wav<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn<>uid://v1jjc0ckyb7c::::res://sprites/crosshair.png<>uid://baklevgqxpqt1::::res://scenes/map_icon.tscn
+spaceship.tscn::PackedScene::6406175584217945602::1765505932::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/projectiles/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/projectiles/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/projectiles/bullet-flyby-3.wav<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn<>uid://v1jjc0ckyb7c::::res://sprites/crosshair.png<>uid://baklevgqxpqt1::::res://scenes/map_icon.tscn<>uid://cgpnib13gcry1::::res://scripts/spaceship-player.gd<>uid://uqf1morlx0jm::::res://scripts/spaceship_ai_brains.gd
 space_station.tscn::PackedScene::1286679127999510958::1765498060::0::1::::<><><>0<>0<><>::uid://xye4pmxeh032::::res://sprites/space-station-tileset-8px.png<>uid://ic23wbgud8hq::::res://sprites/space-station-tileset-multiple-8px.png<>uid://6wum8tp2pqfj::::res://scenes/character.gd<>uid://bs6ump1ooiwhx::::res://sprites/character-die.png<>uid://dlqnkcv10jd03::::res://sprites/character-idle.png<>uid://calvyvm20bxhq::::res://sprites/character-sit.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cf3w4gam5qhth::::res://scenes/particles/BloodSplatter.tscn<>uid://bstgnphmr27se::::res://sounds/impact-flesh.wav<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn<>uid://blp7q68sf1qbv::::res://scripts/player_controls.gd<>uid://btus7ok7012hk::::res://sprites/flashlight-light.png
 world_environment.tscn::PackedScene::646422117632279122::1764431587::0::1::::<><><>0<>0<><>::
 wormhole.tscn::PackedScene::5555405656246196581::1765463326::0::1::::<><><>0<>0<><>::
@@ -149,7 +149,7 @@ fire_particles.tscn::PackedScene::4470043085339841588::1764865210::0::1::::<><><
 small_fire_particles.tscn::PackedScene::165628771497048586::1764891988::0::1::::<><><>0<>0<><>::
 smoke_particles.tscn::PackedScene::6410389020008119700::1764542150::0::1::::<><><>0<>0<><>::
 sparks.tscn::PackedScene::6051929105921547283::1764608184::0::1::::<><><>0<>0<><>::uid://dlql5u6k4jb2m::::res://scripts/sparks.gd
-::res://scripts/::1765491290
+::res://scripts/::1765505299
 booster.gd::GDScript::5203880720417871137::1765162515::0::1::::<>Node2D<><>0<>0<><>::
 bullet.gd::GDScript::874649667853844334::1764936480::0::1::::Bullet<>CharacterBody2D<><>0<>0<><>::
 character.gd::GDScript::5668492295674268936::1764936145::0::1::::<>Node2D<><>0<>0<><>::
@@ -163,7 +163,9 @@ node_2d.gd::GDScript::7513697471926375741::1765304067::0::1::::<>Node2D<><>0<>0<
 parallax_background.gd::GDScript::3886260115419249442::1764373778::0::1::::<>ParallaxBackground<><>0<>0<><>::
 player_controls.gd::GDScript::3191436826521319063::1765491290::0::1::::<>Node<><>0<>0<><>::
 popups.gd::GDScript::7312159263698115762::1765117477::0::1::::<>Control<><>0<>0<><>::
-spaceship.gd::GDScript::3634956045634505475::1765398643::0::1::::Spaceship<>RigidBody2D<><>0<>0<><>::
+spaceship_ai_brains.gd::GDScript::1437157585126462378::1765505792::0::1::::<>Node<><>0<>0<><>::
+spaceship-player.gd::GDScript::5225743796751070206::1765505502::0::1::::<>Node<><>0<>0<><>::
+spaceship.gd::GDScript::3634956045634505475::1765505919::0::1::::Spaceship<>RigidBody2D<><>0<>0<><>::
 spaceship_.gd::GDScript::7218332317181757478::1764287102::0::1::::<>CharacterBody2D<><>0<>0<><>::
 sparks.gd::GDScript::7965091934749597374::1764607190::0::1::::<>GPUParticles2D<><>0<>0<><>::
 sub_viewport_container.gd::GDScript::1921517881601171685::1765207203::0::1::::<>SubViewportContainer<><>0<>0<><>::

@@ -114,6 +114,7 @@ visibility_layer = 3
 unique_name_in_owner = true
 position = Vector2(0, -1)
 is_player = true
+enable_ai = false
 
 [node name="Camera2D2" type="Camera2D" parent="SpaceshipContainer/PlayerShip"]
 limit_enabled = false

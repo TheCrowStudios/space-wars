@@ -140,6 +140,7 @@ modulate = Color(1, 1, 1, 0.75686276)
 texture = ExtResource("18_kcotq")
 
 [node name="CrosshairVelocity" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.75686276)
 self_modulate = Color(0.8984375, 1, 0, 1)
 texture = ExtResource("18_kcotq")
@@ -155,7 +156,3 @@ texture = ExtResource("18_kcotq")
 [connection signal="destroyed" from="OxygenTank" to="." method="_on_node_destroyed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="character_died" from="CharacterStatic" to="." method="_on_character_static_character_died"]
-[connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_target_area_body_entered"]
-[connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_target_detection_area_body_exited"]
-[connection signal="body_entered" from="WideTargetDetectionArea" to="." method="_on_wide_target_detection_area_body_entered"]
-[connection signal="body_exited" from="WideTargetDetectionArea" to="." method="_on_wide_target_detection_area_body_exited"]

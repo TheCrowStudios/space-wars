@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmyvpshwodjt"]
+
+[ext_resource type="Script" uid="uid://uqf1morlx0jm" path="res://scripts/spaceship_ai_brains.gd" id="1_gil8x"]
+
+[node name="AIBrains" type="Node"]
+script = ExtResource("1_gil8x")
