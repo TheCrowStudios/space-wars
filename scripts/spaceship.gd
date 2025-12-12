@@ -157,7 +157,7 @@ func fire_guns():
 		gun.fire()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Bullet && is_player && body.created_by != get_instance_id() && !flyby_audio_streams.is_empty():
+	if body is Bullet && is_player && body.get_parent_ref().get_instance_id() != get_instance_id() && !flyby_audio_streams.is_empty():
 		# print("PASS BY")
 		var audio_stream = flyby_audio_streams.pick_random()
 		var audio_player = AudioStreamPlayer2D.new()

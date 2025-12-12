@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdr4k4srb4oq8"]
+
+[ext_resource type="Script" uid="uid://bdqfybpb45hum" path="res://scenes/missile.gd" id="1_2swxv"]
+[ext_resource type="Texture2D" uid="uid://bfdqnkdhvdeh0" path="res://sprites/rocket.png" id="2_bd00w"]
+[ext_resource type="PackedScene" uid="uid://dnn6pgn88khwg" path="res://scenes/rocket_projectile_trail_particles.tscn" id="3_flxc2"]
+[ext_resource type="PackedScene" uid="uid://c56ntcxjyk0tf" path="res://scenes/projectile_lifetime_controller.tscn" id="4_fre4m"]
+
+[sub_resource type="Gradient" id="Gradient_6ol1o"]
+offsets = PackedFloat32Array(0, 0.74568963)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8kmw3"]
+gradient = SubResource("Gradient_6ol1o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1h3n"]
+size = Vector2(6, 2)
+
+[node name="Missile" type="RigidBody2D"]
+mass = 0.1
+script = ExtResource("1_2swxv")
+
+[node name="TrailParticles" parent="." instance=ExtResource("3_flxc2")]
+unique_name_in_owner = true
+position = Vector2(-14, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(2.3464565, 2.3464565, 2.3464565, 1)
+texture = ExtResource("2_bd00w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+color = Color(1, 0.5997925, 0.3828125, 1)
+energy = 1.5
+range_layer_min = -1024
+range_layer_max = 1024
+texture = SubResource("GradientTexture2D_8kmw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m1h3n")
+
+[node name="ProjectileLifetimeController" parent="." node_paths=PackedStringArray("light", "particles", "sprite") instance=ExtResource("4_fre4m")]
+light = NodePath("../PointLight2D")
+particles = NodePath("../TrailParticles")
+sprite = NodePath("../Sprite2D")

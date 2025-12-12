@@ -3,14 +3,13 @@ extends CharacterBody2D
 
 const VELOCITY_THRESHOLD = 50
 
-@export var speed: int = 1600
-var lifetime: int = 5000
+@export var speed: int = 800
 var max_bounces: int = 3
 var bounces_left: int = max_bounces
-var push_force: float = 200.0
 var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM
 var penetration_left = Globals.bulletMaxPenetration[bullet_type]
 var created_by: int = 0
+var inherited_velocity: Vector2 = Vector2.ZERO
 
 var insantiation_time: int
 
@@ -26,8 +25,8 @@ func get_parent_ref():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	insantiation_time = Time.get_ticks_msec()
-	$Sprite2D.look_at(global_position + velocity)
+	velocity = inherited_velocity + Vector2.RIGHT.rotated(rotation) * speed
+	# $Sprite2D.look_at(global_position + velocity)
 	# velocity = transform.x * speed
 	# print(transform.x)
 	# print(speed)
@@ -44,10 +43,6 @@ func _physics_process(delta: float) -> void:
 		handle_collision()
 
 	# position += transform.x * speed * delta
-	if (Time.get_ticks_msec() - insantiation_time >= lifetime):
-		$PointLight2D.energy = lerp($PointLight2D.energy, 0.0, 0.05)
-		# $Sprite2D.modulate.a = lerp($PointLight2D.modulate.a, 0.0, 0.1)
-		if ($PointLight2D.energy <= 0.1): queue_free() # TODO - fade
 
 func handle_collision():
 	if (pre_collision_velocity.length() <= VELOCITY_THRESHOLD): queue_free()

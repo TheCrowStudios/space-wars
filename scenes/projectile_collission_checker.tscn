@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhjct"]
 size = Vector2(200, 4)
 
-[node name="ProjectileCollissionChecker" type="Area2D"]
+[node name="ProjectileCollisionChecker" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_xhjct")
 

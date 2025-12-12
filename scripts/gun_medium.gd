@@ -1,14 +1,15 @@
+class_name Weapon
 extends Node2D
 
+@export var weapon_group: int = 1
 @export var max_rotation_deg := Vector2(-160, 15)
 @export var rpm = 600
 @export var bullet: PackedScene
 
 var cooldown: float = 0.0
 
-
 @onready var sound_node: AudioStreamPlayer2D = $Shoot
-@onready var muzzle: Marker2D = $Marker2D
+@onready var muzzle: Marker2D = %Muzzle
 
 var parent_ref: Node
 
@@ -41,27 +42,17 @@ func look(pos: Vector2):
 
 
 func fire() -> void:
-	if %ProjectileCollissionChecker.is_blocked(): return
+	if %ProjectileCollisionChecker.is_blocked(): return
 
-	# var angle_to_mouse = rad_to_deg(global_position.angle_to(get_global_mouse_position()))
-	# var diff = wrapf(angle_to_mouse - rotation_degrees, -180.0, 180.0)
-	# print(diff)
-	# if (diff < max_rotation_deg.x || diff > max_rotation_deg.y): return
 	if (cooldown <= 0 && rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1):
-		var bullet_instance: Bullet = bullet.instantiate()
+		var bullet_instance: Node2D = bullet.instantiate()
 		bullet_instance.set_parent_ref(parent_ref)
-		# bullet_instance.rotation = rotation
-		# bullet_instance.global_rotation = global_rotation
-		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))
-		# bullet_instance.speed += int(get_parent().linear_velocity.dot(Vector2.RIGHT.rotated(rotation)) + (get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y))
-		# bullet_instance.velocity = Vector2(bullet_instance.speed, bullet_instance.speed) * bullet_instance.transform.x + get_parent().linear_velocity
-		bullet_instance.velocity = Vector2(bullet_instance.speed, bullet_instance.speed) * global_transform.x + get_parent().linear_velocity
+		bullet_instance.inherited_velocity = parent_ref.linear_velocity
+		bullet_instance.global_rotation = global_rotation
 		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.bullet_type = Globals.BulletType.MEDIUM
+		# bullet_instance.bullet_type = Globals.BulletType.MEDIUM
 		get_tree().root.add_child(bullet_instance)
-		bullet_instance.created_by = get_parent().get_instance_id()
-		# bullet_instance.speed += get_parent().linear_velocity.abs().x + get_parent().linear_velocity.abs().y
-# 
+
 		sound_node.pitch_scale = randf_range(0.8, 1.0)
 		sound_node.play();
 		cooldown = 60.0 / rpm # set cooldown in secs based on rpm

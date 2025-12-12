@@ -31,7 +31,6 @@ func _ready():
 	# 	if child.is_in_group("OnMap"):
 	# 		on_map.append(child)
 	generate_minimap()
-			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

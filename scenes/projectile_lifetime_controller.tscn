@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c56ntcxjyk0tf"]
+
+[ext_resource type="Script" uid="uid://ckc0nj0dbt6vq" path="res://scripts/projectile_lifetime_controller.gd" id="1_pv10t"]
+
+[node name="ProjectileLifetimeController" type="Node"]
+script = ExtResource("1_pv10t")
