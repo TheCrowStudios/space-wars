@@ -1,14 +1,26 @@
 class_name Character
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var movement_speed: int = 100
 @export var is_player: bool = false
 
-var move: Vector2
+@onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+
+var move_direction_normalized: Vector2 = Vector2.ZERO
+var aim_at: Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+    animations.play("idle")
 
 func _physics_process(delta: float) -> void:
-    move_and_collide(move.normalized() * movement_speed * delta);
+    velocity = move_direction_normalized * movement_speed
+    move_and_slide();
     look_at(get_global_mouse_position())
+    if move_direction_normalized == Vector2.ZERO:
+        animations.play("idle")
+    else:
+        animations.play("walk")
 
-func _input(event: InputEvent) -> void:
-    move = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+
+func _on_destructible_object_destroyed(node: DestructibleObject) -> void:
+    pass # Replace with function body.
