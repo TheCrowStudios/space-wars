@@ -1,8 +1,17 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=3 format=3 uid="uid://3k8jujthh0im"]
+[gd_resource type="Resource" script_class="Mission" load_steps=4 format=3 uid="uid://3k8jujthh0im"]
 
 [ext_resource type="Script" uid="uid://d2vi1a6t57sdq" path="res://scripts/mission_objective.gd" id="1_b2dig"]
 [ext_resource type="Script" uid="uid://crjpgne5hm7el" path="res://scripts/mission.gd" id="2_0kepw"]
 
+[sub_resource type="Resource" id="Resource_b2dig"]
+script = ExtResource("1_b2dig")
+type = 4
+target = ","
+metadata/_custom_type_script = "uid://d2vi1a6t57sdq"
+
 [resource]
 script = ExtResource("2_0kepw")
+id = "training"
+title = "Training"
+objectives = Array[ExtResource("1_b2dig")]([SubResource("Resource_b2dig")])
 metadata/_custom_type_script = "uid://crjpgne5hm7el"

@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Globals.DEBUG:
 		if Input.is_action_just_pressed("ui_end"):
-			$DestructibleBody.take_damage(1000)
+			if $DestructibleBody: $DestructibleBody.take_damage(1000)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
