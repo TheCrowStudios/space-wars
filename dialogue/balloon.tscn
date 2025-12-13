@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdxx2frjx6bbc"]
+[gd_scene load_steps=15 format=3 uid="uid://cdxx2frjx6bbc"]
 
-[ext_resource type="Script" uid="uid://u4kpcluwgldn" path="res://dialogue/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://bqbbu00wsbt6i" path="res://dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://bfbsfx0dhgnv6" path="res://sprites/droyd-man-shaded.png" id="4_3fodd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +64,14 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hx7h"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -99,6 +108,9 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_267us"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -122,11 +134,13 @@ anchor_bottom = 1.0
 offset_top = -219.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 250
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hx7h")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -192,6 +206,25 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
+
+[node name="Panel" type="Panel" parent="Balloon"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -202.0
+offset_right = 250.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_267us")
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/Panel"]
+layout_mode = 1
+offset_top = -44.0
+offset_right = 128.0
+offset_bottom = 84.0
+scale = Vector2(2.2230654, 2.2230654)
+texture = ExtResource("4_3fodd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

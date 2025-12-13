@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 Globals="*res://scripts/globals.gd"
 Popups="*res://scenes/popups.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://scripts/game_state.gd"
 
 [dialogue_manager]
 
