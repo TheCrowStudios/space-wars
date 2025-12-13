@@ -3,7 +3,8 @@ extends Node2D
 
 enum State {OFF, STARTING, RUNNING, STOPPING, OVERHEATING, DESTROYED}
 var state = State.OFF
-var power = 300
+
+@export var power = 300
 
 signal destroyed(node: DestructibleObject)
 

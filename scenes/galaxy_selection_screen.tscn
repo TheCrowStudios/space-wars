@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgst8c6pvq8eq"]
+[gd_scene load_steps=6 format=3 uid="uid://bgst8c6pvq8eq"]
 
 [ext_resource type="Texture2D" uid="uid://bb3yjglr5iu35" path="res://sprites/galaxy-select-1.png" id="1_b6vgq"]
+[ext_resource type="Script" uid="uid://cl7a8l0as3dd2" path="res://scripts/galaxy_selection_screen.gd" id="1_jbxtn"]
 [ext_resource type="Texture2D" uid="uid://bgv7soc752tut" path="res://sprites/galaxy-select-bg.png" id="2_7hh0q"]
 [ext_resource type="Texture2D" uid="uid://dvkeq8t3q7un3" path="res://sprites/galaxy-select-2.png" id="3_phbyb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ni6hp"]
+texture = ExtResource("2_7hh0q")
 
 [node name="GalaxySelectionScreen" type="Control"]
 layout_mode = 3
@@ -11,13 +15,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jbxtn")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 1024.0
-scale = Vector2(2.0599923, 1.6467396)
-texture = ExtResource("2_7hh0q")
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ni6hp")
 
 [node name="Galaxy" type="TextureRect" parent="."]
 layout_mode = 0
@@ -37,15 +44,20 @@ offset_bottom = 682.0
 scale = Vector2(3, 3)
 texture = ExtResource("3_phbyb")
 
-[node name="MissionNodes" type="Control" parent="."]
+[node name="GalaxyNodes" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureButton" type="TextureButton" parent="MissionNodes"]
+[node name="Galaxy1" type="TextureButton" parent="GalaxyNodes"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1233.9999
+offset_top = 154.0
+offset_right = 1489.9999
+offset_bottom = 410.0
+scale = Vector2(2.6180692, 2.6180692)
+texture_normal = ExtResource("1_b6vgq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -60,26 +72,35 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Panel"]
+[node name="GalaxyName" type="Label" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 16.0
 theme_override_font_sizes/font_size = 64
 text = "Galaxy Name"
 
-[node name="Label2" type="Label" parent="MarginContainer/Panel"]
+[node name="GalaxyDescription" type="Label" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_top = 60.0
 offset_right = 309.0
 offset_bottom = 111.0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Description"
+autowrap_mode = 3
 
-[node name="Button" type="Button" parent="MarginContainer/Panel"]
+[node name="Select" type="Button" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 115.0
 offset_top = 222.0
 offset_right = 292.0
 offset_bottom = 281.0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_hover_color = Color(1.286514, 1.286514, 1.286514, 1)
 theme_override_font_sizes/font_size = 50
 text = "SELECT"
+
+[connection signal="mouse_entered" from="GalaxyNodes/Galaxy1" to="." method="_on_galaxy_1_mouse_entered"]
+[connection signal="mouse_exited" from="GalaxyNodes/Galaxy1" to="." method="_on_galaxy_1_mouse_exited"]

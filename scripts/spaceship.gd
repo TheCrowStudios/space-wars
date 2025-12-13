@@ -25,7 +25,8 @@ const REGULAR_ANGULAR_DAMP = 0.05
 const COLLISION_DAMP = 100.0
 
 var boosters = []
-var guns = []
+var main_boosters = []
+var use_main_boosters: bool = false
 var hp = 1000
 
 var acceleration = Vector2.ZERO # Current acceleration vector
@@ -62,7 +63,8 @@ func _ready() -> void:
 		$WideTargetDetectionArea.connect("body_exited", ai_brains._on_wide_target_detection_area_body_exited)
 
 	boosters = get_node(".").find_children("Booster" + "*")
-	guns = get_node(".").find_children("Gun" + "*")
+	main_boosters = get_node(".").find_children("MainBooster" + "*")
+	# guns = get_node(".").find_children("Gun" + "*")
 	aim_at = get_global_mouse_position()
 
 	if (Globals.DEBUG && Globals.DEBUG_AIM):
@@ -143,8 +145,8 @@ func interpret_input():
 	set_booster_direction(steer_direction)
 
 	if acc != 0:
+		set_booster_thrust(true)
 		for booster in boosters:
-			booster.set_thrust(true);
 			if (acc == -1): booster.rotation += deg_to_rad(180);
 	else:
 		set_booster_thrust(false)
@@ -190,6 +192,13 @@ func _on_booster_destroyed(node: DestructibleObject) -> void:
 func set_booster_thrust(on: bool):
 	for booster in boosters:
 		booster.set_thrust(on)
+
+	if use_main_boosters && on:
+		for booster in main_boosters:
+			booster.set_thrust(true)
+	else:
+		for booster in main_boosters:
+			booster.set_thrust(false)
 
 func set_booster_direction(direction_rad):
 	for booster: Node2D in boosters:

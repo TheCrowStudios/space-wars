@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=29 format=4 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/projectiles/bullet-flyby-1.wav" id="2_iow36"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://8iyq7bpi66x1" path="res://sounds/projectiles/bullet-flyby-3.wav" id="4_tst1b"]
 [ext_resource type="Script" uid="uid://bp5bchp5n7cm8" path="res://scenes/spaceship_body.gd" id="6_vue1i"]
 [ext_resource type="PackedScene" uid="uid://buyk2c060gonj" path="res://scenes/fuel_tank.tscn" id="8_r0fvi"]
+[ext_resource type="PackedScene" uid="uid://cwayjd5jnigj5" path="res://scenes/main_booster.tscn" id="8_vue1i"]
 [ext_resource type="PackedScene" uid="uid://ditexeonnfybi" path="res://scenes/gun_missile.tscn" id="9_5pdae"]
 [ext_resource type="PackedScene" uid="uid://c67t0mehboovx" path="res://scenes/fuel_armor.tscn" id="9_6wr2n"]
 [ext_resource type="PackedScene" uid="uid://b6v8muyp0qg5m" path="res://scenes/oxygen_tank.tscn" id="10_6wr2n"]
@@ -79,6 +80,12 @@ texture = ExtResource("2_pmkdn")
 
 [node name="Booster" parent="." instance=ExtResource("3_pmkdn")]
 position = Vector2(0, -28)
+
+[node name="MainBooster" parent="." instance=ExtResource("8_vue1i")]
+position = Vector2(-62, -12)
+
+[node name="MainBooster2" parent="." instance=ExtResource("8_vue1i")]
+position = Vector2(-62, 14)
 
 [node name="Booster2" parent="." instance=ExtResource("3_pmkdn")]
 position = Vector2(0, 28)
