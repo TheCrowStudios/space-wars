@@ -36,3 +36,11 @@ func get_input(delta: float):
 	if (Input.is_action_pressed("left_click")):
 		pawn.fire_guns()
 	
+	if (Input.is_action_pressed("select_weapon_group_1")):
+		pawn.select_weapon_group(1)
+
+	if (Input.is_action_pressed("select_weapon_group_2")):
+		pawn.select_weapon_group(2)
+
+	if (Input.is_action_pressed("select_weapon_group_3")):
+		pawn.select_weapon_group(3)

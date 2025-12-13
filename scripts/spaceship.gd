@@ -33,7 +33,7 @@ var steer_direction # Current direction of steering
 
 var turn = 0
 var acc = 0
-var aim_at
+var aim_at: Vector2
 
 # repairs
 var time_to_repair_nodes: float = 0
@@ -149,12 +149,13 @@ func interpret_input():
 	else:
 		set_booster_thrust(false)
 
-	for gun in guns:
-		gun.look(aim_at)
+	%WeaponsController.aim(aim_at)
 
 func fire_guns():
-	for gun in guns:
-		gun.fire()
+	%WeaponsController.fire()
+
+func select_weapon_group(group: int):
+	%WeaponsController.select_weapon_group(group)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Bullet && is_player && body.get_parent_ref().get_instance_id() != get_instance_id() && !flyby_audio_streams.is_empty():

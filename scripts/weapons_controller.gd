@@ -4,6 +4,7 @@ extends Node2D
 var weapon_group_1: Array[Weapon]
 var weapon_group_2: Array[Weapon]
 var weapon_group_3: Array[Weapon]
+var selected_weapons: Array[Weapon]
 
 var selected_group: int = 1
 
@@ -19,11 +20,25 @@ func _ready() -> void:
 				weapon_group_2.append(child)
 			3:
 				weapon_group_3.append(child)
+	
+	selected_weapons = weapon_group_1
 
+func fire():
+	for weapon in selected_weapons:
+		weapon.fire()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func aim(at: Vector2):
+	for weapon in selected_weapons:
+		weapon.look(at)
 
 func select_weapon_group(group: int):
 	selected_group = group
+
+	match selected_group:
+		1:
+			selected_weapons = weapon_group_1
+		2:
+			selected_weapons = weapon_group_2
+		3:
+			selected_weapons = weapon_group_3
+		
