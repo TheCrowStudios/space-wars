@@ -1,0 +1,204 @@
+[gd_scene load_steps=14 format=3 uid="uid://qhx23qqa4gru"]
+
+[ext_resource type="Script" uid="uid://cv6gtca7unhbt" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bgv7soc752tut" path="res://sprites/galaxy-select-bg.png" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://bb3yjglr5iu35" path="res://sprites/galaxy-select-1.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://c8mgej1ae7wbb" path="res://sprites/space-station.png" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://xak3eim71gk8" path="res://sprites/satellite.png" id="5_oa1go"]
+[ext_resource type="Texture2D" uid="uid://bfbsfx0dhgnv6" path="res://sprites/droyd-man-shaded.png" id="5_rtw2f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
+texture = ExtResource("1_ekxnf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.24049999, 0.65, 0.24049999, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.3382, 0.89, 0.3382, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0.3382, 0.89, 0.3382, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.3382, 0.89, 0.3382, 0)
+border_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.3382, 0.89, 0.3382, 0)
+border_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+
+[sub_resource type="Environment" id="Environment_ekxnf"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.82
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 163.0
+offset_right = 2035.0
+offset_bottom = 1367.0
+texture = ExtResource("2_bqqt6")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 386.0
+offset_right = 1251.0
+offset_bottom = 1590.0
+rotation = -0.555517
+scale = Vector2(0.6426685, 0.6426685)
+texture = ExtResource("4_8ln24")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1247.0
+offset_top = 365.0
+offset_right = 2451.0
+offset_bottom = 1569.0
+rotation = -0.30812073
+scale = Vector2(0.18643457, 0.18643457)
+texture = ExtResource("5_oa1go")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -12.000015
+offset_top = 744.0
+offset_right = 1192.0
+offset_bottom = 1948.0
+scale = Vector2(0.35264784, 0.35264784)
+texture = ExtResource("5_rtw2f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -197.0
+offset_right = 311.0
+offset_bottom = 347.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+modulate = Color(1.7192913, 1.7192913, 1.7192913, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_hover_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "NEW GAME"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+modulate = Color(1.7192913, 1.7192913, 1.7192913, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_hover_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "CONTINUE"
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+modulate = Color(1.7192913, 1.7192913, 1.7192913, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_hover_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "OPTIONS"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+modulate = Color(1.7192913, 1.7192913, 1.7192913, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_pressed_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_colors/font_hover_color = Color(0.33944517, 0.8860621, 0.33944517, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ln24")
+text = "EXIT"
+
+[node name="Title" type="Label" parent="."]
+modulate = Color(1.7602391, 1.7602391, 1.7602391, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -432.0
+offset_top = -444.0
+offset_right = 432.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.24313726, 0.6509804, 0.24313726, 1)
+theme_override_font_sizes/font_size = 128
+text = "Proxima Centauri"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ekxnf")
