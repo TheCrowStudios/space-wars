@@ -14,6 +14,7 @@ extends StaticBody2D
 @export var destruction_audio_streams: Array[AudioStream]
 @export var penetration_resistance: int = 10
 @export var penetration_cost: int = 10
+# TODO - make explosion radius move along with the object
 @export var explodes: bool = false
 @export_range(0.01, 1.0) var blast_speed: float = 0.1
 @export var blast_damage: float = 100.0

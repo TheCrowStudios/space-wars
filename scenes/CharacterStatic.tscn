@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cocec88e1iixv"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_b1cdu"]
-[ext_resource type="Script" uid="uid://cm04ifmkwoike" path="res://scripts/character.gd" id="1_lvb3f"]
+[ext_resource type="Script" uid="uid://cm04ifmkwoike" path="res://scripts/character_static.gd" id="1_lvb3f"]
 [ext_resource type="Texture2D" uid="uid://bs6ump1ooiwhx" path="res://sprites/character-die.png" id="2_lvb3f"]
 [ext_resource type="Texture2D" uid="uid://dlqnkcv10jd03" path="res://sprites/character-idle.png" id="3_i8nee"]
 [ext_resource type="Texture2D" uid="uid://calvyvm20bxhq" path="res://sprites/character-sit.png" id="3_njslm"]

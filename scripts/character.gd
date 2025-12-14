@@ -1,16 +1,31 @@
-extends Node2D
+class_name Character
+extends CharacterBody2D
 
-signal character_died()
+@export var movement_speed: int = 100
+@export var is_player: bool = false
+@export var player_controls: PackedScene
 
-# Called when the node enters the scene tree for the first time.
+# @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+
+var move_direction_normalized: Vector2 = Vector2.ZERO
+var aim_at: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if is_player:
+		var player_controls_instance = player_controls.instantiate()
+		add_child(player_controls_instance)
+		add_to_group("player")
+# 	animations.play("idle")
 
+func _physics_process(delta: float) -> void:
+	velocity = move_direction_normalized * movement_speed
+	move_and_slide();
+	# look_at(get_global_mouse_position())
+	# if move_direction_normalized == Vector2.ZERO:
+	#     animations.play("idle")
+	# else:
+	#     animations.play("walk")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_destructible_object_destroyed(node: DestructibleObject) -> void:
-	$AnimatedSprite2D.play("die")
-	emit_signal("character_died")
+	pass # Replace with function body.

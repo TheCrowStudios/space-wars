@@ -21,6 +21,7 @@ Globals="*res://scripts/globals.gd"
 Popups="*res://scenes/popups.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://scripts/game_state.gd"
+EventBus="*res://scripts/event_bus.gd"
 
 [dialogue_manager]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkimk076s2syg"]
 
-[ext_resource type="Script" uid="uid://6wum8tp2pqfj" path="res://scenes/character.gd" id="1_0dpix"]
+[ext_resource type="Script" uid="uid://6wum8tp2pqfj" path="res://scripts/character.gd" id="1_0dpix"]
+[ext_resource type="PackedScene" uid="uid://bawk4e74o6ycc" path="res://scenes/player_character_controls.tscn" id="2_0lw5n"]
 [ext_resource type="Texture2D" uid="uid://daj21kmcteqq6" path="res://sprites/character.png" id="3_0lw5n"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="6_8yvht"]
 [ext_resource type="PackedScene" uid="uid://cf3w4gam5qhth" path="res://scenes/particles/BloodSplatter.tscn" id="7_lagn4"]
 [ext_resource type="AudioStream" uid="uid://bstgnphmr27se" path="res://sounds/impact-flesh.wav" id="8_x8k1v"]
-[ext_resource type="Script" uid="uid://blp7q68sf1qbv" path="res://scripts/player_controls.gd" id="9_ih8y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrnyl"]
 size = Vector2(10.25, 15)
@@ -15,12 +15,10 @@ size = Vector2(12, 12)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_0dpix")
+player_controls = ExtResource("2_0lw5n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="PlayerControls" type="Node" parent="."]
-script = ExtResource("9_ih8y6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_0lw5n")

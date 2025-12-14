@@ -14,6 +14,8 @@ extends Resource
 @export var start_scene: PackedScene
 @export var start_location: Vector2 = Vector2.ZERO
 
+@export var auto_start: bool = false
+
 func is_available() -> bool:
     for mission_id in required_missions:
         if !GameState.completed_missions.has(mission_id):
