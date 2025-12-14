@@ -1080,3 +1080,9 @@ tile_set = SubResource("TileSet_1b5ea")
 y_sort_enabled = true
 position = Vector2(70, 4)
 is_player = true
+
+[node name="Room" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Room"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room/Area2D"]

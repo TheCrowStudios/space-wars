@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const VELOCITY_THRESHOLD = 50
 
-@export var speed: int = 800
+@export var speed: int = 1600
 var max_bounces: int = 3
 var bounces_left: int = max_bounces
 var bullet_type: Globals.BulletType = Globals.BulletType.MEDIUM

@@ -49,3 +49,6 @@ func get_input(delta: float):
 		pawn.use_main_boosters = true
 	else:
 		pawn.use_main_boosters = false
+
+func _on_character_died(node):
+	pass

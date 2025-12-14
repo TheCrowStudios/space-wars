@@ -17,7 +17,7 @@ var targetting_radius: int = 3000
 var patrol_range: int = 1500
 var aim_error = 10.0
 
-enum State {IDLE, PATROL, CHASE, ATTACK, RETREAT, REPAIRING}
+enum State {IDLE, PATROL, CHASE, ATTACK, RETREAT, REPAIRING, DEAD}
 var state: State = State.IDLE
 
 # Called when the node enters the scene tree for the first time.
@@ -43,16 +43,23 @@ func state_machine():
 
 	match state:
 		State.IDLE:
+			print("IDLE")
 			idle()
 		State.PATROL:
+			print("PATROL")
 			patrol()
 		State.CHASE:
+			print("CHASE")
 			chase()
 		State.ATTACK:
+			print("ATTACK")
 			attack()
 		State.RETREAT:
 			retreat()
 		State.REPAIRING:
+			pass
+		State.DEAD:
+			print("DEAD")
 			pass
 
 func idle():
@@ -86,7 +93,7 @@ func chase():
 		target_position = target.global_position
 		aim()
 		generate_input(true, false)
-		if target_in_inner_radius: state = State.ATTACK
+		if target_in_inner_radius: set_state(State.ATTACK)
 	else:
 		state = State.IDLE
 
@@ -102,7 +109,7 @@ func attack():
 		aim()
 		# TODO - some enemies stand still while firing unless shot at
 		generate_input(true, true)
-		if !target_in_inner_radius && target_in_outer_radius: state = State.CHASE
+		if !target_in_inner_radius && target_in_outer_radius && state: set_state(State.CHASE)
 	else:
 		state = State.IDLE
 
@@ -178,7 +185,7 @@ func _on_target_detection_area_body_entered(body: Node2D) -> void:
 				print("PLAYER DETECTED. ATTACKING")
 			if state == State.IDLE || state == State.PATROL || state == State.CHASE:
 				target = body
-				state = State.ATTACK
+				set_state(State.ATTACK)
 				target_in_inner_radius = true
 				target_in_outer_radius = true
 	elif body is Bullet:
@@ -203,3 +210,10 @@ func _on_wide_target_detection_area_body_exited(body: Node2D) -> void:
 		target_in_inner_radius = false
 		target_in_outer_radius = false
 		if state != State.REPAIRING: state = State.IDLE
+
+func set_state(_state):
+	if state != State.DEAD:
+		state = _state
+
+func _on_character_died(node):
+	state = State.DEAD

@@ -52,11 +52,13 @@ func _ready() -> void:
 
 	if is_player:
 		var player_brains = PLAYER_BRAINS.instantiate()
+		connect("character_died", player_brains._on_character_died)
 		add_child(player_brains)
 
 	if enable_ai:
 		var ai_brains: SpaceshipAIBrains = AI_BRAINS.instantiate()
 		add_child(ai_brains)
+		connect("character_died", ai_brains._on_character_died)
 		$TargetDetectionArea.connect("body_entered", ai_brains._on_target_detection_area_body_entered)
 		$TargetDetectionArea.connect("body_exited", ai_brains._on_target_detection_area_body_exited)
 		$WideTargetDetectionArea.connect("body_entered", ai_brains._on_wide_target_detection_area_body_entered)
