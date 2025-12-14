@@ -43,23 +43,18 @@ func state_machine():
 
 	match state:
 		State.IDLE:
-			print("IDLE")
 			idle()
 		State.PATROL:
-			print("PATROL")
 			patrol()
 		State.CHASE:
-			print("CHASE")
 			chase()
 		State.ATTACK:
-			print("ATTACK")
 			attack()
 		State.RETREAT:
 			retreat()
 		State.REPAIRING:
 			pass
 		State.DEAD:
-			print("DEAD")
 			pass
 
 func idle():
