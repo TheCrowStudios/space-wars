@@ -5,6 +5,9 @@ extends Node2D
 @export var max_rotation_deg := Vector2(-160, 15)
 @export var rpm = 600
 @export var bullet: PackedScene
+@export var locking: bool = false
+
+var target: Node2D
 
 var cooldown: float = 0.0
 
@@ -50,6 +53,8 @@ func fire() -> void:
 		bullet_instance.inherited_velocity = parent_ref.linear_velocity
 		bullet_instance.global_rotation = global_rotation
 		bullet_instance.global_position = muzzle.global_position
+		if locking:
+			bullet_instance.target = target
 		# bullet_instance.bullet_type = Globals.BulletType.MEDIUM
 		get_tree().root.add_child(bullet_instance)
 

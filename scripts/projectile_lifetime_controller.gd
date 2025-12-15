@@ -1,12 +1,12 @@
 extends Node
 
 
+@export var lifetime: int = 5000
 @export var light: PointLight2D
 @export var particles: GPUParticles2D
 @export var sprite: Sprite2D
 
 var parent = get_parent()
-var lifetime: int = 5000
 var insantiation_time
 
 # Called when the node enters the scene tree for the first time.
@@ -22,10 +22,13 @@ func _process(delta: float) -> void:
 		
 		if sprite:
 			sprite.modulate.a = lerp(sprite.modulate.a, 0.0, 0.05)
-			if (light.energy <= 0.05): queue_free()
+			if (sprite.modulate.a <= 0.05): get_parent().queue_free()
 		
 		if particles:
 			particles.emitting = false
 
 		if !sprite:
 			queue_free() # delet if no sprite to fade
+
+func reset_counter():
+	insantiation_time = Time.get_ticks_msec()

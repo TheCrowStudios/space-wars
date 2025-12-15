@@ -99,4 +99,8 @@ limit_enabled = false
 [node name="AudioListener2D" type="AudioListener2D" parent="SpaceshipContainer/PlayerShip/Camera2D2"]
 current = true
 
+[node name="Spaceship" parent="SpaceshipContainer" instance=ExtResource("3_74qev")]
+position = Vector2(1574, -5)
+enable_ai = false
+
 [connection signal="character_died" from="SpaceshipContainer/PlayerShip" to="." method="_on_player_ship_character_died"]

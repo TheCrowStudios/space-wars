@@ -84,7 +84,7 @@ position = Vector2(0, -28)
 [node name="MainBooster" parent="." instance=ExtResource("8_vue1i")]
 position = Vector2(-62, -12)
 
-[node name="MainBooster2" parent="." instance=ExtResource("8_vue1i")]
+[node name="MainBooster2" parent="." groups=["lockable"] instance=ExtResource("8_vue1i")]
 position = Vector2(-62, 14)
 
 [node name="Booster2" parent="." instance=ExtResource("3_pmkdn")]

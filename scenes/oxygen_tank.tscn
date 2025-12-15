@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b6v8muyp0qg5m"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_r6crd"]
-[ext_resource type="PackedScene" uid="uid://b4brebs753wp4" path="res://scenes/explosion_oxygen.tscn" id="2_1akfq"]
+[ext_resource type="PackedScene" uid="uid://b4brebs753wp4" path="res://scenes/particles/explosion_oxygen.tscn" id="2_1akfq"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_f7uuq"]
 [ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="3_j266c"]
 [ext_resource type="AudioStream" uid="uid://lct10hwmvlk0" path="res://sounds/explosions/explosion-3.mp3" id="3_ofvmm"]

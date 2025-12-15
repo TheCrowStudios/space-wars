@@ -6,6 +6,9 @@ extends Node
 const MAX_REPAIR_DELAY: float = 1.0
 var repair_delay: float = MAX_REPAIR_DELAY
 
+enum State {NORMAL, DEAD}
+var state: State = State.NORMAL
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,6 +19,8 @@ func _process(delta: float) -> void:
 	get_input(delta)
 
 func get_input(delta: float):
+	if state == State.DEAD: return
+
 	pawn.turn = Input.get_axis("move_left", "move_right")
 	pawn.acc = Input.get_axis("move_down", "move_up")
 
@@ -51,4 +56,4 @@ func get_input(delta: float):
 		pawn.use_main_boosters = false
 
 func _on_character_died(node):
-	pass
+	state = State.DEAD 
