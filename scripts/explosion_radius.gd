@@ -28,7 +28,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# var area: Area2D = $Area2D
 	elif body is DestructibleObject:
 		distance_to_body = global_position - body.global_position
+		var damage = max(0.0, blast_damage * (radius - distance_to_body.length()) / radius)
 		if (Globals.DEBUG && Globals.DEBUG_DESTRUCTION):
 			print("BODY ENTERED BLAST AREA: " + body.name)
-			print("DAMAGE CAUSED: " + str(blast_damage * (distance_to_body.length() / radius)))
-		body.take_damage(blast_damage * (distance_to_body.length() / radius))
+			print("DAMAGE CAUSED: " + str(damage))
+		body.take_damage(damage)
