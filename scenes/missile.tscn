@@ -24,6 +24,8 @@ mass = 0.1
 script = ExtResource("1_2swxv")
 blast = ExtResource("2_flxc2")
 explosion_particles = ExtResource("3_fre4m")
+blast_force = 50.0
+blast_damage = 200.0
 
 [node name="TrailParticles" parent="." instance=ExtResource("3_flxc2")]
 unique_name_in_owner = true

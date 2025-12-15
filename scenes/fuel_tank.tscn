@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_y6vd2"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_vuml6"]
-[ext_resource type="PackedScene" uid="uid://b4brebs753wp4" path="res://scenes/particles/explosion_oxygen.tscn" id="3_cuhku"]
 [ext_resource type="PackedScene" uid="uid://cmh48hcsn7ww" path="res://scenes/particles/small_fire_particles.tscn" id="3_vuml6"]
+[ext_resource type="PackedScene" uid="uid://cn3dxqfvytv2s" path="res://scenes/particles/explosion_new.tscn" id="4_cuhku"]
 [ext_resource type="Texture2D" uid="uid://d1lbqkfu0ahlp" path="res://sprites/fuel-tank.png" id="5_cuhku"]
 [ext_resource type="Texture2D" uid="uid://dsk0g5ltlrw5x" path="res://sprites/fuel-tank-destroyed.png" id="6_t51y8"]
 
@@ -19,11 +19,11 @@ hit_particles = ExtResource("2_vuml6")
 destruction_particles = ExtResource("3_vuml6")
 sprite = NodePath("Sprite")
 sprite_destroyed = NodePath("SpriteDestroyed")
-explosion_particles = ExtResource("3_cuhku")
+explosion_particles = ExtResource("4_cuhku")
 penetration_resistance = 50
 explodes = true
 explosion_force = 1600.0
-explosion_radius = 1600.0
+explosion_radius = 900.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(4, 0)

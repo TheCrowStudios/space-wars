@@ -26,6 +26,7 @@ hue_variation_max = 0.049999975
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
+collision_use_scale = true
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
 emitting = false
