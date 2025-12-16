@@ -66,17 +66,17 @@ func idle():
 	if pawn.destroyed_nodes_repairable.size() > 0:
 		if !target_in_inner_radius:# check if its safe
 			pawn.start_repair()
-			state = State.REPAIRING
+			set_state(State.REPAIRING)
 			return
 
 	if randf() < 0.1 / float(input_per_sec) && !pawn.all_boosters_destroyed:
 		target_position.x = pawn.global_position.x + randi_range(-patrol_range, patrol_range)
 		target_position.y = pawn.global_position.y + randi_range(-patrol_range, patrol_range)
-		state = State.PATROL
+		set_state(State.PATROL)
 
 func patrol():
 	if (pawn.global_position - target_position).length() < 200:
-		state = State.IDLE
+		set_state(State.IDLE)
 	else:
 		generate_input(true, false)
 
@@ -90,7 +90,7 @@ func chase():
 		generate_input(true, false)
 		if target_in_inner_radius: set_state(State.ATTACK)
 	else:
-		state = State.IDLE
+		set_state(State.IDLE)
 
 # TODO - avoid shooting allies
 # TODO - avoid collisions
@@ -106,7 +106,7 @@ func attack():
 		generate_input(true, true)
 		if !target_in_inner_radius && target_in_outer_radius && state: set_state(State.CHASE)
 	else:
-		state = State.IDLE
+		set_state(State.IDLE)
 
 func retreat():
 	# TODO - retreat if damaged
@@ -186,11 +186,11 @@ func _on_target_detection_area_body_entered(body: Node2D) -> void:
 	elif body is Bullet:
 		shot_at_cooldown = max_shot_at_cooldown
 		if state != State.ATTACK && state != State.REPAIRING:
-			state = State.CHASE
+			set_state(State.CHASE)
 
 func _on_target_detection_area_body_exited(body: Node2D) -> void:
 	if target == body:
-		state = State.CHASE # chase target if its in outer circle
+		set_state(State.CHASE) # chase target if its in outer circle
 		target_in_inner_radius = false
 
 func _on_wide_target_detection_area_body_entered(body: Node2D) -> void:
@@ -204,7 +204,7 @@ func _on_wide_target_detection_area_body_exited(body: Node2D) -> void:
 		target = null
 		target_in_inner_radius = false
 		target_in_outer_radius = false
-		if state != State.REPAIRING: state = State.IDLE
+		if state != State.REPAIRING: set_state(State.IDLE)
 
 func set_state(_state):
 	if state != State.DEAD:
