@@ -35,3 +35,6 @@ func dent(hit_position: Vector2, normal: float, strength: float = 1.0):
 	new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	mesh = new_mesh
 	# mesh.surface_update_region(0, Mesh.ARRAY_VERTEX, 0, verts.size())
+
+func dent_local(hit_position_local: Vector2, normal: Vector2, strength: float = 1.0):
+	dent(to_global(hit_position_local), normal.angle(), strength)

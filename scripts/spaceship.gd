@@ -22,7 +22,7 @@ const AI_BRAINS: PackedScene = preload("res://scenes/spaceship_ai_brains.tscn")
 
 const REGULAR_LINEAR_DAMP = 0.2
 const REGULAR_ANGULAR_DAMP = 0.05
-const COLLISION_DAMP = 100.0
+const COLLISION_DAMP = 10.0
 
 var boosters = []
 var main_boosters = []
@@ -102,10 +102,19 @@ func _process(delta: float) -> void:
 		set_booster_thrust(false)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if state.get_contact_count() > 0:
+	var contact_count = state.get_contact_count()
+
+	if contact_count > 0:
 		linear_damp = COLLISION_DAMP
 		angular_damp = COLLISION_DAMP
-		print("COLLISION")
+		for i in contact_count:
+			var contact_position: Vector2 = state.get_contact_local_position(i)
+			var normal: Vector2 = state.get_contact_local_normal(i)
+			# %SpaceshipBody.dent_local(position, normal, 10.0)
+			%SpaceshipBody.dent(contact_position, normal.angle(), 10.0 * min(1.0, linear_velocity.length() / 1000))
+		# 	print(contact_position)
+		# 	print(normal)
+		# print("COLLISION")
 	else:
 		linear_damp = REGULAR_LINEAR_DAMP
 		angular_damp = REGULAR_ANGULAR_DAMP
@@ -207,5 +216,4 @@ func set_booster_direction(direction_rad):
 		booster.rotation = direction_rad
 
 func _on_walls_hit(hit_position: Vector2, normal: float, force: float) -> void:
-	print("DENT")
 	%SpaceshipBody.dent(hit_position, normal)
