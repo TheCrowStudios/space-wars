@@ -24,7 +24,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	var distance_to_body
 	if body is RigidBody2D:
 		distance_to_body = global_position - body.global_position
-		body.apply_central_impulse((blast_force * (distance_to_body.length() / radius)) * -distance_to_body.normalized())
+		body.apply_central_impulse((blast_force * (radius - distance_to_body.length()) / radius) * -distance_to_body.normalized())
 		# var area: Area2D = $Area2D
 	elif body is DestructibleObject:
 		distance_to_body = global_position - body.global_position
