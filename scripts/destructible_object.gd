@@ -39,6 +39,7 @@ func get_parent_ref():
 
 signal health_changed(new_health, max_health, node: DestructibleObject)
 signal damage_taken(node: DestructibleObject)
+signal hit(hit_position: Vector2, normal: float, force: float)
 signal destroyed(node: DestructibleObject)
 signal repaired(node: DestructibleObject)
 
@@ -54,6 +55,9 @@ func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_n
 		add_child(particles)
 		particles.emitting = true
 	
+	emit_signal("hit", hit_position, angle_to_normal, 40.0)
+	take_damage(damage)
+
 	if !hit_audio_streams.is_empty():
 		var stream_to_play = hit_audio_streams.pick_random()
 		var audio_player = AudioStreamPlayer2D.new()
@@ -64,8 +68,6 @@ func take_hit(bullet_type: Globals.BulletType, hit_position: Vector2, angle_to_n
 		audio_player.play()
 		await audio_player.finished
 		audio_player.queue_free()
-
-	take_damage(damage)
 
 func take_damage(damage: float):
 	if health <= 0: return
@@ -130,6 +132,8 @@ func take_ricochet(hit_position: Vector2, angle_to_normal: float, bullet: Bullet
 		particles.position = hit_position - global_position
 		add_child(particles)
 		particles.emitting = true
+
+	emit_signal("hit", hit_position, angle_to_normal, 20.0)
 
 	if !ricochet_audio_streams.is_empty():
 		var stream_to_play = ricochet_audio_streams.pick_random()

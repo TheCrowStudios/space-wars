@@ -205,3 +205,7 @@ func set_booster_thrust(on: bool):
 func set_booster_direction(direction_rad):
 	for booster: Node2D in boosters:
 		booster.rotation = direction_rad
+
+func _on_walls_hit(hit_position: Vector2, normal: float, force: float) -> void:
+	print("DENT")
+	%SpaceshipBody.dent(hit_position, normal)
