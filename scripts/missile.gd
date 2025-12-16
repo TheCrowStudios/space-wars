@@ -5,7 +5,7 @@ extends RigidBody2D
 @export var turn_damp: float = 2.0
 @export var thrust: float = 300.0
 @export var launch_speed: float = 100.0
-@export var detonation_distance: float = 300.0
+@export var detonation_distance: float = 200.0
 @export var blast: PackedScene
 @export var explosion_particles: PackedScene
 @export var radius: float = 300
@@ -41,7 +41,9 @@ func _physics_process(delta: float) -> void:
 		var nav_constant = 5.0
 		var to_target = target_position - global_position
 		var los_rate = linear_velocity.cross(to_target) / max(to_target.length_squared(), 1.0)
+		los_rate = clamp(los_rate, -10.0, 10.0)
 		var desired_angular_velocity = nav_constant * los_rate
+		desired_angular_velocity = clamp(desired_angular_velocity, -20.0, 20.0)
 		var ang_vel_error = desired_angular_velocity - angular_velocity
 
 		var angle_to_target = global_position.direction_to(target_position).angle()
@@ -79,3 +81,4 @@ func detonate():
 	detonated = true
 	%ProjectileLifetimeController.reset_counter()
 	%TrailParticles.emitting = false
+	linear_damp = 20.0

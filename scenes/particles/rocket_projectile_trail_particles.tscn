@@ -23,6 +23,6 @@ sub_emitter_frequency = 4.0
 [node name="TrailParticles" type="GPUParticles2D"]
 amount = 1000
 lifetime = 3.0
-visibility_rect = Rect2(-8803.105, -8000, 16000, 16000)
+visibility_rect = Rect2(-8000, -8000, 16000, 16000)
 trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_tb374")

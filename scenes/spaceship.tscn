@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cxjg1m7xkalvm"]
+[gd_scene load_steps=30 format=4 uid="uid://cxjg1m7xkalvm"]
 
 [ext_resource type="Script" uid="uid://br12gvogxfn8v" path="res://scripts/spaceship.gd" id="1_7g3nn"]
 [ext_resource type="AudioStream" uid="uid://cljar8m58j2f4" path="res://sounds/projectiles/bullet-flyby-1.wav" id="2_iow36"]
@@ -56,6 +56,9 @@ radius = 1635.159
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nosia"]
 radius = 4255.05
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vue1i"]
+polygon = PackedVector2Array(1, 0, 112, 6, 119, 14, 120, 36, 111, 45, 1, 51)
 
 [node name="Spaceship" type="RigidBody2D" groups=["OnMap"]]
 visibility_layer = 3
@@ -191,6 +194,10 @@ max_rotation_deg = Vector2(-15, 160)
 [node name="GunMissile" parent="WeaponsController" instance=ExtResource("9_5pdae")]
 position = Vector2(-53, 30)
 weapon_group = 2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-60, -25)
+occluder = SubResource("OccluderPolygon2D_vue1i")
 
 [connection signal="destroyed" from="Booster" to="." method="_on_booster_destroyed"]
 [connection signal="destroyed" from="Booster2" to="." method="_on_booster_destroyed"]
