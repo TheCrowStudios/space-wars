@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkimk076s2syg"]
+[gd_scene load_steps=15 format=3 uid="uid://dkimk076s2syg"]
 
 [ext_resource type="Script" uid="uid://6wum8tp2pqfj" path="res://scripts/character.gd" id="1_0dpix"]
 [ext_resource type="PackedScene" uid="uid://bawk4e74o6ycc" path="res://scenes/player_character_controls.tscn" id="2_0lw5n"]
 [ext_resource type="Texture2D" uid="uid://daj21kmcteqq6" path="res://sprites/character.png" id="3_0lw5n"]
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="6_8yvht"]
+[ext_resource type="Texture2D" uid="uid://dkswv42poag4g" path="res://sprites/character-idle-right.png" id="7_2cgup"]
 [ext_resource type="PackedScene" uid="uid://cf3w4gam5qhth" path="res://scenes/particles/BloodSplatter.tscn" id="7_lagn4"]
 [ext_resource type="AudioStream" uid="uid://bstgnphmr27se" path="res://sounds/impact-flesh.wav" id="8_x8k1v"]
 
@@ -13,6 +14,42 @@ size = Vector2(10.25, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cgup"]
 size = Vector2(12, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ia6"]
+atlas = ExtResource("7_2cgup")
+region = Rect2(0, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dpix"]
+atlas = ExtResource("7_2cgup")
+region = Rect2(96, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hyy3"]
+atlas = ExtResource("7_2cgup")
+region = Rect2(192, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irmqu"]
+atlas = ExtResource("7_2cgup")
+region = Rect2(288, 0, 96, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7eonc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5ia6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dpix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hyy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irmqu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_0dpix")
 player_controls = ExtResource("2_0lw5n")
@@ -21,6 +58,7 @@ player_controls = ExtResource("2_0lw5n")
 zoom = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_0lw5n")
 
 [node name="DestructibleObject" type="StaticBody2D" parent="."]
@@ -40,5 +78,8 @@ shape = SubResource("RectangleShape2D_lrnyl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_2cgup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7eonc")
 
 [connection signal="destroyed" from="DestructibleObject" to="." method="_on_destructible_object_destroyed"]

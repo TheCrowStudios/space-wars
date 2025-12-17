@@ -6,6 +6,8 @@ extends Node2D
 @export var rpm = 600
 @export var bullet: PackedScene
 @export var locking: bool = false
+@export var limit_rotation: bool = true
+@export var flip: bool = false
 
 var target: Node2D
 
@@ -35,8 +37,12 @@ func _process(delta: float) -> void:
 
 func look(pos: Vector2):
 	look_at(pos)
-	if (rotation_degrees < max_rotation_deg.x): rotation_degrees = max_rotation_deg.x
-	if (rotation_degrees > max_rotation_deg.y): rotation_degrees = max_rotation_deg.y
+	if limit_rotation:
+		if (rotation_degrees < max_rotation_deg.x): rotation_degrees = max_rotation_deg.x
+		if (rotation_degrees > max_rotation_deg.y): rotation_degrees = max_rotation_deg.y
+	else:
+		rotation_degrees = wrapf(rotation_degrees, -180, 180)
+		$Sprite2D.flip_v = rotation_degrees > 90 || rotation_degrees < -90
 	# rotation_degrees = wrap(rotation_degrees, max_rotation_deg.x, max_rotation_deg.y)
 	# var angle_to_mouse = rad_to_deg(global_position.angle_to(get_global_mouse_position()))
 	# print(global_position)
@@ -47,10 +53,13 @@ func look(pos: Vector2):
 func fire() -> void:
 	if %ProjectileCollisionChecker.is_blocked(): return
 
-	if (cooldown <= 0 && rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1):
+	if (limit_rotation && !(rotation_degrees >= max_rotation_deg.x + 1 && rotation_degrees <= max_rotation_deg.y - 1)): return
+
+	if (cooldown <= 0):
 		var bullet_instance: Node2D = bullet.instantiate()
-		bullet_instance.set_parent_ref(parent_ref)
-		bullet_instance.inherited_velocity = parent_ref.linear_velocity
+		if parent_ref:
+			bullet_instance.set_parent_ref(parent_ref)
+			bullet_instance.inherited_velocity = parent_ref.linear_velocity
 		bullet_instance.global_rotation = global_rotation
 		bullet_instance.global_position = muzzle.global_position
 		if locking:

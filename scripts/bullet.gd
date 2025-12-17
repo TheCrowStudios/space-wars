@@ -72,7 +72,7 @@ func handle_collision():
 		is_destroyed = collider.is_destroyed
 	
 	# ignore parent collisions
-	if parent_ref.get_instance_id() == collider.get_parent_ref().get_instance_id():
+	if parent_ref && parent_ref.get_instance_id() == collider.get_parent_ref().get_instance_id():
 		return
 
 	if angle_cos < max_cos && !is_destroyed:
@@ -129,3 +129,4 @@ func handle_collision():
 				velocity = pre_collision_velocity
 				penetration_left -= collider.penetration_cost
 			else: queue_free()
+		else: queue_free()

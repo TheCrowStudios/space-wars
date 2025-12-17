@@ -1,3 +1,4 @@
+class_name WeaponsController
 extends Node2D
 
 

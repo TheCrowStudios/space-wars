@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var movement_speed: int = 100
 @export var is_player: bool = false
 @export var player_controls: PackedScene
+@export var weapons_controller: WeaponsController
 
 # @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -14,6 +15,8 @@ func _ready() -> void:
 	if is_player:
 		var player_controls_instance = player_controls.instantiate()
 		add_child(player_controls_instance)
+		if weapons_controller:
+			player_controls_instance.weapons_controller = weapons_controller
 		add_to_group("player")
 # 	animations.play("idle")
 

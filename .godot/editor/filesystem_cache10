@@ -1,24 +1,24 @@
 f098f8d3115d962055284dee314b4f89
-::res://::1765891274
+::res://::1765987145
 bullet.gd::GDScript::2774279100652663697::1764534724::0::1::::<>Node2D<><>0<>0<><>::
-bullet_medium.gdshader::Shader::5997112999741014508::1765825870::0::1::::<><><>0<>0<><>::
+bullet_medium.gdshader::Shader::5997112999741014508::1765987145::0::1::::<><><>0<>0<><>::
 bullet_shader.tres::VisualShader::1600846921148625764::1764379775::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1764535706::0::1::::<><><>0<>0<><>::
 icon.png::CompressedTexture2D::6204303637886799517::1764102090::1764866599::1::::<><><>0<>0<>71cb51318a2d496942b0df6f8673d0d9<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 README.md::TextFile::-1::1764102454::0::1::::<><><>0<>0<><>::
 ship.gd::GDScript::7617581137610204250::1764346524::0::1::::<>RigidBody2D<><>0<>0<><>::
-wormhole.gdshader::Shader::5017968082147066542::1765825870::0::1::::<><><>0<>0<><>::
+wormhole.gdshader::Shader::5017968082147066542::1765987145::0::1::::<><><>0<>0<><>::
 ::res://addons/::1765498314
 ::res://addons/dialogue_manager/::1765498316
 constants.gd::GDScript::4240262336831424009::1765498315::0::1::::DMConstants<>RefCounted<><>0<>0<><>::
-dialogue_label.gd::GDScript::480611383085669467::1765498315::0::1::::DialogueLabel<>RichTextLabel<>res://addons/dialogue_manager/assets/icon.svg<>0<>1<><>::
+dialogue_label.gd::GDScript::480611383085669467::1765498315::0::1::::DialogueLabel<>RichTextLabel<><>0<>1<><>::
 dialogue_label.tscn::PackedScene::5518490004210093266::1765498315::0::1::::<><><>0<>0<><>::uid://g32um0mltv5d::::res://addons/dialogue_manager/dialogue_label.gd
 dialogue_line.gd::GDScript::1208905219044177333::1765498315::0::1::::DialogueLine<>RefCounted<><>0<>0<><>::
 dialogue_manager.gd::GDScript::6774079045493014679::1765498315::0::1::::<>Node<><>0<>0<><>::
 dialogue_processor.gd::GDScript::900179394300351269::1765498315::0::1::::DMDialogueProcessor<>RefCounted<><>0<>0<><>::
-dialogue_resource.gd::GDScript::7268423792262407282::1765498315::0::1::::DialogueResource<>Resource<>res://addons/dialogue_manager/assets/icon.svg<>0<>1<><>::
+dialogue_resource.gd::GDScript::7268423792262407282::1765498315::0::1::::DialogueResource<>Resource<><>0<>1<><>::
 dialogue_response.gd::GDScript::5668140482552713515::1765498315::0::1::::DialogueResponse<>RefCounted<><>0<>0<><>::
-dialogue_responses_menu.gd::GDScript::2520211531407682507::1765498315::0::1::::DialogueResponsesMenu<>Container<>res://addons/dialogue_manager/assets/responses_menu.svg<>0<>0<><>::
+dialogue_responses_menu.gd::GDScript::2520211531407682507::1765498315::0::1::::DialogueResponsesMenu<>Container<><>0<>0<><>::
 editor_translation_parser_plugin.gd::GDScript::6952218891186463517::1765498315::0::1::::DMTranslationParserPlugin<>EditorTranslationParserPlugin<><>0<>0<><>::
 export_plugin.gd::GDScript::1265275163198105838::1765498315::0::1::::DMExportPlugin<>EditorExportPlugin<><>0<>0<><>::
 import_plugin.gd::GDScript::7696928728755687928::1765498315::0::1::::DMImportPlugin<>EditorImportPlugin<><>0<>1<><>::
@@ -120,10 +120,10 @@ balloon.tscn::PackedScene::5032333583232034928::1765649802::0::1::::<><><>0<>0<>
 space-station-intro.dialogue::Resource::8457088200829712548::1765500186::1765504450::1::::<><><>0<>0<>b381847a33d549bd10d6fbba8a44797b<>res://.godot/imported/space-station-intro.dialogue-4dc6c15e6a4522643a7e668f3dd4cb24.tres::uid://dbs4435dsf3ry::::res://addons/dialogue_manager/dialogue_resource.gd
 ::res://missions/::1765729697
 training.tres::Resource/Mission::1987952197555116232::1765729697::0::1::::<><><>0<>0<><>::uid://d2vi1a6t57sdq::::res://scripts/mission_objective.gd<>uid://crjpgne5hm7el::::res://scripts/mission.gd
-::res://scenes/::1765846053
+::res://scenes/::1765987145
 booster.tscn::PackedScene::8602800629493305343::1765663289::0::1::::<><><>0<>0<><>::uid://cge2fjm0v7fev::::res://scripts/booster.gd<>uid://uyrtg88oyk2m::::res://sprites/booster_flames.png<>uid://d1g3gp7rblfhw::::res://sprites/booster.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cjspkvcarli03::::res://sprites/booster_destroyed.png<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://cmh48hcsn7ww::::res://scenes/particles/small_fire_particles.tscn<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://b84ev38a28gf8::::res://sounds/projectiles/bullet-hit-metal-hard.wav
 bullet.tscn::PackedScene::6372869884180378327::1765581134::0::1::::<><><>0<>0<><>::uid://mpxl8grgeppu::::res://scripts/bullet.gd<>uid://crpbtsurxwks7::::res://bullet_medium.gdshader<>uid://c56ntcxjyk0tf::::res://scenes/projectile_lifetime_controller.tscn<>uid://dbfrlsbyx7h3v::::res://sprites/bullet_medium.png
-character.tscn::PackedScene::7878413335295481686::1765665590::0::1::::<><><>0<>0<><>::uid://6wum8tp2pqfj::::res://scripts/character.gd<>uid://bawk4e74o6ycc::::res://scenes/player_character_controls.tscn<>uid://daj21kmcteqq6::::res://sprites/character.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cf3w4gam5qhth::::res://scenes/particles/BloodSplatter.tscn<>uid://bstgnphmr27se::::res://sounds/impact-flesh.wav
+character.tscn::PackedScene::7878413335295481686::1765987145::0::1::::<><><>0<>0<><>::uid://6wum8tp2pqfj::::res://scripts/character.gd<>uid://bawk4e74o6ycc::::res://scenes/player_character_controls.tscn<>uid://daj21kmcteqq6::::res://sprites/character.png<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://dkswv42poag4g::::res://sprites/character-idle-right.png<>uid://cf3w4gam5qhth::::res://scenes/particles/BloodSplatter.tscn<>uid://bstgnphmr27se::::res://sounds/impact-flesh.wav
 CharacterStatic.tscn::PackedScene::5759862157851562083::1765665333::0::1::::<><><>0<>0<><>::uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cm04ifmkwoike::::res://scripts/character_static.gd<>uid://bs6ump1ooiwhx::::res://sprites/character-die.png<>uid://dlqnkcv10jd03::::res://sprites/character-idle.png<>uid://calvyvm20bxhq::::res://sprites/character-sit.png<>uid://cf3w4gam5qhth::::res://scenes/particles/BloodSplatter.tscn<>uid://bstgnphmr27se::::res://sounds/impact-flesh.wav
 debris.tscn::PackedScene::7703089425517365496::1765204657::0::1::::<><><>0<>0<><>::uid://b5wgccjn3h4jy::::res://sprites/spaceship_debris.png<>uid://dluw0a0m6kav8::::res://scripts/debris.gd
 explosion_radius.tscn::PackedScene::6745186369723404761::1765765041::0::1::::<><><>0<>0<><>::uid://b6ko6ecjavcvw::::res://scripts/explosion_radius.gd
@@ -142,7 +142,7 @@ map_icon.tscn::PackedScene::2407740604347240264::1765204713::0::1::::<><><>0<>0<
 missile.tscn::PackedScene::5020282522607120657::1765831724::0::1::::<><><>0<>0<><>::uid://bdqfybpb45hum::::res://scripts/missile.gd<>uid://bfdqnkdhvdeh0::::res://sprites/rocket.png<>uid://c3doh7sen65p2::::res://scenes/explosion_radius.tscn<>uid://dnn6pgn88khwg::::res://scenes/particles/rocket_projectile_trail_particles.tscn<>uid://cn3dxqfvytv2s::::res://scenes/particles/explosion_new.tscn<>uid://c56ntcxjyk0tf::::res://scenes/projectile_lifetime_controller.tscn
 mission_selection.tscn::PackedScene::905974291982623169::1765640845::0::1::::<><><>0<>0<><>::uid://bgv7soc752tut::::res://sprites/galaxy-select-bg.png
 Node2D.tscn::PackedScene::7479923645274970171::1765825870::0::1::::<><><>0<>0<><>::uid://dfbxq8sgm184p::::res://scripts/node_2d.gd<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn<>uid://cxjg1m7xkalvm::::res://scenes/spaceship.tscn<>uid://c3doh7sen65p2::::res://scenes/explosion_radius.tscn<>uid://cafftws4lp3jo::::res://sprites/map-dot-green.png<>uid://2m2ebkih1klh::::res://scripts/sub_viewport_container.gd
-oxygen_tank.gd::GDScript::4529866165074168570::1764546737::0::1::::<>StaticBody2D<><>0<>0<><>::
+oxygen_tank.gd::GDScript::4529866165074168570::1765891481::0::1::::<>StaticBody2D<><>0<>0<><>::
 oxygen_tank.tscn::PackedScene::4607652947853397776::1765831229::0::1::::<><><>0<>0<><>::uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://cmh48hcsn7ww::::res://scenes/particles/small_fire_particles.tscn<>uid://lct10hwmvlk0::::res://sounds/explosions/explosion-3.mp3<>uid://davw7s5qgrbdj::::res://sounds/large-underwater-explosion.mp3<>uid://cn3dxqfvytv2s::::res://scenes/particles/explosion_new.tscn<>uid://b51agtehmh677::::res://sprites/oxygen-tank.png<>uid://bd3i707m8pjbw::::res://sprites/oxygen-tank-destroyed.png
 parallax_background.tscn::PackedScene::7477262462922549966::1765232894::0::1::::<><><>0<>0<><>::uid://bvmsevttvjhgc::::res://scripts/parallax_background.gd<>uid://b3ptrx48spox0::::res://assets/galaxy-pixelized-no-bg.png<>uid://ccm4ho271880v::::res://sprites/stars-1024.png<>uid://cuf032jjif886::::res://sprites/space2.png
 player_character_controls.tscn::PackedScene::2432496213098046878::1765665577::0::1::::<><><>0<>0<><>::uid://blp7q68sf1qbv::::res://scripts/player_controls.gd
@@ -150,17 +150,19 @@ popups.tscn::PackedScene::6733854007090318818::1765161872::0::1::::<><><>0<>0<><
 projectile_collission_checker.gd::GDScript::6395497532835897590::1765561592::0::1::::<>Area2D<><>0<>0<><>::
 projectile_collission_checker.tscn::PackedScene::770221704180735250::1765581059::0::1::::<><><>0<>0<><>::uid://cxea566sigh6m::::res://scenes/projectile_collission_checker.gd
 projectile_lifetime_controller.tscn::PackedScene::6943325778911799071::1765579922::0::1::::<><><>0<>0<><>::uid://ckc0nj0dbt6vq::::res://scripts/projectile_lifetime_controller.gd
-spaceship.tscn::PackedScene::6406175584217945602::1765846053::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/projectiles/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/projectiles/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/projectiles/bullet-flyby-3.wav<>uid://bp5bchp5n7cm8::::res://scenes/spaceship_body.gd<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://cwayjd5jnigj5::::res://scenes/main_booster.tscn<>uid://ditexeonnfybi::::res://scenes/gun_missile.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn<>uid://v1jjc0ckyb7c::::res://sprites/crosshair.png<>uid://baklevgqxpqt1::::res://scenes/map_icon.tscn<>uid://m411nidxgfs::::res://scripts/weapons_controller.gd
+spaceship.tscn::PackedScene::6406175584217945602::1765930375::0::1::::<><><>0<>0<><>::uid://br12gvogxfn8v::::res://scripts/spaceship.gd<>uid://cljar8m58j2f4::::res://sounds/projectiles/bullet-flyby-1.wav<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png<>uid://dmrj12jaqjweu::::res://sounds/projectiles/bullet-flyby-2.wav<>uid://duti4teficyot::::res://scenes/booster.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://8iyq7bpi66x1::::res://sounds/projectiles/bullet-flyby-3.wav<>uid://bp5bchp5n7cm8::::res://scenes/spaceship_body.gd<>uid://buyk2c060gonj::::res://scenes/fuel_tank.tscn<>uid://cwayjd5jnigj5::::res://scenes/main_booster.tscn<>uid://ditexeonnfybi::::res://scenes/gun_missile.tscn<>uid://c67t0mehboovx::::res://scenes/fuel_armor.tscn<>uid://b6v8muyp0qg5m::::res://scenes/oxygen_tank.tscn<>uid://lyerjc101yao::::res://scripts/destructible_object.gd<>uid://qylle52hwoov::::res://sounds/projectiles/bullet-impact-metal.wav<>uid://dh0o00s7wk0kq::::res://scenes/debris.tscn<>uid://cshungy5nkn1l::::res://scenes/particles/sparks.tscn<>uid://u34gapwiknpb::::res://sounds/projectiles/bullet_ricochet.wav<>uid://cocec88e1iixv::::res://scenes/CharacterStatic.tscn<>uid://v1jjc0ckyb7c::::res://sprites/crosshair.png<>uid://baklevgqxpqt1::::res://scenes/map_icon.tscn<>uid://ne7ug2x5fclb::::res://scenes/weapons_controller.tscn
 spaceship_ai_brains.tscn::PackedScene::2833821804073143681::1765505990::0::1::::<><><>0<>0<><>::uid://uqf1morlx0jm::::res://scripts/spaceship_ai_brains.gd
-spaceship_body.gd::GDScript::3501249351683169169::1765847810::0::1::::<>MeshInstance2D<><>0<>0<><>::
+spaceship_body.gd::GDScript::3501249351683169169::1765892467::0::1::::<>MeshInstance2D<><>0<>0<><>::
 spaceship_player_brains.tscn::PackedScene::1150683378227492611::1765505980::0::1::::<><><>0<>0<><>::uid://cgpnib13gcry1::::res://scripts/spaceship_player_brains.gd
 space_station.tscn::PackedScene::1286679127999510958::1765564890::0::1::::<><><>0<>0<><>::uid://xye4pmxeh032::::res://sprites/space-station-tileset-8px.png<>uid://ic23wbgud8hq::::res://sprites/space-station-tileset-multiple-8px.png<>uid://dkimk076s2syg::::res://scenes/character.tscn<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn
-space_station_new.tscn::PackedScene::5658929751283668126::1765741267::0::1::::<><><>0<>0<><>::uid://dkimk076s2syg::::res://scenes/character.tscn<>uid://bj60hkxhvhow8::::res://assets/tileset.png<>uid://bwoomydsmbdo1::::res://scenes/interactable_object.tscn<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn
+space_station_new.tscn::PackedScene::5658929751283668126::1765930950::0::1::::<><><>0<>0<><>::uid://dkimk076s2syg::::res://scenes/character.tscn<>uid://bj60hkxhvhow8::::res://assets/tileset.png<>uid://bwoomydsmbdo1::::res://scenes/interactable_object.tscn<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn<>uid://ne7ug2x5fclb::::res://scenes/weapons_controller.tscn<>uid://dbvme2ycrsabr::::res://scenes/gun_medium.tscn<>uid://c83nyx8b8yh2m::::res://scenes/particles/electric_sparks.tscn
+weapons_controller.tscn::PackedScene::922691495892408999::1765930370::0::1::::<><><>0<>0<><>::uid://m411nidxgfs::::res://scripts/weapons_controller.gd
 world_environment.tscn::PackedScene::646422117632279122::1764431587::0::1::::<><><>0<>0<><>::
 wormhole.tscn::PackedScene::5555405656246196581::1765463326::0::1::::<><><>0<>0<><>::
 wormhole_entrance.tscn::PackedScene::6883164165694267066::1765465091::0::1::::<><><>0<>0<><>::uid://cdq0g3tejjihi::::res://wormhole.gdshader<>uid://iu5o7tr36nbr::::res://scripts/wormhole_entrance.gd<>uid://desboj5mikl31::::res://scenes/parallax_background.tscn<>uid://dsbjpvqyv7ehi::::res://sprites/spaceship.png
-::res://scenes/particles/::1765839233
+::res://scenes/particles/::1765930028
 BloodSplatter.tscn::PackedScene::5182976040280195593::1764936248::0::1::::<><><>0<>0<><>::
+electric_sparks.tscn::PackedScene::7147709223620711918::1765930028::0::1::::<><><>0<>0<><>::
 explosion_new.tscn::PackedScene::5743322985117021172::1765839233::0::1::::<><><>0<>0<><>::
 explosion_oxygen.tscn::PackedScene::4425000940827729203::1765830564::0::1::::<><><>0<>0<><>::
 fire_particles.tscn::PackedScene::4470043085339841588::1764865210::0::1::::<><><>0<>0<><>::
@@ -170,8 +172,8 @@ smoke_particles.tscn::PackedScene::6410389020008119700::1764542150::0::1::::<><>
 sparks.tscn::PackedScene::6051929105921547283::1764608184::0::1::::<><><>0<>0<><>::uid://dlql5u6k4jb2m::::res://scripts/sparks.gd
 ::res://scripts/::1765845876
 booster.gd::GDScript::5203880720417871137::1765663175::0::1::::<>Node2D<><>0<>0<><>::
-bullet.gd::GDScript::874649667853844334::1765846867::0::1::::Bullet<>CharacterBody2D<><>0<>0<><>::
-character.gd::GDScript::2222507996090566331::1765665527::0::1::::Character<>CharacterBody2D<><>0<>0<><>::
+bullet.gd::GDScript::874649667853844334::1765930763::0::1::::Bullet<>CharacterBody2D<><>0<>0<><>::
+character.gd::GDScript::2222507996090566331::1765930676::0::1::::Character<>CharacterBody2D<><>0<>0<><>::
 character_static.gd::GDScript::5668492295674268936::1765665297::0::1::::<>Node2D<><>0<>0<><>::
 debris.gd::GDScript::7974007344074495211::1764607083::0::1::::<>GPUParticles2D<><>0<>0<><>::
 destructible_object.gd::GDScript::821896049598779150::1765846634::0::1::::DestructibleObject<>StaticBody2D<><>0<>0<><>::
@@ -188,17 +190,17 @@ mission.gd::GDScript::5985553269029912355::1765728009::0::1::::Mission<>Resource
 mission_objective.gd::GDScript::9098244977518670526::1765658380::0::1::::MissionObjective<>Resource<><>0<>0<><>::
 node_2d.gd::GDScript::7513697471926375741::1765575609::0::1::::<>Node2D<><>0<>0<><>::
 parallax_background.gd::GDScript::3886260115419249442::1764373778::0::1::::<>ParallaxBackground<><>0<>0<><>::
-player_controls.gd::GDScript::3191436826521319063::1765575365::0::1::::<>Node<><>0<>0<><>::
+player_controls.gd::GDScript::3191436826521319063::1765930628::0::1::::<>Node<><>0<>0<><>::
 popups.gd::GDScript::7312159263698115762::1765117477::0::1::::<>Control<><>0<>0<><>::
 projectile_lifetime_controller.gd::GDScript::5480400210883258398::1765831026::0::1::::<>Node<><>0<>0<><>::
-spaceship.gd::GDScript::3634956045634505475::1765846640::0::1::::Spaceship<>RigidBody2D<><>0<>0<><>::
+spaceship.gd::GDScript::3634956045634505475::1765892933::0::1::::Spaceship<>RigidBody2D<><>0<>0<><>::
 spaceship_.gd::GDScript::7218332317181757478::1765741455::0::1::::<>CharacterBody2D<><>0<>0<><>::
 spaceship_ai_brains.gd::GDScript::1437157585126462378::1765845876::0::1::::SpaceshipAIBrains<>Node<><>0<>0<><>::
 spaceship_player_brains.gd::GDScript::5225743796751070206::1765826053::0::1::::<>Node<><>0<>0<><>::
 sparks.gd::GDScript::7965091934749597374::1764607190::0::1::::<>GPUParticles2D<><>0<>0<><>::
 sub_viewport_container.gd::GDScript::1921517881601171685::1765207203::0::1::::<>SubViewportContainer<><>0<>0<><>::
-weapon.gd::GDScript::7298508218758178617::1765743100::0::1::::Weapon<>Node2D<><>0<>0<><>::
-weapons_controller.gd::GDScript::26581142538436732::1765806770::0::1::::<>Node2D<><>0<>0<><>::
+weapon.gd::GDScript::7298508218758178617::1765931088::0::1::::Weapon<>Node2D<><>0<>0<><>::
+weapons_controller.gd::GDScript::26581142538436732::1765930582::0::1::::WeaponsController<>Node2D<><>0<>0<><>::
 wormhole_entrance.gd::GDScript::604646525992658687::1765465085::0::1::::<>Node2D<><>0<>0<><>::
 ::res://sounds/::1765640302
 impact-flesh.wav::AudioStreamWAV::3689431363015106832::1764936871::1764936880::1::::<><><>0<>0<>960d0a8636d95f9492ed915675e5d78a<>res://.godot/imported/impact-flesh.wav-9ed377e556f5836abe32b41468d2efde.sample::
@@ -226,7 +228,7 @@ laserShoot (1).wav::AudioStreamWAV::6887199362059350815::1764344643::1765204597:
 laserShoot (2).wav::AudioStreamWAV::6278862405019453546::1764344643::1765204597::1::::<><><>0<>0<>739b3b568ce06e7d8c275387783f9b39<>res://.godot/imported/laserShoot (2).wav-5c7d8452f21de9dcb9c292b18ef4b243.sample::
 laserShoot.wav::AudioStreamWAV::6235025953350372883::1764344405::1765204597::1::::<><><>0<>0<>25dd06a5c04088c2c40d45c490525be0<>res://.godot/imported/laserShoot.wav-3f108e43f4172ae35b3e41c2ea6e63e0.sample::
 shooting.wav::AudioStreamWAV::262016436202131561::1764367563::1765204602::1::::<><><>0<>0<>82d24b3de4d81cad3fa5a4b77c099eee<>res://.godot/imported/shooting.wav-00df2cb73b376d537faa753eaf29609a.sample::
-::res://sprites/::1765639347
+::res://sprites/::1765987257
 booster.png::CompressedTexture2D::8998269880811564576::1764376730::1764866599::1::::<><><>0<>0<>bb7f508a2aa50357e666cfaef6ac9eea<>res://.godot/imported/booster.png-c0974c772313387886158fed40a072a0.ctex::
 boosters.png::CompressedTexture2D::6538146653345737030::1764207477::1764866599::1::::<><><>0<>0<>3156bbd40fcc7e710f247a58eba59dc5<>res://.godot/imported/boosters.png-154a8f769ed0690b4885873389c3f1c7.ctex::
 booster_destroyed.png::CompressedTexture2D::5442629478635237494::1765552378::1765552383::1::::<><><>0<>0<>4e49cced6110aae00b6f5cc6bb36d1eb<>res://.godot/imported/booster_destroyed.png-5b4ba8dbfa50510e521c5787f63c3f18.ctex::
@@ -234,6 +236,7 @@ booster_flames.png::CompressedTexture2D::1454388425456985290::1764376647::176486
 bullet_glow.png::CompressedTexture2D::6885239427253658247::1764381992::1764866599::1::::<><><>0<>0<>656d085d46f88a8d052a79a096665ec8<>res://.godot/imported/bullet_glow.png-6234d02eb8958ac8ae509b5d558d5d9f.ctex::
 bullet_medium.png::CompressedTexture2D::7240825564185177881::1764376099::1764866599::1::::<><><>0<>0<>cd4402450cfde9bb5807bd5b8a4159d2<>res://.godot/imported/bullet_medium.png-efecbdc33cb4efe360617a7ed07f8033.ctex::
 character-die.png::CompressedTexture2D::3715052177606036797::1764892687::1764892691::1::::<><><>0<>0<>b760a7bf928a15430573f72a01c977f8<>res://.godot/imported/character-die.png-c58effbecb2b746676d307820e8e0fe1.ctex::
+character-idle-right.png::CompressedTexture2D::7899684128132689400::1765932713::1765933108::1::::<><><>0<>0<>1552f4be8180cf7eceb78583b527f31d<>res://.godot/imported/character-idle-right.png-36700bd983dc91fd4bb4c9301650d054.ctex::
 character-idle.png::CompressedTexture2D::7965176692710309330::1765396801::1765396802::1::::<><><>0<>0<>1b87b595def3c9bbcdf056b673ddc18f<>res://.godot/imported/character-idle.png-9c5672584a0886353ebf28aff6c433f8.ctex::
 character-sit.png::CompressedTexture2D::4796868561370909906::1764934333::1764934334::1::::<><><>0<>0<>e1cd4f5c957a17348463d23c9e6047ca<>res://.godot/imported/character-sit.png-68246c7f95f09a95c6c1672893670883.ctex::
 character.png::CompressedTexture2D::7179527784199654927::1765575217::1765575224::1::::<><><>0<>0<>d492ece371d76e620d2c6d4fcd195519<>res://.godot/imported/character.png-eb70ac48a5acf508c4b7740ea4ac4fae.ctex::
@@ -250,6 +253,7 @@ galaxy-select-2.png::CompressedTexture2D::8654144749608818406::1765484172::17654
 galaxy-select-bg.png::CompressedTexture2D::2852881506326983999::1765483080::1765483083::1::::<><><>0<>0<>55509d9430e6b24b16b00666c8699c28<>res://.godot/imported/galaxy-select-bg.png-6738ceb2fe2716ef0493c91dcbdc8a60.ctex::
 gun-missile.png::CompressedTexture2D::9208268921290452973::1765550936::1765550947::1::::<><><>0<>0<>4e839a31e78b9315c9744ad0d27d00a5<>res://.godot/imported/gun-missile.png-849e1c3599bf9846d29c11aded3387d0.ctex::
 gun_medium.png::CompressedTexture2D::3313121688485528915::1764339848::1764866599::1::::<><><>0<>0<>234d0ac372a8802cd3a0be7af291aab2<>res://.godot/imported/gun_medium.png-c02c6dd3271e677e656da25485456873.ctex::
+idle_down.png::CompressedTexture2D::3013899639684965296::1765932708::1765933108::1::::<><><>0<>0<>503af1452efc2e089fff5a1b45f10a5a<>res://.godot/imported/idle_down.png-f8e6fb94ebc3ae0eadf938490de118c6.ctex::
 light.png::CompressedTexture2D::1811767780774265299::1764424668::1764866599::1::::<><><>0<>0<>62a234f77622cba54d579f47b4da5320<>res://.godot/imported/light.png-191c2812e8968dabd6c4fd26c78b4e95.ctex::
 map-dot-green.png::CompressedTexture2D::4783501955857658232::1765288766::1765288789::1::::<><><>0<>0<>7ba5e1479d209297ac0c5dc3d9041649<>res://.godot/imported/map-dot-green.png-db2a60b0016f868210ff383746a04e15.ctex::
 map-dot-red.png::CompressedTexture2D::1864807660740363806::1765288783::1765288789::1::::<><><>0<>0<>5338e0e3384d3d4bf4cf9caa99dba3af<>res://.godot/imported/map-dot-red.png-4ebb4f7516a14fb68b12977d0bdaa552.ctex::
@@ -272,3 +276,52 @@ spaceship.png::CompressedTexture2D::8425299982988416982::1764527991::1764866599:
 spaceship_debris.png::CompressedTexture2D::4537870296546123158::1764511630::1764866599::1::::<><><>0<>0<>adfbbeb600b5043dc06a72001e756b12<>res://.godot/imported/spaceship_debris.png-5014f4af6d5033595398d3f8499b8702.ctex::
 stars-1024.png::CompressedTexture2D::4939765659585181523::1764430951::1764866599::1::::<><><>0<>0<>c6afd07bbc22f673eb2a58d966583fc7<>res://.godot/imported/stars-1024.png-0f56d3602b82120b6ab060ea8898118b.ctex::
 stars.png::CompressedTexture2D::2027429572447634725::1764374445::1765551676::1::::<><><>0<>0<>30efe1aba78305e6c1e969b6485d9d25<>res://.godot/imported/stars.png-59981ab0088e30e0e7a61ed47e072d60.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/::1765987257
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/AssaultRifles/::1765987257
+5AssaultRifle05.png::CompressedTexture2D::3190945081604658618::1765987257::1765987258::1::::<><><>0<>0<>cd26c5a495fff2f80d7f169c593e3480<>res://.godot/imported/5AssaultRifle05.png-4d8b7d80af78243b59452676d3a95d79.ctex::
+7Assoultrifle07.png::CompressedTexture2D::4946745421967627946::1765987257::1765987258::1::::<><><>0<>0<>6b59368aff1872e03938633bf832f2e7<>res://.godot/imported/7Assoultrifle07.png-ad4c2543626412b4e40fdcada839e1dc.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/AssaultRifles/Outlined/::1765987257
+5AssaultRifle05.png::CompressedTexture2D::7491577763103583605::1765987257::1765987258::1::::<><><>0<>0<>3b74b949c943876cf34085a0e75e023c<>res://.godot/imported/5AssaultRifle05.png-665172e1784e3749fdf9d725d638ea69.ctex::
+M16.png::CompressedTexture2D::648943985977228629::1765987257::1765987258::1::::<><><>0<>0<>672adb829a5cf8e005c3dc67a46f4eba<>res://.godot/imported/M16.png-cd75cc6efa8febe3e4ac132081c17c24.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/::1765987257
+4Explosive04.png::CompressedTexture2D::1927986431360483133::1765987257::1765987258::1::::<><><>0<>0<>64fa00a0c8ddacebff4bfca7631ae4d0<>res://.godot/imported/4Explosive04.png-0eb76f80602ca4e69fa90365479f16af.ctex::
+5Explosive05.png::CompressedTexture2D::7607047705972005713::1765987257::1765987258::1::::<><><>0<>0<>7be57566e51b8f9899e1b5bc1b1ab6a9<>res://.godot/imported/5Explosive05.png-5b2e6a4c1399afd0de6e267d4b30db39.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/Outlined/::1765987257
+4Explosive04.png::CompressedTexture2D::6418840707506457950::1765987257::1765987258::1::::<><><>0<>0<>d1ac9419b85bb27a0f635b5739d2d959<>res://.godot/imported/4Explosive04.png-d6e6f88676f30d4c19c925d799ae90b2.ctex::
+5Explosive05.png::CompressedTexture2D::8847953538820487616::1765987257::1765987258::1::::<><><>0<>0<>2240f639e2ab694e0cd0ac7ba613e4f3<>res://.godot/imported/5Explosive05.png-8c1e6a23876f7026ada6769727bc431e.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/::1765987257
+1Machinegun01.png::CompressedTexture2D::7385202458747035836::1765987257::1765987258::1::::<><><>0<>0<>adf4b45c6802603a51ec6f870e2738b7<>res://.godot/imported/1Machinegun01.png-1be8d678fd5d75d3ba8c482d34204274.ctex::
+6Machinegun06.png::CompressedTexture2D::3109174145812676032::1765987257::1765987258::1::::<><><>0<>0<>777295b83e290acfe4b00241912fe888<>res://.godot/imported/6Machinegun06.png-d2971b9b5c35b4359c8150c591734deb.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/Outlined/::1765987257
+1Machinegun01.png::CompressedTexture2D::1292772907578507970::1765987257::1765987258::1::::<><><>0<>0<>3e023cddb2129a19c9f15f49656344d7<>res://.godot/imported/1Machinegun01.png-bbca410bbeca2831cfd0e5e54101d6a4.ctex::
+6Machinegun06.png::CompressedTexture2D::750624231296543988::1765987257::1765987258::1::::<><><>0<>0<>d9d331de3abd8f433ec966c8bfba6e6c<>res://.godot/imported/6Machinegun06.png-e2f7b69bff149643479d759667b55462.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Pistols/::1765987257
+3Pistol03.png::CompressedTexture2D::9171918781849399943::1765987257::1765987258::1::::<><><>0<>0<>b5a06b76ee5ad36043b437445cc38c74<>res://.godot/imported/3Pistol03.png-d4c4912400070cbcd6dd32ac934bdf63.ctex::
+7Pistol07.png::CompressedTexture2D::2849461497243886115::1765987257::1765987258::1::::<><><>0<>0<>059545bdadd126d133a3ddb9b4d2caab<>res://.godot/imported/7Pistol07.png-0f2b88358756c90518f95a25b2ee9c4f.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Pistols/Outlined/::1765987257
+3Pistol03.png::CompressedTexture2D::954586156980401415::1765987257::1765987258::1::::<><><>0<>0<>30c23275ee3d99ed433e597d25c6c126<>res://.godot/imported/3Pistol03.png-a141b0f0a6be27fd57354507768aa721.ctex::
+Deagle.png::CompressedTexture2D::6208181599501475467::1765987257::1765987258::1::::<><><>0<>0<>a506e0f43a893dd8b3b867ad0394690c<>res://.godot/imported/Deagle.png-d9fc359c6e2a44f4f371d1ec920de1f1.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Revolvers/::1765987257
+1Revolver01.png::CompressedTexture2D::4124867812200332705::1765987257::1765987258::1::::<><><>0<>0<>97d79927e2ab28f6d316bd027c764ec1<>res://.godot/imported/1Revolver01.png-37f3edbd14b06f2e753312a0aeddf4f8.ctex::
+2Revolver02.png::CompressedTexture2D::951542057832299718::1765987257::1765987258::1::::<><><>0<>0<>a5d76ef0ad006c40aec3597ffe759e13<>res://.godot/imported/2Revolver02.png-cd728f0c75ccd6089f41aee91dccb470.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Revolvers/Outlined/::1765987257
+1Revolver01.png::CompressedTexture2D::4073261140082643744::1765987257::1765987258::1::::<><><>0<>0<>e5bf581dc3565c7bda53402c9ba75d4d<>res://.godot/imported/1Revolver01.png-e19d6823cc9d0408ee0f5a98f406274d.ctex::
+2Revolver02.png::CompressedTexture2D::3750769976919973568::1765987257::1765987258::1::::<><><>0<>0<>a56756ce4eadd428a127c214396bac83<>res://.godot/imported/2Revolver02.png-ff556893dbcdf4982dc56915610cffd3.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/::1765987257
+2Shotgun02.png::CompressedTexture2D::4633553781976745880::1765987257::1765987258::1::::<><><>0<>0<>b455791ba7caceb0660e164b845b96be<>res://.godot/imported/2Shotgun02.png-b60868011753e1fa2efa3e93655ba11f.ctex::
+4Shotgun04.png::CompressedTexture2D::2255025659481812051::1765987257::1765987258::1::::<><><>0<>0<>b224135d886410032f4ebbe06ddf69b8<>res://.godot/imported/4Shotgun04.png-11114feeae0f046d9f8a965565a77a7a.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Shotguns/Outlined/::1765987257
+2Shotgun02.png::CompressedTexture2D::5772867757113549933::1765987257::1765987258::1::::<><><>0<>0<>edd041a23490bf37a8e9ae8e71ca21fb<>res://.godot/imported/2Shotgun02.png-6a849ccb8a7e15849cd6a28637a1981e.ctex::
+4Shotgun04.png::CompressedTexture2D::18576428048183601::1765987257::1765987258::1::::<><><>0<>0<>fd75836e1c190157a286530c576c0ef6<>res://.godot/imported/4Shotgun04.png-59c904efac23a1eaee4472992cf61d54.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/::1765987257
+4smg04.png::CompressedTexture2D::1331974234966496476::1765987257::1765987258::1::::<><><>0<>0<>fec3db87534b242d4bf322a68d8aefca<>res://.godot/imported/4smg04.png-541dbccace23b232ea2f9862224edf87.ctex::
+6smg06.png::CompressedTexture2D::7342162290760885880::1765987257::1765987258::1::::<><><>0<>0<>64e65421787a706a092b6755a2c4b49f<>res://.godot/imported/6smg06.png-2ab9b5e7fc3ba05139f724b627bd351f.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/Outlined/::1765987257
+4smg04.png::CompressedTexture2D::5018205874038078079::1765987257::1765987258::1::::<><><>0<>0<>fb5791d04474000808e2f5036a199b9a<>res://.godot/imported/4smg04.png-272c7f24e5af719af4a5bed387c95466.ctex::
+6smg06.png::CompressedTexture2D::6074918436169639193::1765987257::1765987258::1::::<><><>0<>0<>779e405ba4ac84d9df3e5ff8c64f736b<>res://.godot/imported/6smg06.png-4a5562048ec829fa708ee56c905d5d1b.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/::1765987257
+4SniperRifle04.png::CompressedTexture2D::4557751529946449420::1765987257::1765987258::1::::<><><>0<>0<>bc53f76d54e224285631c16c66fca4c3<>res://.godot/imported/4SniperRifle04.png-9a3628bfde3188844a1fadc53e0a20c2.ctex::
+6SniperRifle06.png::CompressedTexture2D::49539839928916658::1765987257::1765987258::1::::<><><>0<>0<>b64764ee1aefaa7a689effe037ad0319<>res://.godot/imported/6SniperRifle06.png-22da04e1609e024d34a598c9a99a5783.ctex::
+::res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/SniperRifles/Outlined/::1765987257
+4SniperRifle04.png::CompressedTexture2D::4379580105415177963::1765987257::1765987258::1::::<><><>0<>0<>a71488d7c36e18c03569e5220d1eb680<>res://.godot/imported/4SniperRifle04.png-4e7be65fe44d07670ea1273599e90b12.ctex::
+6SniperRifle06.png::CompressedTexture2D::8943968111969855237::1765987257::1765987258::1::::<><><>0<>0<>476cd89e400e8aad67bff1fb15ec5ded<>res://.godot/imported/6SniperRifle06.png-4e9a39cabc021dc68f09ec3074018127.ctex::
