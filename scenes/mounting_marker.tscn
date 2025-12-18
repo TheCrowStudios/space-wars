@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo301o06w84sa"]
+
+[ext_resource type="Texture2D" uid="uid://bw7wv43v4vps4" path="res://sprites/marker.png" id="1_hqa6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqa6i"]
+size = Vector2(8, 1)
+
+[node name="MountingMarker" type="Area2D" groups=["MountingMarker"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hqa6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_hqa6i")

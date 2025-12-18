@@ -1,0 +1,254 @@
+[gd_scene load_steps=23 format=4 uid="uid://co1tn004fs0sk"]
+
+[ext_resource type="Texture2D" uid="uid://dsbjpvqyv7ehi" path="res://sprites/spaceship.png" id="1_ml58o"]
+[ext_resource type="Script" uid="uid://bp5bchp5n7cm8" path="res://scenes/spaceship_body.gd" id="2_e7wym"]
+[ext_resource type="PackedScene" uid="uid://cwayjd5jnigj5" path="res://scenes/main_booster.tscn" id="3_ybcjm"]
+[ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="4_3qx80"]
+[ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="5_yn67l"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="6_oj8rt"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="7_vb1a7"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="8_d8q65"]
+[ext_resource type="PackedScene" uid="uid://cocec88e1iixv" path="res://scenes/CharacterStatic.tscn" id="9_ycq5x"]
+[ext_resource type="PackedScene" uid="uid://bo301o06w84sa" path="res://scenes/mounting_marker.tscn" id="10_ml58o"]
+[ext_resource type="Script" uid="uid://bv0wf0nqhnhce" path="res://scripts/parts_container.gd" id="11_e7wym"]
+[ext_resource type="PackedScene" uid="uid://dbvme2ycrsabr" path="res://scenes/gun_medium.tscn" id="12_3qx80"]
+[ext_resource type="PackedScene" uid="uid://ditexeonnfybi" path="res://scenes/gun_missile.tscn" id="13_oj8rt"]
+[ext_resource type="Texture2D" uid="uid://ddhpg8temrfmi" path="res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/1Machinegun01.png" id="13_yn67l"]
+[ext_resource type="Texture2D" uid="uid://bng5vopwpbq56" path="res://sprites/gun_medium.png" id="15_oj8rt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k3lwc"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-64, -28, 0, 125, 57, 0),
+"attribute_data": PackedByteArray("AAD4PgAAgD0AAPg+zcz8PQAASD4AAKA9AACAPAAAoD0AAIA8AAAgPgAAAAAAACA+AAAAAAAA8D4AAIA8AADwPgAAgDwAAAw/AAAAAAAADD8AAAAAAABcPwAAgDwAAFw/AACAPAAAcD8AAEg+AABwP2Zm5D4AAGQ/AAD4PgAAZD8AAPg+AAB0PwAABj8AAHQ/AAAGP5qZYz8zM1Q/AABYPwAAaT8AAFg/AAB6P5qZLT8AAHo/zcysPgAAaj+amUk+AABqP5qZMT4AABQ/AAAAPgAABj8AAAA+AAAGPwAAgD0="),
+"format": 34393296913,
+"index_count": 78,
+"index_data": PackedByteArray("AAAbABoAGgAZABgAFwAWABUAFQAUABMAEgARABAADgANAAwACwAKAAkABwAGAAUABAADAAIAAQAAABoAGgAYABcAFwAVABMAEgAQAA8ADgAMAAsACwAJAAgABwAFAAQABAACAAEAAQAaABcAFwATABIAEgAPAA4ADgALAAgABwAEAAEAAQAXABIAEgAOAAgACAAHAAEAAQASAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("AAAAwAAA4MEAAADAzczAwQAAHMIAANjBAAB4wgAA2MEAAHjCAACwwQAAgMIAALDBAACAwgAAAMAAAHjCAAAAwAAAeMIAAEBAAACAwgAAQEAAAIDCAAC4QQAAeMIAALhBAAB4wgAA4EEAABzCAADgQdDM3MAAAMhBAAAAwAAAyEEAAADAAADoQQAAQEAAAOhBAABAQDQzx0FmZihCAACwQQAAUkIAALBBAAB0QmhmNkEAAHRCZmYmwQAAVEIzM5vBAABUQjMzp8EAACBBAADAwQAAQEAAAMDBAABAQAAA4ME=")
+}]
+
+[sub_resource type="Gradient" id="Gradient_343tk"]
+offsets = PackedFloat32Array(0, 0.74568963)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_51qc7"]
+gradient = SubResource("Gradient_343tk")
+width = 260
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0x72"]
+size = Vector2(222, 180)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xuuw"]
+radius = 1635.159
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nosia"]
+radius = 4255.05
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vue1i"]
+polygon = PackedVector2Array(1, 0, 112, 6, 119, 14, 120, 36, 111, 45, 1, 51)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("11_e7wym")
+weapons = Array[PackedScene]([ExtResource("12_3qx80"), ExtResource("13_oj8rt")])
+
+[node name="Hull" type="Node2D" parent="."]
+visible = false
+
+[node name="HullSprite" type="Sprite2D" parent="Hull"]
+texture = ExtResource("1_ml58o")
+
+[node name="Spaceship" type="Node2D" parent="." groups=["OnMap"]]
+visibility_layer = 3
+position = Vector2(955, 492)
+
+[node name="SpaceshipBody" type="MeshInstance2D" parent="Spaceship"]
+unique_name_in_owner = true
+mesh = SubResource("ArrayMesh_k3lwc")
+texture = ExtResource("1_ml58o")
+script = ExtResource("2_e7wym")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spaceship"]
+visible = false
+texture = ExtResource("1_ml58o")
+
+[node name="MainBooster" parent="Spaceship" instance=ExtResource("3_ybcjm")]
+position = Vector2(-62, -12)
+
+[node name="MainBooster2" parent="Spaceship" groups=["lockable"] instance=ExtResource("3_ybcjm")]
+position = Vector2(-62, 14)
+
+[node name="PointLight2D" type="PointLight2D" parent="Spaceship"]
+color = Color(0.3227234, 0.77462196, 0.87890625, 1)
+energy = 2.34
+range_layer_min = -1024
+range_layer_max = 1024
+texture = SubResource("GradientTexture2D_51qc7")
+
+[node name="Area2D" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/Area2D"]
+shape = SubResource("RectangleShape2D_l0x72")
+
+[node name="Walls" type="StaticBody2D" parent="Spaceship"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_3qx80")
+max_health = 500
+debris_particles = ExtResource("5_yn67l")
+hit_particles = ExtResource("6_oj8rt")
+hit_audio_streams = Array[AudioStream]([ExtResource("7_vb1a7")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("8_d8q65")])
+penetration_resistance = 8
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Spaceship/Walls"]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
+
+[node name="CharacterStatic" parent="Spaceship" instance=ExtResource("9_ycq5x")]
+position = Vector2(38, 4)
+
+[node name="TargetDetectionArea" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/TargetDetectionArea"]
+shape = SubResource("CircleShape2D_0xuuw")
+
+[node name="WideTargetDetectionArea" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/WideTargetDetectionArea"]
+shape = SubResource("CircleShape2D_nosia")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Spaceship"]
+position = Vector2(-60, -25)
+occluder = SubResource("OccluderPolygon2D_vue1i")
+
+[node name="Node2D" type="Node2D" parent="Spaceship"]
+
+[node name="MountingMarkers" type="Node2D" parent="Spaceship"]
+unique_name_in_owner = true
+
+[node name="MountingMarker" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-50, -34)
+
+[node name="MountingMarker2" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-31, -33)
+
+[node name="MountingMarker3" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-15, -32)
+
+[node name="MountingMarker4" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(17, -30)
+
+[node name="MountingMarker5" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(35, -29)
+
+[node name="MountingMarker6" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-48, 35)
+rotation = -3.1415925
+
+[node name="MountingMarker7" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-29, 34)
+rotation = -3.1415925
+
+[node name="MountingMarker8" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(-13, 33)
+rotation = -3.1415925
+
+[node name="MountingMarker9" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(19, 31)
+rotation = -3.1415925
+
+[node name="MountingMarker10" parent="Spaceship/MountingMarkers" instance=ExtResource("10_ml58o")]
+position = Vector2(37, 30)
+rotation = -3.1415925
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 300.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartsContainer" type="Control" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/PartsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/PartsContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="List" type="VBoxContainer" parent="Control/Panel/PartsContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="Control/Panel/PartsContainer/ScrollContainer/MarginContainer/List"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("13_yn67l")
+stretch_mode = 4
+
+[node name="TextureButton2" type="TextureButton" parent="Control/Panel/PartsContainer/ScrollContainer/MarginContainer/List"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("13_yn67l")
+
+[node name="PartGhost" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 409.0
+offset_top = 125.0
+offset_right = 449.0
+offset_bottom = 165.0
+texture = ExtResource("15_oj8rt")
+
+[connection signal="body_entered" from="Spaceship/Area2D" to="Spaceship" method="_on_area_2d_body_entered"]
+[connection signal="hit" from="Spaceship/Walls" to="Spaceship" method="_on_walls_hit"]
+[connection signal="character_died" from="Spaceship/CharacterStatic" to="Spaceship" method="_on_character_static_character_died"]
