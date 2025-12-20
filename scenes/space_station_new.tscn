@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cmvh0mvtskrf7"]
+[gd_scene load_steps=41 format=4 uid="uid://cmvh0mvtskrf7"]
 
 [ext_resource type="PackedScene" uid="uid://dkimk076s2syg" path="res://scenes/character.tscn" id="3_rkva5"]
 [ext_resource type="Texture2D" uid="uid://bj60hkxhvhow8" path="res://assets/tileset.png" id="3_uye6w"]
@@ -11,6 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://dcuultkhtxabo" path="res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/6smg06.png" id="8_d78ny"]
 [ext_resource type="AudioStream" uid="uid://dy6mwryqtu3j" path="res://sounds/projectiles/shooting.wav" id="9_abes3"]
 [ext_resource type="PackedScene" uid="uid://k8do6n8nkvjm" path="res://scenes/projectile_collission_checker.tscn" id="10_in2i0"]
+[ext_resource type="Texture2D" uid="uid://dsbjpvqyv7ehi" path="res://sprites/spaceship.png" id="12_lj58x"]
+[ext_resource type="Script" uid="uid://bp5bchp5n7cm8" path="res://scenes/spaceship_body.gd" id="13_sks76"]
+[ext_resource type="PackedScene" uid="uid://duti4teficyot" path="res://scenes/booster.tscn" id="14_syl30"]
+[ext_resource type="PackedScene" uid="uid://cwayjd5jnigj5" path="res://scenes/main_booster.tscn" id="15_wstcj"]
+[ext_resource type="PackedScene" uid="uid://buyk2c060gonj" path="res://scenes/fuel_tank.tscn" id="16_qpmso"]
+[ext_resource type="PackedScene" uid="uid://c67t0mehboovx" path="res://scenes/fuel_armor.tscn" id="17_io3qu"]
+[ext_resource type="PackedScene" uid="uid://b6v8muyp0qg5m" path="res://scenes/oxygen_tank.tscn" id="18_epyse"]
+[ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="19_kwsuu"]
+[ext_resource type="PackedScene" uid="uid://dh0o00s7wk0kq" path="res://scenes/debris.tscn" id="20_1q88a"]
+[ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="21_or82i"]
+[ext_resource type="AudioStream" uid="uid://qylle52hwoov" path="res://sounds/projectiles/bullet-impact-metal.wav" id="22_it3sy"]
+[ext_resource type="AudioStream" uid="uid://u34gapwiknpb" path="res://sounds/projectiles/bullet_ricochet.wav" id="23_2wt3b"]
+[ext_resource type="PackedScene" uid="uid://cocec88e1iixv" path="res://scenes/CharacterStatic.tscn" id="24_kk7d2"]
+[ext_resource type="Texture2D" uid="uid://v1jjc0ckyb7c" path="res://sprites/crosshair.png" id="26_vx31p"]
+[ext_resource type="PackedScene" uid="uid://dbvme2ycrsabr" path="res://scenes/gun_medium.tscn" id="27_x7v7g"]
+[ext_resource type="PackedScene" uid="uid://ditexeonnfybi" path="res://scenes/gun_missile.tscn" id="28_qb3a7"]
 
 [sub_resource type="Environment" id="Environment_iha3j"]
 background_mode = 3
@@ -1050,6 +1066,43 @@ texture_region_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_uye6w")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_k3lwc"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-64, -28, 0, 125, 57, 0),
+"attribute_data": PackedByteArray("AAD4PgAAgD0AAPg+zcz8PQAASD4AAKA9AACAPAAAoD0AAIA8AAAgPgAAAAAAACA+AAAAAAAA8D4AAIA8AADwPgAAgDwAAAw/AAAAAAAADD8AAAAAAABcPwAAgDwAAFw/AACAPAAAcD8AAEg+AABwP2Zm5D4AAGQ/AAD4PgAAZD8AAPg+AAB0PwAABj8AAHQ/AAAGP5qZYz8zM1Q/AABYPwAAaT8AAFg/AAB6P5qZLT8AAHo/zcysPgAAaj+amUk+AABqP5qZMT4AABQ/AAAAPgAABj8AAAA+AAAGPwAAgD0="),
+"format": 34393296913,
+"index_count": 78,
+"index_data": PackedByteArray("AAAbABoAGgAZABgAFwAWABUAFQAUABMAEgARABAADgANAAwACwAKAAkABwAGAAUABAADAAIAAQAAABoAGgAYABcAFwAVABMAEgAQAA8ADgAMAAsACwAJAAgABwAFAAQABAACAAEAAQAaABcAFwATABIAEgAPAA4ADgALAAgABwAEAAEAAQAXABIAEgAOAAgACAAHAAEAAQASAAgA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("AAAAwAAA4MEAAADAzczAwQAAHMIAANjBAAB4wgAA2MEAAHjCAACwwQAAgMIAALDBAACAwgAAAMAAAHjCAAAAwAAAeMIAAEBAAACAwgAAQEAAAIDCAAC4QQAAeMIAALhBAAB4wgAA4EEAABzCAADgQdDM3MAAAMhBAAAAwAAAyEEAAADAAADoQQAAQEAAAOhBAABAQDQzx0FmZihCAACwQQAAUkIAALBBAAB0QmhmNkEAAHRCZmYmwQAAVEIzM5vBAABUQjMzp8EAACBBAADAwQAAQEAAAMDBAABAQAAA4ME=")
+}]
+
+[sub_resource type="Gradient" id="Gradient_343tk"]
+offsets = PackedFloat32Array(0, 0.74568963)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_51qc7"]
+gradient = SubResource("Gradient_343tk")
+width = 260
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0x72"]
+size = Vector2(222, 180)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xuuw"]
+radius = 1635.159
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nosia"]
+radius = 4255.05
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vue1i"]
+polygon = PackedVector2Array(1, 0, 112, 6, 119, 14, 120, 36, 111, 45, 1, 51)
+
 [node name="SpaceStation" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_34cko")]
@@ -1132,3 +1185,148 @@ position = Vector2(-114, -77)
 [node name="Area2D" type="Area2D" parent="Room"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room/Area2D"]
+
+[node name="Spaceship" type="RigidBody2D" parent="." groups=["OnMap"]]
+visibility_layer = 3
+position = Vector2(1377, 194)
+collision_layer = 8
+collision_mask = 9
+gravity_scale = 0.0
+inertia = 0.5
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp = 0.2
+angular_damp = 0.05
+
+[node name="SpaceshipBody" type="MeshInstance2D" parent="Spaceship"]
+unique_name_in_owner = true
+mesh = SubResource("ArrayMesh_k3lwc")
+texture = ExtResource("12_lj58x")
+script = ExtResource("13_sks76")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spaceship"]
+visible = false
+texture = ExtResource("12_lj58x")
+
+[node name="Booster" parent="Spaceship" instance=ExtResource("14_syl30")]
+position = Vector2(0, -28)
+
+[node name="MainBooster" parent="Spaceship" instance=ExtResource("15_wstcj")]
+position = Vector2(-62, -12)
+
+[node name="MainBooster2" parent="Spaceship" groups=["lockable"] instance=ExtResource("15_wstcj")]
+position = Vector2(-62, 14)
+
+[node name="Booster2" parent="Spaceship" instance=ExtResource("14_syl30")]
+position = Vector2(0, 28)
+
+[node name="PointLight2D" type="PointLight2D" parent="Spaceship"]
+color = Color(0.3227234, 0.77462196, 0.87890625, 1)
+energy = 2.34
+range_layer_min = -1024
+range_layer_max = 1024
+texture = SubResource("GradientTexture2D_51qc7")
+
+[node name="FuelTank" parent="Spaceship" instance=ExtResource("16_qpmso")]
+position = Vector2(-48, -3)
+
+[node name="FuelArmor" parent="Spaceship" instance=ExtResource("17_io3qu")]
+position = Vector2(-49, -3)
+
+[node name="OxygenTank" parent="Spaceship" instance=ExtResource("18_epyse")]
+position = Vector2(-48, 22)
+
+[node name="Area2D" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/Area2D"]
+shape = SubResource("RectangleShape2D_l0x72")
+
+[node name="Walls" type="StaticBody2D" parent="Spaceship"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("19_kwsuu")
+max_health = 500
+debris_particles = ExtResource("20_1q88a")
+hit_particles = ExtResource("21_or82i")
+hit_audio_streams = Array[AudioStream]([ExtResource("22_it3sy")])
+ricochet_audio_streams = Array[AudioStream]([ExtResource("23_2wt3b")])
+penetration_resistance = 8
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Spaceship/Walls"]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9, -8, -18, -120, -25, -120, 26, -121, 27, -121, -26, -8, -20, 0, -9, 0, 11)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
+visible = false
+position = Vector2(60, 0)
+polygon = PackedVector2Array(0, 0, 0, 9, -8, 19, -121, 26, -121, -25, -40.162483, -19.992365, -8, -18, 0, -8)
+
+[node name="CharacterStatic" parent="Spaceship" instance=ExtResource("24_kk7d2")]
+visible = false
+position = Vector2(38, 4)
+
+[node name="TargetDetectionArea" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/TargetDetectionArea"]
+shape = SubResource("CircleShape2D_0xuuw")
+
+[node name="WideTargetDetectionArea" type="Area2D" parent="Spaceship"]
+visible = false
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spaceship/WideTargetDetectionArea"]
+shape = SubResource("CircleShape2D_nosia")
+
+[node name="Crosshair" type="Sprite2D" parent="Spaceship"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("26_vx31p")
+
+[node name="CrosshairVelocity" type="Sprite2D" parent="Spaceship"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+self_modulate = Color(0.8984375, 1, 0, 1)
+texture = ExtResource("26_vx31p")
+
+[node name="CrosshairTargetPosition" type="Sprite2D" parent="Spaceship"]
+visible = false
+modulate = Color(1, 1, 1, 0.75686276)
+texture = ExtResource("26_vx31p")
+
+[node name="WeaponsController" parent="Spaceship" instance=ExtResource("5_34cko")]
+unique_name_in_owner = true
+
+[node name="GunMedium" parent="Spaceship/WeaponsController" instance=ExtResource("27_x7v7g")]
+position = Vector2(42, -25)
+
+[node name="GunMedium4" parent="Spaceship/WeaponsController" instance=ExtResource("27_x7v7g")]
+position = Vector2(-50, -30)
+
+[node name="GunMedium2" parent="Spaceship/WeaponsController" instance=ExtResource("27_x7v7g")]
+position = Vector2(41, 26)
+scale = Vector2(1, -1)
+max_rotation_deg = Vector2(-15, 160)
+
+[node name="GunMissile" parent="Spaceship/WeaponsController" instance=ExtResource("28_qb3a7")]
+position = Vector2(-53, 30)
+weapon_group = 2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Spaceship"]
+position = Vector2(-60, -25)
+occluder = SubResource("OccluderPolygon2D_vue1i")
+
+[connection signal="destroyed" from="Spaceship/Booster" to="Spaceship" method="_on_booster_destroyed"]
+[connection signal="destroyed" from="Spaceship/Booster2" to="Spaceship" method="_on_booster_destroyed"]
+[connection signal="destroyed" from="Spaceship/FuelTank" to="Spaceship" method="_on_node_destroyed"]
+[connection signal="destroyed" from="Spaceship/OxygenTank" to="Spaceship" method="_on_node_destroyed"]
+[connection signal="body_entered" from="Spaceship/Area2D" to="Spaceship" method="_on_area_2d_body_entered"]
+[connection signal="hit" from="Spaceship/Walls" to="Spaceship" method="_on_walls_hit"]
+[connection signal="character_died" from="Spaceship/CharacterStatic" to="Spaceship" method="_on_character_static_character_died"]

@@ -2,12 +2,15 @@ class_name Weapon
 extends Node2D
 
 @export var weapon_group: int = 1
-@export var max_rotation_deg := Vector2(-160, 15)
+@export var max_rotation_deg := Vector2(-180, 0)
 @export var rpm = 600
 @export var bullet: PackedScene
 @export var locking: bool = false
 @export var limit_rotation: bool = true
+# @export var limit_rotation_based_on_set_values: bool = true
+@export var limit_rotation_based_on_collision: bool = true # ignores max_rotation_deg if true
 @export var flip: bool = false
+@export var energy_points: int = 2
 
 var target: Node2D
 
@@ -36,10 +39,13 @@ func _process(delta: float) -> void:
 	if (cooldown > 0): cooldown -= delta; # reduce cooldown by 1 every second
 
 func look(pos: Vector2):
-	look_at(pos)
 	if limit_rotation:
-		if (rotation_degrees < max_rotation_deg.x): rotation_degrees = max_rotation_deg.x
-		if (rotation_degrees > max_rotation_deg.y): rotation_degrees = max_rotation_deg.y
+		if !limit_rotation_based_on_collision:
+			look_at(pos)
+			if (rotation_degrees < max_rotation_deg.x): rotation_degrees = max_rotation_deg.x
+			if (rotation_degrees > max_rotation_deg.y): rotation_degrees = max_rotation_deg.y
+		else:
+			if !%ProjectileCollisionChecker.would_collide((pos - global_position).angle() - rotation): look_at(pos) # TODO - verify
 	else:
 		rotation_degrees = wrapf(rotation_degrees, -180, 180)
 		$Sprite2D.flip_v = rotation_degrees > 90 || rotation_degrees < -90

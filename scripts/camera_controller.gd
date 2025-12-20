@@ -11,11 +11,6 @@ var camera: Camera2D
 
 func _ready() -> void:
 	camera = get_viewport().get_camera_2d()
-	print(camera.global_position)
-	print(camera.position)
-	camera.position.x += 10
-	print(camera.global_position)
-	print(camera.position)
 
 func _process(delta: float) -> void:
 	camera.zoom.x = lerp(camera.zoom.x, target_zoom, 0.1)

@@ -27,3 +27,6 @@ position = Vector2(35, 0)
 [node name="ProjectileCollisionChecker" parent="." instance=ExtResource("4_ih0qq")]
 unique_name_in_owner = true
 position = Vector2(121, 0)
+
+[node name="MountingMarker" type="Marker2D" parent="."]
+position = Vector2(-2, 3)
