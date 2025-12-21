@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dhi86xsprv5t"]
+
+[node name="EditorCollisionArea" type="Area2D" groups=["EditorCollisionArea"]]
+z_index = 100

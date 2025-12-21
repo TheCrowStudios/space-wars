@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbvme2ycrsabr"]
+[gd_scene load_steps=8 format=3 uid="uid://dbvme2ycrsabr"]
 
 [ext_resource type="Script" uid="uid://db8pmm3eqq7m8" path="res://scripts/weapon.gd" id="1_e35mn"]
 [ext_resource type="Texture2D" uid="uid://bng5vopwpbq56" path="res://sprites/gun_medium.png" id="2_p3a6w"]
 [ext_resource type="PackedScene" uid="uid://cw2ciax8xl82v" path="res://scenes/bullet.tscn" id="2_v11bg"]
 [ext_resource type="AudioStream" uid="uid://dy6mwryqtu3j" path="res://sounds/projectiles/shooting.wav" id="3_p3a6w"]
 [ext_resource type="PackedScene" uid="uid://k8do6n8nkvjm" path="res://scenes/projectile_collission_checker.tscn" id="4_ih0qq"]
+[ext_resource type="PackedScene" uid="uid://dhi86xsprv5t" path="res://scenes/spaceship_editor/editor_collision_area.tscn" id="6_pogd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f21dt"]
+size = Vector2(19, 9)
 
 [node name="GunMedium" type="Node2D"]
 script = ExtResource("1_e35mn")
@@ -30,3 +34,9 @@ position = Vector2(121, 0)
 
 [node name="MountingMarker" type="Marker2D" parent="."]
 position = Vector2(-2, 3)
+
+[node name="EditorCollisionArea" parent="." instance=ExtResource("6_pogd5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditorCollisionArea"]
+position = Vector2(5.5, -0.5)
+shape = SubResource("RectangleShape2D_f21dt")

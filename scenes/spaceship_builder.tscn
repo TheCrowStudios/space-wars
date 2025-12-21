@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://co1tn004fs0sk"]
+[gd_scene load_steps=23 format=4 uid="uid://co1tn004fs0sk"]
 
 [ext_resource type="Texture2D" uid="uid://dsbjpvqyv7ehi" path="res://sprites/spaceship.png" id="1_ml58o"]
 [ext_resource type="Script" uid="uid://bp5bchp5n7cm8" path="res://scenes/spaceship_body.gd" id="2_e7wym"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bo301o06w84sa" path="res://scenes/mounting_marker.tscn" id="10_ml58o"]
 [ext_resource type="Script" uid="uid://bv0wf0nqhnhce" path="res://scripts/spaceship_editor/spaceship_editor.gd" id="11_e7wym"]
 [ext_resource type="PackedScene" uid="uid://dbvme2ycrsabr" path="res://scenes/gun_medium.tscn" id="12_3qx80"]
+[ext_resource type="PackedScene" uid="uid://dhi86xsprv5t" path="res://scenes/spaceship_editor/editor_collision_area.tscn" id="12_yn67l"]
 [ext_resource type="PackedScene" uid="uid://ditexeonnfybi" path="res://scenes/gun_missile.tscn" id="13_oj8rt"]
 [ext_resource type="Texture2D" uid="uid://ddhpg8temrfmi" path="res://sprites/Ranitayas Guns Pack (16+ pixelart guns)/MachineGuns/1Machinegun01.png" id="13_yn67l"]
 [ext_resource type="PackedScene" uid="uid://djf3pte7het1q" path="res://scenes/camera_controller.tscn" id="15_oj8rt"]
@@ -39,22 +40,25 @@ height = 160
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0xuuw"]
-radius = 1635.159
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nosia"]
-radius = 4255.05
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vue1i"]
 polygon = PackedVector2Array(1, 0, 112, 6, 119, 14, 120, 36, 111, 45, 1, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj8rt"]
+size = Vector2(19, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1a7"]
+size = Vector2(11, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8q65"]
+size = Vector2(20, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yn67l"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("11_e7wym")
 weapons = Array[PackedScene]([ExtResource("12_3qx80"), ExtResource("13_oj8rt")])
-fuel = Array[PackedScene]([ExtResource("4_3qx80")])
-oxygen = Array[PackedScene]([ExtResource("5_yn67l")])
+fuel_tanks = Array[PackedScene]([ExtResource("4_3qx80")])
+oxygen_tanks = Array[PackedScene]([ExtResource("5_yn67l")])
 
 [node name="Hull" type="Node2D" parent="."]
 visible = false
@@ -90,9 +94,9 @@ range_layer_min = -1024
 range_layer_max = 1024
 texture = SubResource("GradientTexture2D_51qc7")
 
-[node name="Walls" type="Area2D" parent="SpaceshipHull"]
+[node name="Walls" type="Area2D" parent="SpaceshipHull" groups=["Walls"]]
 unique_name_in_owner = true
-collision_layer = 2
+position = Vector2(-955, -484)
 collision_mask = 0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SpaceshipHull/Walls"]
@@ -102,23 +106,7 @@ polygon = PackedVector2Array(-8, 21, -121, 27, -120, 26, -8, 19, -2, 11, -2, -9,
 [node name="CharacterStatic" parent="SpaceshipHull" instance=ExtResource("9_ycq5x")]
 position = Vector2(38, 4)
 
-[node name="TargetDetectionArea" type="Area2D" parent="SpaceshipHull"]
-visible = false
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceshipHull/TargetDetectionArea"]
-shape = SubResource("CircleShape2D_0xuuw")
-
-[node name="WideTargetDetectionArea" type="Area2D" parent="SpaceshipHull"]
-visible = false
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceshipHull/WideTargetDetectionArea"]
-shape = SubResource("CircleShape2D_nosia")
-
-[node name="InsideArea" type="Area2D" parent="SpaceshipHull"]
+[node name="InsideArea" type="Area2D" parent="SpaceshipHull" groups=["InsideArea"]]
 unique_name_in_owner = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpaceshipHull/InsideArea"]
@@ -174,6 +162,27 @@ rotation = -3.1415925
 [node name="WeaponsContainer" type="Node2D" parent="SpaceshipHull"]
 unique_name_in_owner = true
 
+[node name="EditorCollisionArea" parent="SpaceshipHull" instance=ExtResource("12_yn67l")]
+position = Vector2(33, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceshipHull/EditorCollisionArea"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_oj8rt")
+
+[node name="EditorCollisionArea2" parent="SpaceshipHull" instance=ExtResource("12_yn67l")]
+position = Vector2(47, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceshipHull/EditorCollisionArea2"]
+position = Vector2(6, 3)
+shape = SubResource("RectangleShape2D_vb1a7")
+
+[node name="EditorCollisionArea3" parent="SpaceshipHull" instance=ExtResource("12_yn67l")]
+position = Vector2(1, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceshipHull/EditorCollisionArea3"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_d8q65")
+
 [node name="PartGhost" type="Area2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -8)
@@ -181,7 +190,8 @@ position = Vector2(0, -8)
 [node name="PartGhostSprite" type="Sprite2D" parent="PartGhost"]
 unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PartGhost"]
+[node name="PartGhostCollisionShape" type="CollisionShape2D" parent="PartGhost"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_yn67l")
 
 [node name="CameraController" parent="." instance=ExtResource("15_oj8rt")]
@@ -190,10 +200,8 @@ shape = SubResource("RectangleShape2D_yn67l")
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -213,11 +221,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TabBar" type="TabBar" parent="UI/Control/Panel/PartsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 58.0
+current_tab = 0
+tab_count = 4
+tab_0/title = "weapons"
+tab_1/title = "fuel"
+tab_2/title = "oxy"
+tab_3/title = "other"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/Panel/PartsContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -250,3 +273,4 @@ layout_mode = 2
 texture_normal = ExtResource("13_yn67l")
 
 [connection signal="character_died" from="SpaceshipHull/CharacterStatic" to="SpaceshipHull" method="_on_character_static_character_died"]
+[connection signal="tab_changed" from="UI/Control/Panel/PartsContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]

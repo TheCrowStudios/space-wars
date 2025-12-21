@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ditexeonnfybi"]
+[gd_scene load_steps=8 format=3 uid="uid://ditexeonnfybi"]
 
 [ext_resource type="Script" uid="uid://db8pmm3eqq7m8" path="res://scripts/weapon.gd" id="1_h6e05"]
 [ext_resource type="PackedScene" uid="uid://cdr4k4srb4oq8" path="res://scenes/missile.tscn" id="2_bdhdi"]
 [ext_resource type="PackedScene" uid="uid://k8do6n8nkvjm" path="res://scenes/projectile_collission_checker.tscn" id="2_ctswv"]
 [ext_resource type="Texture2D" uid="uid://d4gs3xojiug18" path="res://sprites/gun-missile.png" id="2_h6e05"]
+[ext_resource type="PackedScene" uid="uid://dhi86xsprv5t" path="res://scenes/spaceship_editor/editor_collision_area.tscn" id="3_bdhdi"]
 [ext_resource type="AudioStream" uid="uid://bf3cqn3tkdj0t" path="res://sounds/rocket-fire.wav" id="5_ctswv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctswv"]
+size = Vector2(22, 8)
 
 [node name="GunMissile" type="Node2D"]
 script = ExtResource("1_h6e05")
@@ -12,6 +16,12 @@ max_rotation_deg = Vector2(-15, 160)
 rpm = 60
 bullet = ExtResource("2_bdhdi")
 locking = true
+
+[node name="EditorCollisionArea" parent="." instance=ExtResource("3_bdhdi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditorCollisionArea"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_ctswv")
 
 [node name="ProjectileCollisionChecker" parent="." instance=ExtResource("2_ctswv")]
 unique_name_in_owner = true

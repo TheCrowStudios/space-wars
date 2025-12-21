@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buyk2c060gonj"]
+[gd_scene load_steps=10 format=3 uid="uid://buyk2c060gonj"]
 
 [ext_resource type="Script" uid="uid://lyerjc101yao" path="res://scripts/destructible_object.gd" id="1_y6vd2"]
 [ext_resource type="PackedScene" uid="uid://cshungy5nkn1l" path="res://scenes/particles/sparks.tscn" id="2_vuml6"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cn3dxqfvytv2s" path="res://scenes/particles/explosion_new.tscn" id="4_cuhku"]
 [ext_resource type="Texture2D" uid="uid://d1lbqkfu0ahlp" path="res://sprites/fuel-tank.png" id="5_cuhku"]
 [ext_resource type="Texture2D" uid="uid://dsk0g5ltlrw5x" path="res://sprites/fuel-tank-destroyed.png" id="6_t51y8"]
+[ext_resource type="PackedScene" uid="uid://dhi86xsprv5t" path="res://scenes/spaceship_editor/editor_collision_area.tscn" id="7_t51y8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t77pr"]
 size = Vector2(14, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5einq"]
+size = Vector2(22, 30)
 
 [node name="FuelTank" type="StaticBody2D" node_paths=PackedStringArray("sprite", "sprite_destroyed")]
 collision_layer = 2
@@ -17,7 +21,7 @@ script = ExtResource("1_y6vd2")
 max_health = 200
 hit_particles = ExtResource("2_vuml6")
 destruction_particles = ExtResource("3_vuml6")
-sprite = NodePath("Sprite")
+sprite = NodePath("Sprite2D")
 sprite_destroyed = NodePath("SpriteDestroyed")
 explosion_particles = ExtResource("4_cuhku")
 penetration_resistance = 50
@@ -25,7 +29,7 @@ explodes = true
 explosion_force = 1600.0
 explosion_radius = 900.0
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, 0)
 texture = ExtResource("5_cuhku")
 
@@ -36,3 +40,9 @@ texture = ExtResource("6_t51y8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t77pr")
+
+[node name="EditorCollisionArea" parent="." instance=ExtResource("7_t51y8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditorCollisionArea"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_5einq")
